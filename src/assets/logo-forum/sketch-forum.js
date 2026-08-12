@@ -66,6 +66,12 @@ let windowsToOpen = [];
 
 function setup() {
   setAttributes("alpha", true);
+  // O canvas nativo é 800x160, mas a caixa .logo-forum pode ser exibida bem
+  // maior que isso (até ~1120px de largura) via CSS transform: scale(). Sem
+  // uma densidade de pixel maior, esse esticamento deixa o símbolo
+  // ligeiramente pixelado em telas de alta resolução (some ao dar zoom out
+  // porque aí a ampliação total cai). 3x cobre o esticamento + retina.
+  pixelDensity(3);
   const cnv = createCanvas(800, 160, WEBGL);
   cnv.parent("wrapper");
   angleMode(DEGREES);
