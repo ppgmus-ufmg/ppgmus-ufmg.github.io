@@ -97,33 +97,18 @@ eleventyExcludeFromCollections: true
 
     botao.addEventListener("click", async () => {
       botao.disabled = true;
-      botao.textContent = "Escolha esta janela (não a aba/tela) na caixa…";
-
-      // Largura/altura reais em pixels de tela (CSS px × devicePixelRatio).
-      // getDisplayMedia só aceita "ideal" aqui (não "exact" — a API rejeita
-      // a chamada inteira se usar "exact" em width/height), mas na prática o
-      // Chrome respeita esse valor ao capturar uma aba (diferente de captura
-      // de tela, a aba pode ser escalada para qualquer tamanho pedido).
-      const dpr = window.devicePixelRatio || 1;
-      const larguraCaptura = Math.round(window.innerWidth * dpr);
-      const alturaCaptura = Math.round(window.innerHeight * dpr);
+      botao.textContent = "Confirme a captura…";
 
       let stream;
       try {
         stream = await navigator.mediaDevices.getDisplayMedia({
+          // Captura de ABA (não janela): janelas pop-up no Chrome atual
+          // sempre mostram a barra de endereço (ignora location=no do
+          // window.open), o que aparece na gravação. Captura de aba não tem
+          // esse problema — só o conteúdo da página.
+          preferCurrentTab: true,
           video: {
-            // Pede captura de JANELA (não aba, não tela toda) — dá pra
-            // escolher "esta janela" na caixa do navegador. NÃO usar
-            // preferCurrentTab aqui: captura de aba mostra uma barra de
-            // aviso "compartilhando esta aba" DENTRO da página, que encolhe
-            // a viewport depois que a resolução do vídeo já foi fixada —
-            // sobra uma borda escura embaixo. Captura de janela não tem
-            // esse aviso dentro do conteúdo (fica na moldura do SO), então
-            // não redimensiona nada.
-            displaySurface: "window",
             frameRate: { ideal: 60 },
-            width: { ideal: larguraCaptura },
-            height: { ideal: alturaCaptura },
             // Tira o cursor do mouse da gravação — não dá pra fazer isso via
             // CSS porque o cursor é do sistema, não desenhado pela página.
             cursor: "never",
@@ -135,6 +120,23 @@ eleventyExcludeFromCollections: true
         botao.textContent = "Gravar e iniciar";
         alert("Não foi possível iniciar a captura: " + err.message);
         return;
+      }
+
+      // Captura de aba mostra uma barra "compartilhando esta aba" DENTRO da
+      // página, que encolhe a viewport — mas só depois que a captura já
+      // começou. Se a resolução do vídeo for fixada antes disso (como
+      // fazíamos), sobra uma borda escura onde o conteúdo encolheu. Espera a
+      // barra aparecer e a página assentar, e só então aplica a resolução —
+      // já compatível com o tamanho real e estável do conteúdo.
+      await new Promise((r) => setTimeout(r, 500));
+      const dpr = window.devicePixelRatio || 1;
+      try {
+        await stream.getVideoTracks()[0].applyConstraints({
+          width: { ideal: Math.round(window.innerWidth * dpr) },
+          height: { ideal: Math.round(window.innerHeight * dpr) },
+        });
+      } catch (e) {
+        // Segue com a resolução padrão se o navegador não aceitar o ajuste.
       }
 
       const candidatosMime = [
