@@ -59,11 +59,18 @@ eleventyExcludeFromCollections: true
     const altura = Math.round((largura * 16) / 9);
     const left = Math.round((screen.width - largura) / 2);
     const top = Math.round((screen.height - altura) / 2);
-    window.open(
+    const popup = window.open(
       location.href,
       "_blank",
       `width=${largura},height=${altura},left=${left},top=${top},resizable=yes,toolbar=no,menubar=no,location=no,status=no`
     );
+    // Trava o botão de gravar DESTA janela (a original) — clicar nele por
+    // engano em vez de na pop-up nova é a causa mais provável de gravações
+    // saindo em branco. A pop-up carrega os próprios botões, independentes.
+    if (popup) {
+      document.getElementById("botao-gravar").disabled = true;
+      document.getElementById("botao-gravar").textContent = "Grave na janela nova que abriu →";
+    }
   });
 </script>
 
@@ -75,7 +82,7 @@ eleventyExcludeFromCollections: true
   // preenche 100% da viewport (ver .tela-fone--fluida em reel.css), então o
   // vídeo final sai exatamente do tamanho da janela gravada.
   (function () {
-    const DURACAO_MS = 10000; // duração da gravação — ajuste aqui
+    const DURACAO_MS = 45000; // duração da gravação — ajuste aqui
     const botao = document.getElementById("botao-gravar");
     let recorder = null;
 
@@ -90,7 +97,7 @@ eleventyExcludeFromCollections: true
 
     botao.addEventListener("click", async () => {
       botao.disabled = true;
-      botao.textContent = "Escolha esta janela (não a aba/tela) na caixa…";
+      botao.textContent = "Confirme a captura…";
 
       // Largura/altura reais em pixels de tela (CSS px × devicePixelRatio).
       // getDisplayMedia só aceita "ideal" aqui (não "exact" — a API rejeita
@@ -104,11 +111,13 @@ eleventyExcludeFromCollections: true
       let stream;
       try {
         stream = await navigator.mediaDevices.getDisplayMedia({
+          // Captura direto a própria janela/aba que chamou isto, sem caixa
+          // de escolha — só uma confirmação rápida. Clique sempre em
+          // "Gravar e iniciar" DENTRO da janela que você quer gravar (o
+          // botão da janela original trava sozinho ao abrir a pop-up 9:16,
+          // pra evitar gravar a janela errada por engano).
+          preferCurrentTab: true,
           video: {
-            // Pede captura de JANELA (não aba, não tela toda) — dá pra
-            // escolher "esta janela" na caixa do navegador. É esse modo que
-            // deu o resultado bom (qualidade + cursor escondido) antes.
-            displaySurface: "window",
             frameRate: { ideal: 60 },
             width: { ideal: larguraCaptura },
             height: { ideal: alturaCaptura },
