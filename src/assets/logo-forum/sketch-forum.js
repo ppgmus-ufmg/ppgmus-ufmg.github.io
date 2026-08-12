@@ -66,6 +66,11 @@ let windowsToOpen = [];
 
 function setup() {
   setAttributes("alpha", true);
+  // Sem isso, capturas de tela/aba (getDisplayMedia, usado em
+  // /reels/teaser2/) às vezes não pegam o conteúdo de canvas WebGL — o
+  // navegador pode ler um buffer já limpo entre frames. Custo de
+  // performance desprezível pra um canvas deste tamanho.
+  setAttributes("preserveDrawingBuffer", true);
   // O canvas nativo é 800x160, mas a caixa .logo-forum pode ser exibida bem
   // maior que isso (até ~1120px de largura) via CSS transform: scale(). Sem
   // uma densidade de pixel maior, esse esticamento deixa o símbolo
