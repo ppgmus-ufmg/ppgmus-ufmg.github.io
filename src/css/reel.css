@@ -33,10 +33,21 @@
   align-items: center;
 }
 
+/* Tamanho e espaço do logo+título nesta página — usa o mesmo mecanismo do
+   site principal (--logo-forum-escala/-espaco-acima/-espaco-abaixo, ver
+   style.css), só redefinindo os valores aqui. transform:scale() não altera
+   o layout da caixa, então o tamanho não fica mais acoplado à coreografia
+   interna do símbolo nem ao espaçamento — os três são independentes. */
+:root {
+  --logo-forum-escala: 1.45;
+  --logo-forum-espaco-acima: 0px;
+  --logo-forum-espaco-abaixo: 0.7rem;
+}
+
 .pagina-reel .logo-forum {
-  max-width: 350px;
   width: 100%;
-  margin: 0 auto 0.9rem;
+  max-width: none;
+  margin: 0 auto;
 }
 
 .pagina-reel .subtitulo-forum {
@@ -55,6 +66,15 @@
   line-height: 1.5;
   max-width: 320px;
   margin: 0 0 1.1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* A rotação fica num wrapper estático (nunca animado) e a animação de
+   entrada/pulsação mexe só em opacity/scale no elemento de dentro — assim o
+   navegador não precisa recompor o ângulo a cada frame junto com a escala,
+   o que causava um leve flicker no texto. */
+.pagina-reel .brevemente-rotacao {
+  transform: rotate(-6deg);
 }
 
 .pagina-reel .brevemente {
@@ -64,16 +84,38 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--cor-destaque-500);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.8);
   margin: 0;
+  will-change: transform, opacity;
 }
 
 .pagina-reel .anim-entrada.brevemente.mostrar {
-  animation: revelarTextoLogo 0.6s cubic-bezier(.22, .61, .36, 1) forwards,
-             pulsarBreve 1.8s ease-in-out 0.6s infinite;
+  animation: revelarBreve 0.6s cubic-bezier(.22, .61, .36, 1) forwards,
+    pulsarBreve 2s ease-in-out 0.4s infinite;
+}
+
+@keyframes revelarBreve {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em) scale(1);
+  }
+
+  to {
+    opacity: 0.7;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes pulsarBreve {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50%      { opacity: 1; transform: scale(1.06); }
+
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
 }

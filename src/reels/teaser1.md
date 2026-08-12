@@ -28,7 +28,9 @@ eleventyExcludeFromCollections: true
         <strong>autoavaliação</strong>, ao <strong>planejamento estratégico</strong> e à <strong>recepção de novos/as discentes</strong> do Programa.
       </p>
 
-      <p class="brevemente anim-entrada anim-entrada--seta">Programação em breve!</p>
+      <div class="brevemente-rotacao">
+        <p class="brevemente anim-entrada anim-entrada--seta">Programação em breve!</p>
+      </div>
     </div>
   </section>
 </div>

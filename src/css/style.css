@@ -227,7 +227,7 @@ p {
     padding: var(--espaco-4) 0 var(--espaco-3);
   }
 
-  .logo-forum {
+  .logo-forum-escala {
     margin-top: var(--espaco-2);
   }
 }
@@ -735,12 +735,40 @@ p {
   border: 0;
 }
 
+/* Tamanho e espaçamento do logo dinâmico (símbolo p5.js) + título "4º
+   Fórum...": 3 parâmetros independentes, sem acoplamento entre si.
+   - --logo-forum-escala: multiplica o tamanho do conjunto todo (símbolo +
+     título) via transform:scale() num wrapper por fora de .logo-forum —
+     não mexe na largura/layout da caixa em si, então não interfere na
+     coreografia interna dela (o translateX(26%)/mover-esquerda abaixo,
+     e o scaleLogoForum() em JS, continuam calibrados do mesmo jeito
+     independentemente da escala). 1 = tamanho normal, 1.3 = 30% maior etc.
+   - --logo-forum-espaco-acima / --logo-forum-espaco-abaixo: distância até
+     os elementos vizinhos, via margem no wrapper — não afeta o tamanho.
+   Como a escala usa transform (não redimensiona o layout), aumentar o
+   valor pode fazer o conjunto se sobrepor a elementos vizinhos — ajuste o
+   espaçamento junto se precisar. transform-origin:center top faz crescer
+   a partir do centro horizontal, mantendo o topo fixo. */
+:root {
+  --logo-forum-escala: 1;
+  --logo-forum-espaco-acima: 1.7rem;
+  --logo-forum-espaco-abaixo: 0px;
+}
+
+.logo-forum-escala {
+  width: 100%;
+  transform: scale(var(--logo-forum-escala));
+  transform-origin: center top;
+  margin-top: var(--logo-forum-espaco-acima);
+  margin-bottom: var(--logo-forum-espaco-abaixo);
+}
+
 .logo-forum {
   position: relative;
   width: 100%;
   max-width: 1120px;
   aspect-ratio: 800 / 160;
-  margin: 1.7rem auto 0;
+  margin: 0 auto;
   overflow: hidden;
   /* Começa deslocado à direita para que o símbolo (à esquerda da caixa)
      fique visualmente centralizado na tela enquanto o texto ainda está
@@ -760,6 +788,18 @@ p {
   width: 800px;
   height: 160px;
   transform-origin: top left;
+  opacity: 0;
+  animation: entradaLogoSimbolo 0.3s ease forwards;
+}
+
+@keyframes entradaLogoSimbolo {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .logo-forum canvas {
@@ -883,14 +923,13 @@ p {
     align-items: flex-start;
   }
 
-  /* Deixa o conjunto logo+texto "vazar" o padding do container — e um
-     pouco além da borda da tela — para ficar maior no celular (a caixa
-     escala junto via JS; overflow-x:hidden no body cobre o sangramento). */
-  .logo-forum {
-    width: calc(100% + 2 * var(--espaco-3) + 2rem);
-    max-width: calc(100% + 2 * var(--espaco-3) + 2rem);
-    margin-left: calc(-1 * var(--espaco-3) - 1rem);
-    margin-right: calc(-1 * var(--espaco-3) - 1rem);
+  /* Tamanho e espaço do logo+título no mobile — mesmos 3 parâmetros do
+     desktop (ver definição acima), só que redefinidos aqui dentro da media
+     query. overflow-x:hidden no body cobre o que a escala fizer "vazar"
+     além da borda da tela. */
+  :root {
+    --logo-forum-escala: 1.35;
+    --logo-forum-espaco-acima: var(--espaco-1);
   }
 
   .cabecalho__barra {
@@ -957,7 +996,7 @@ p {
   }
 
   /* Espaçamento vertical mais compacto no hero, para caber na tela. */
-  .logo-forum {
+  .logo-forum-escala {
     margin-top: var(--espaco-1);
   }
 
