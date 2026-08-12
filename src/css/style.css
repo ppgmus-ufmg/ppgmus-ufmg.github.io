@@ -309,7 +309,7 @@ p {
 /* "PPGMUS UFMG" — entre o logo e a data */
 .subtitulo-forum {
   text-align: center;
-  font-size: clamp(1.5rem, 2rem + 3vw, 2.95rem);
+  font-size: clamp(1.25rem, 0.55rem + 3vw, 2.95rem);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -323,7 +323,7 @@ p {
 }
 
 .hero__lead {
-  font-size: clamp(1rem, 0.9rem + 0.6vw, 1.4rem);
+  font-size: clamp(0.95rem, 0.76rem + 0.8vw, 1.4rem);
   color: var(--cor-texto-suave);
   max-width: 46rem;
 }
@@ -386,7 +386,7 @@ p {
 /* Data do Fórum — texto simples, sem cartão */
 .data-forum {
   text-align: center;
-  font-size: clamp(1.5rem, 1.5rem + 3vw, 2.75rem);
+  font-size: clamp(1.25rem, 0.63rem + 2.65vw, 2.75rem);
   font-weight: 700;
   letter-spacing: 0.01em;
   color: var(--cor-destaque-500);
@@ -811,5 +811,46 @@ p {
     padding: 0.75rem var(--espaco-1);
     border-radius: 0;
     border-bottom: 1px solid var(--cor-borda);
+  }
+
+  /* Na home, o menu some do fluxo normal e flutua transparente sobre a
+     foto — sem faixa branca — só o botão hambúrguer fica visível até ser
+     aberto (com fundo sólido nesse caso, para o painel de links ficar
+     legível). */
+  .pagina-inicial .cabecalho {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    border-bottom: none;
+  }
+
+  .pagina-inicial .nav.aberto {
+    background: var(--cor-superficie);
+    box-shadow: var(--sombra-suave);
+    border-radius: var(--raio-md);
+    padding: var(--espaco-1);
+  }
+
+  .pagina-inicial .hero {
+    min-height: 100vh;
+  }
+
+  /* Espaçamento vertical mais compacto no hero, para caber na tela. */
+  .logo-forum {
+    margin-top: var(--espaco-1);
+  }
+
+  .subtitulo-forum {
+    margin-bottom: 0;
+  }
+
+  .hero__lead {
+    margin-top: var(--espaco-1) !important;
+  }
+
+  .seta-scroll {
+    margin-top: var(--espaco-2);
   }
 }
