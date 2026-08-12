@@ -82,7 +82,7 @@ eleventyExcludeFromCollections: true
   // preenche 100% da viewport (ver .tela-fone--fluida em reel.css), então o
   // vídeo final sai exatamente do tamanho da janela gravada.
   (function () {
-    const DURACAO_MS = 45000; // duração da gravação — ajuste aqui
+    const DURACAO_MS = 10000; // duração da gravação — ajuste aqui
     const botao = document.getElementById("botao-gravar");
     let recorder = null;
 
@@ -99,6 +99,16 @@ eleventyExcludeFromCollections: true
       botao.disabled = true;
       botao.textContent = "Confirme a captura…";
 
+      // Largura/altura reais em pixels de tela (CSS px × devicePixelRatio),
+      // fixadas já na primeira chamada. Mudar a resolução DEPOIS (via
+      // track.applyConstraints, o que tentamos antes) corrompe o vídeo —
+      // gera um .mov com o bitstream H.264 quebrado (sem imagem). Pode
+      // sobrar uma pequena borda escura embaixo se aparecer uma barra de
+      // aviso do navegador durante a gravação, mas o vídeo sai íntegro.
+      const dpr = window.devicePixelRatio || 1;
+      const larguraCaptura = Math.round(window.innerWidth * dpr);
+      const alturaCaptura = Math.round(window.innerHeight * dpr);
+
       let stream;
       try {
         stream = await navigator.mediaDevices.getDisplayMedia({
@@ -109,6 +119,8 @@ eleventyExcludeFromCollections: true
           preferCurrentTab: true,
           video: {
             frameRate: { ideal: 60 },
+            width: { ideal: larguraCaptura },
+            height: { ideal: alturaCaptura },
             // Tira o cursor do mouse da gravação — não dá pra fazer isso via
             // CSS porque o cursor é do sistema, não desenhado pela página.
             cursor: "never",
@@ -120,23 +132,6 @@ eleventyExcludeFromCollections: true
         botao.textContent = "Gravar e iniciar";
         alert("Não foi possível iniciar a captura: " + err.message);
         return;
-      }
-
-      // Captura de aba mostra uma barra "compartilhando esta aba" DENTRO da
-      // página, que encolhe a viewport — mas só depois que a captura já
-      // começou. Se a resolução do vídeo for fixada antes disso (como
-      // fazíamos), sobra uma borda escura onde o conteúdo encolheu. Espera a
-      // barra aparecer e a página assentar, e só então aplica a resolução —
-      // já compatível com o tamanho real e estável do conteúdo.
-      await new Promise((r) => setTimeout(r, 500));
-      const dpr = window.devicePixelRatio || 1;
-      try {
-        await stream.getVideoTracks()[0].applyConstraints({
-          width: { ideal: Math.round(window.innerWidth * dpr) },
-          height: { ideal: Math.round(window.innerHeight * dpr) },
-        });
-      } catch (e) {
-        // Segue com a resolução padrão se o navegador não aceitar o ajuste.
       }
 
       const candidatosMime = [
