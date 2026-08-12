@@ -101,13 +101,23 @@ eleventyExcludeFromCollections: true
 
       // Largura/altura reais em pixels de tela (CSS px × devicePixelRatio),
       // fixadas já na primeira chamada. Mudar a resolução DEPOIS (via
-      // track.applyConstraints, o que tentamos antes) corrompe o vídeo —
-      // gera um .mov com o bitstream H.264 quebrado (sem imagem). Pode
-      // sobrar uma pequena borda escura embaixo se aparecer uma barra de
-      // aviso do navegador durante a gravação, mas o vídeo sai íntegro.
+      // track.applyConstraints, já tentamos) corrompe o vídeo — gera um
+      // .mov com o bitstream H.264 quebrado.
+      //
+      // O Chrome mostra uma barra "compartilhando esta aba" DEPOIS que a
+      // captura começa, que encolhe a viewport — e como .tela-fone--fluida
+      // (position:fixed + inset:0) sempre acompanha o tamanho atual da
+      // viewport, ela encolheria junto, sobrando fundo escuro onde a
+      // resolução do vídeo (já fixada, maior) não é mais preenchida. Trava o
+      // tamanho da caixa em pixels ANTES da barra aparecer, para ela não
+      // encolher: na pior hipótese, uma faixa embaixo fica fora da área
+      // visível (bem menos perceptível que uma borda escura).
       const dpr = window.devicePixelRatio || 1;
       const larguraCaptura = Math.round(window.innerWidth * dpr);
       const alturaCaptura = Math.round(window.innerHeight * dpr);
+      const telaFone = document.querySelector(".tela-fone--fluida");
+      telaFone.style.width = window.innerWidth + "px";
+      telaFone.style.height = window.innerHeight + "px";
 
       let stream;
       try {
