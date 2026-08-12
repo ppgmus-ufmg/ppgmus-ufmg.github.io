@@ -61,47 +61,33 @@ eleventyExcludeFromCollections: true
       botao.disabled = true;
       botao.textContent = "Confirme a captura desta aba…";
 
-      // Largura/altura reais em pixels de tela (CSS px × devicePixelRatio),
-      // como "exact": força o resultado a sair exatamente nesse tamanho —
-      // sem isso o Chrome pode escolher uma resolução própria (ex.: a do
-      // monitor) em vez do tamanho real da aba.
+      // Largura/altura reais em pixels de tela (CSS px × devicePixelRatio).
+      // getDisplayMedia só aceita "ideal" aqui (não "exact" — a API rejeita
+      // a chamada inteira se usar "exact" em width/height), mas na prática o
+      // Chrome respeita esse valor ao capturar uma aba (diferente de captura
+      // de tela, a aba pode ser escalada para qualquer tamanho pedido).
       const dpr = window.devicePixelRatio || 1;
       const larguraCaptura = Math.round(window.innerWidth * dpr);
       const alturaCaptura = Math.round(window.innerHeight * dpr);
 
-      const pedirCaptura = (exata) => navigator.mediaDevices.getDisplayMedia({
-        // Chrome: pula a caixa de escolha e já captura a aba atual —
-        // elimina o risco de selecionar a tela toda ou outra janela.
-        preferCurrentTab: true,
-        video: {
-          frameRate: { ideal: 60 },
-          width: exata ? { exact: larguraCaptura } : { ideal: larguraCaptura },
-          height: exata ? { exact: alturaCaptura } : { ideal: alturaCaptura },
-        },
-        audio: false,
-      });
-
       let stream;
       try {
-        stream = await pedirCaptura(true);
+        stream = await navigator.mediaDevices.getDisplayMedia({
+          // Chrome: pula a caixa de escolha e já captura a aba atual —
+          // elimina o risco de selecionar a tela toda ou outra janela.
+          preferCurrentTab: true,
+          video: {
+            frameRate: { ideal: 60 },
+            width: { ideal: larguraCaptura },
+            height: { ideal: alturaCaptura },
+          },
+          audio: false,
+        });
       } catch (err) {
-        if (err.name === "OverconstrainedError") {
-          // O tamanho exato não coube (ex.: escala do sistema) — tenta de
-          // novo só como preferência, sem travar a gravação por causa disso.
-          try {
-            stream = await pedirCaptura(false);
-          } catch (err2) {
-            botao.disabled = false;
-            botao.textContent = "Gravar e iniciar";
-            alert("Não foi possível iniciar a captura: " + err2.message);
-            return;
-          }
-        } else {
-          botao.disabled = false;
-          botao.textContent = "Gravar e iniciar";
-          alert("Não foi possível iniciar a captura: " + err.message);
-          return;
-        }
+        botao.disabled = false;
+        botao.textContent = "Gravar e iniciar";
+        alert("Não foi possível iniciar a captura: " + err.message);
+        return;
       }
 
       const candidatosMime = [
