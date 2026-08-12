@@ -106,6 +106,12 @@ function setup() {
     ...slot,
     startFrame: floor(random(0, maxOffset + 1))
   }));
+
+  // Página de gravação (reels/teaser1): fica parado até apertar espaço —
+  // ver o script inline em src/reels/teaser1.md, que chama loop() de volta.
+  if (window.COMAPE_AGUARDAR_ESPACO) {
+    noLoop();
+  }
 }
 
 function draw() {

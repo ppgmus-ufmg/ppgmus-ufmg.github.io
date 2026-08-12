@@ -781,6 +781,12 @@ p {
   transform: translateX(0);
 }
 
+/* Duração do fade-in do símbolo ao carregar a página, antes de começar a
+   abrir as janelas (web e mobile). */
+:root {
+  --logo-forum-fadein-duracao: 0.3s;
+}
+
 .logo-forum #wrapper {
   position: absolute;
   top: 0;
@@ -789,7 +795,7 @@ p {
   height: 160px;
   transform-origin: top left;
   opacity: 0;
-  animation: entradaLogoSimbolo 0.3s ease forwards;
+  animation: entradaLogoSimbolo var(--logo-forum-fadein-duracao) ease forwards;
 }
 
 @keyframes entradaLogoSimbolo {

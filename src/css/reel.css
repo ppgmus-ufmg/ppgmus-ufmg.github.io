@@ -42,12 +42,22 @@
   --logo-forum-escala: 1.45;
   --logo-forum-espaco-acima: 0px;
   --logo-forum-espaco-abaixo: 0.7rem;
+  --logo-forum-fadein-duracao: 3s;
 }
 
 .pagina-reel .logo-forum {
   width: 100%;
   max-width: none;
   margin: 0 auto;
+}
+
+/* Tela em branco até apertar espaço (ver script inline em teaser1.md) —
+   suprime só o fade-in do símbolo; o resto (texto, foto, "programação em
+   breve") já começa invisível por padrão e só é revelado em cascata pelo
+   próprio sketch do p5.js, que fica pausado (noLoop) enquanto espera. */
+.pagina-reel.aguardando-espaco .logo-forum #wrapper {
+  animation: none;
+  opacity: 0;
 }
 
 .pagina-reel .subtitulo-forum {
