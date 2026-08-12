@@ -23,9 +23,9 @@ eleventyExcludeFromCollections: true
       <p class="data-forum anim-entrada anim-entrada--data">26 a 28 de agosto de 2026</p>
 
       <p class="hero__lead anim-entrada anim-entrada--lead">
-        Três dias de atividades abertas à comunidade do PPGMUS, dedicados à
-        <strong>construção coletiva</strong> do Programa, à
-        <strong>autoavaliação</strong> e ao <strong>planejamento estratégico</strong>.
+        Três dias de atividades abertas à comunidade do PPGMUS (docentes,
+        discentes, egressos e TAEs), dedicados à <strong>construção coletiva</strong> do Programa, à
+        <strong>autoavaliação</strong>, ao <strong>planejamento estratégico</strong> e à <strong>recepção de novos/as discentes</strong> do Programa.
       </p>
 
       <p class="brevemente anim-entrada anim-entrada--seta">Programação em breve!</p>
