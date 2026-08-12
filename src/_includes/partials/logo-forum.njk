@@ -37,7 +37,11 @@
     const inner = document.getElementById("wrapper");
     if (!outer || !inner) return;
     const scale = outer.clientWidth / 800;
-    inner.style.transform = "scale(" + scale + ")";
+    // O símbolo (à esquerda) + o texto (à direita) não preenchem as 800
+    // unidades do canvas até o fim — sobra espaço vazio à direita. Esse
+    // deslocamento centraliza o conjunto símbolo+texto como um bloco só.
+    const DESLOCAMENTO_CENTRALIZACAO = 186;
+    inner.style.transform = "scale(" + scale + ") translateX(" + DESLOCAMENTO_CENTRALIZACAO + "px)";
   }
   window.addEventListener("resize", scaleLogoForum);
   document.addEventListener("DOMContentLoaded", scaleLogoForum);

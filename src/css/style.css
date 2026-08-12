@@ -90,6 +90,11 @@ p {
   pointer-events: auto;
 }
 
+/* Sobre a foto, o ícone do hambúrguer fica em azul claro (sem fundo) */
+.pagina-inicial .menu-toggle span {
+  background: var(--cor-primaria-100);
+}
+
 .cabecalho__barra {
   display: flex;
   align-items: center;
@@ -161,10 +166,9 @@ p {
   height: 2.5rem;
   padding: 0;
   border: none;
-  border-radius: var(--raio-sm);
-  background: var(--cor-primaria-100);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  background: transparent;
   cursor: pointer;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
 }
 
 .menu-toggle span {
@@ -173,7 +177,7 @@ p {
   height: 2px;
   background: var(--cor-primaria-900);
   border-radius: 2px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.3s ease;
 }
 
 .menu-toggle.aberto span:nth-child(1) {
@@ -637,7 +641,7 @@ p {
   /* Começa deslocado à direita para que o símbolo (à esquerda da caixa)
      fique visualmente centralizado na tela enquanto o texto ainda está
      invisível — ver .logo-forum.mover-esquerda, disparada pelo JS. */
-  transform: translateX(38%);
+  transform: translateX(26%);
   transition: transform 1s cubic-bezier(.65, 0, .35, 1);
 }
 
@@ -773,6 +777,15 @@ p {
   .destaque-forum {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* Deixa o conjunto logo+texto "vazar" o padding do container, para
+     ficar um pouco maior no celular (a caixa escala junto via JS). */
+  .logo-forum {
+    width: calc(100% + 2 * var(--espaco-3));
+    max-width: calc(100% + 2 * var(--espaco-3));
+    margin-left: calc(-1 * var(--espaco-3));
+    margin-right: calc(-1 * var(--espaco-3));
   }
 
   .cabecalho__barra {
