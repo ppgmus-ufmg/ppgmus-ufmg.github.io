@@ -1,9 +1,8 @@
 /*
   Design tokens do site da COMAPE.
   Esquema de cores único e fixo (sem modo escuro/claro alternável).
-  Paleta baseada no Manual da Marca UFMG (2011) + cores extraídas da
-  identidade visual do PPGMUS (terracota). Ver esquemas_de_cores_modelo_logo/
-  esquemacoresufmgppgmus.md para a origem dos valores.
+  Paleta em tons de azul (menu, títulos, bordas e fundos), com o Vermelho
+  UFMG (Manual da Marca 2011) mantido como cor de destaque/CTA.
   Para "rebrandar" o site, basta editar os valores abaixo.
 */
 
@@ -14,6 +13,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Poppins";
   src: url("/assets/fonts/poppins/Poppins-Medium.ttf") format("truetype");
@@ -21,6 +21,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Poppins";
   src: url("/assets/fonts/poppins/Poppins-SemiBold.ttf") format("truetype");
@@ -28,6 +29,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Poppins";
   src: url("/assets/fonts/poppins/Poppins-Bold.ttf") format("truetype");
@@ -37,25 +39,25 @@
 }
 
 :root {
-  /* Cor de marca — terracota PPGMUS (extraída da identidade visual do programa) */
-  --cor-primaria-900: #7a3712;
-  --cor-primaria-700: #9f4e20;
-  --cor-primaria-500: #d88644;
-  --cor-primaria-300: #d59a6e;
-  --cor-primaria-100: #e9c3a6;
+  /* Cor de marca — azul institucional (menu, títulos, bordas, fundos) */
+  --cor-primaria-900: #12477a;
+  --cor-primaria-700: #1a5f9e;
+  --cor-primaria-500: #2f7dc4;
+  --cor-primaria-300: #7bafdd;
+  --cor-primaria-100: #dce9f6;
 
-  /* Cor de destaque — Vermelho UFMG (Manual da Marca 2011), usada para o 4º Fórum e CTAs */
-  --cor-destaque-700: #a50d26;
-  --cor-destaque-500: #c8102e;
-  --cor-destaque-100: #f5d9de;
+  /* Cor de destaque */
+  --cor-destaque-700: #f17807;
+  --cor-destaque-500: #df7f19;
+  --cor-destaque-100: #fadec5;
 
   /* Neutros */
   --cor-texto: #1a1a1a;
   --cor-texto-suave: #4a4a4a;
   --cor-fundo: #ffffff;
-  --cor-fundo-alt: #f6e7db;
+  --cor-fundo-alt: #eaf2fa;
   --cor-superficie: #ffffff;
-  --cor-borda: #e9c3a6;
+  --cor-borda: #d7e6f5;
 
   /* Tipografia — Poppins para tudo (títulos e texto) */
   --fonte-base: "Poppins", "Segoe UI", Arial, sans-serif;

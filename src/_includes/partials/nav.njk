@@ -6,8 +6,13 @@
         <span class="marca__sub">{{ site.programa }} · {{ site.instituicao }}</span>
       </span>
     </a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="nav-principal" aria-label="Abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <nav aria-label="Navegação principal">
-      <ul class="nav">
+      <ul class="nav" id="nav-principal">
         {% for item in site.nav %}
         <li>
           <a href="{{ item.href }}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.titulo }}</a>
@@ -17,3 +22,23 @@
     </nav>
   </div>
 </header>
+
+<script>
+  (function () {
+    var botao = document.querySelector(".menu-toggle");
+    var menu = document.getElementById("nav-principal");
+    if (!botao || !menu) return;
+    botao.addEventListener("click", function () {
+      var aberto = menu.classList.toggle("aberto");
+      botao.classList.toggle("aberto", aberto);
+      botao.setAttribute("aria-expanded", aberto ? "true" : "false");
+    });
+    menu.addEventListener("click", function (evento) {
+      if (evento.target.tagName === "A") {
+        menu.classList.remove("aberto");
+        botao.classList.remove("aberto");
+        botao.setAttribute("aria-expanded", "false");
+      }
+    });
+  })();
+</script>

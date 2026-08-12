@@ -11,6 +11,7 @@
     { "titulo": "Autoavaliação e Planejamento Estratégico", "href": "/" },
     { "titulo": "Formulários", "href": "/formularios/" },
     { "titulo": "Documentos", "href": "/documentos/" },
+    { "titulo": "Estudos", "href": "/estudos/" },
     { "titulo": "Histórico", "href": "/historico/" },
     { "titulo": "Pessoas", "href": "/pessoas/" },
     { "titulo": "Contato", "href": "/contato/" }

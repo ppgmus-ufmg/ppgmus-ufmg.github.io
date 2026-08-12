@@ -13,6 +13,9 @@ Thumbs.db
 .vscode/
 *.swp
 
+# Claude Code (arquivos internos de sessão)
+.claude/
+
 # Nunca commitar documentos internos/rascunhos (docx, etc.)
 *.docx
 *.doc
