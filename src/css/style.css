@@ -324,8 +324,14 @@ p {
   margin-bottom: var(--espaco-1);
 }
 
-/* "PPGMUS UFMG" — entre o logo e a data */
+/* "PPGMUS | UFMG" — entre o logo e a data. PPGMUS (texto) desliza para a
+   esquerda, a barra central aparece, e o logo da UFMG desliza para a
+   direita — cada um com sua própria animação (ver .mostrar abaixo). */
 .subtitulo-forum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
   text-align: center;
   font-size: clamp(1.25rem, 0.55rem + 3vw, 2.95rem);
   font-weight: 700;
@@ -335,9 +341,72 @@ p {
   margin: 0 0 var(--espaco-1);
 }
 
+/* Anula a animação genérica de .anim-entrada neste elemento — cada filho
+   (PPGMUS / barra / logo UFMG) tem sua própria animação, abaixo. */
+.subtitulo-forum.anim-entrada {
+  opacity: 1;
+  transform: none;
+}
+
+.subtitulo-forum.anim-entrada.mostrar {
+  animation: none;
+}
+
 .hero--media.foto-visivel .subtitulo-forum {
   color: #f2f2f2;
+}
+
+.hero--media.foto-visivel .subtitulo-forum__ppgmus,
+.hero--media.foto-visivel .subtitulo-forum__barra {
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Ajuste fino do logo da UFMG ao lado de "PPGMUS |" — mude só estes 3
+   valores para calibrar tamanho e posição (px ou em, o que preferir). */
+:root {
+  --ufmg-logo-tamanho: 0.95em;
+  --ufmg-logo-deslocamento-x: 0px;
+  --ufmg-logo-deslocamento-y: 0px;
+}
+
+.subtitulo-forum__ufmg {
+  height: var(--ufmg-logo-tamanho);
+  width: auto;
+  position: relative;
+  left: var(--ufmg-logo-deslocamento-x);
+  top: var(--ufmg-logo-deslocamento-y);
+  /* o SVG já vem branco — visível apenas na fase com a foto de fundo */
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.5));
+}
+
+.subtitulo-forum__ppgmus,
+.subtitulo-forum__barra,
+.subtitulo-forum__ufmg {
+  opacity: 0;
+}
+
+.subtitulo-forum.mostrar .subtitulo-forum__ppgmus {
+  animation: entrarDaDireita 0.7s cubic-bezier(.22, .61, .36, 1) forwards;
+}
+
+.subtitulo-forum.mostrar .subtitulo-forum__barra {
+  animation: revelarTextoLogo 0.5s ease forwards;
+  animation-delay: 0.25s;
+}
+
+.subtitulo-forum.mostrar .subtitulo-forum__ufmg {
+  animation: entrarDaEsquerda 0.7s cubic-bezier(.22, .61, .36, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes entrarDaDireita {
+  from { opacity: 0; transform: translateX(1.5em); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes entrarDaEsquerda {
+  from { opacity: 0; transform: translateX(-1.5em); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 .hero__lead {

@@ -14,7 +14,11 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
   <div class="container">
     {% include "partials/logo-forum.njk" %}
 
-    <p class="subtitulo-forum anim-entrada anim-entrada--eyebrow">PPGMUS | UFMG</p>
+    <div class="subtitulo-forum anim-entrada anim-entrada--eyebrow">
+      <span class="subtitulo-forum__ppgmus">PPGMUS</span>
+      <span class="subtitulo-forum__barra">|</span>
+      <img class="subtitulo-forum__ufmg" src="/assets/logos/logo-ufmg-branco.svg" alt="UFMG">
+    </div>
 
     <p class="data-forum anim-entrada anim-entrada--data">26 a 28 de agosto de 2026</p>
 
