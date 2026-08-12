@@ -90,7 +90,7 @@ eleventyExcludeFromCollections: true
 
     botao.addEventListener("click", async () => {
       botao.disabled = true;
-      botao.textContent = "Confirme a captura desta aba…";
+      botao.textContent = "Escolha ESTA janela na caixa do navegador…";
 
       // Largura/altura reais em pixels de tela (CSS px × devicePixelRatio).
       // getDisplayMedia só aceita "ideal" aqui (não "exact" — a API rejeita
@@ -104,9 +104,11 @@ eleventyExcludeFromCollections: true
       let stream;
       try {
         stream = await navigator.mediaDevices.getDisplayMedia({
-          // Chrome: pula a caixa de escolha e já captura a aba atual —
-          // elimina o risco de selecionar a tela toda ou outra janela.
-          preferCurrentTab: true,
+          // Sem preferCurrentTab: em janela pop-up (aberta pelo botão "Abrir
+          // em janela 9:16") essa opção capturava a aba original (em branco)
+          // em vez do pop-up. Escolha manualmente ESTA janela na caixa do
+          // navegador — mais lento, mas confiável nos dois casos (aba normal
+          // ou pop-up).
           video: {
             frameRate: { ideal: 60 },
             width: { ideal: larguraCaptura },
