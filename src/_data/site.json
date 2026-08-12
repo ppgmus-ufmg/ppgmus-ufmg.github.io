@@ -1,0 +1,18 @@
+{
+  "nome": "COMAPE",
+  "nomeCompleto": "Comissão de Autoavaliação e Planejamento Estratégico",
+  "programa": "PPGMUS",
+  "programaCompleto": "Programa de Pós-Graduação em Música",
+  "instituicao": "UFMG",
+  "instituicaoCompleta": "Universidade Federal de Minas Gerais",
+  "email": "comape.ppgmus@ufmg.br",
+  "url": "https://ppgmus-ufmg.github.io/comape/",
+  "nav": [
+    { "titulo": "Atual", "href": "/" },
+    { "titulo": "Programação", "href": "/programacao/" },
+    { "titulo": "Documentos", "href": "/documentos/" },
+    { "titulo": "Histórico", "href": "/historico/" },
+    { "titulo": "Pessoas", "href": "/pessoas/" },
+    { "titulo": "Contato", "href": "/contato/" }
+  ]
+}

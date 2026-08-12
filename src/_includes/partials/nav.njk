@@ -1,0 +1,19 @@
+<header class="cabecalho">
+  <div class="container cabecalho__barra">
+    <a class="marca" href="/">
+      <span>
+        <span class="marca__sigla">{{ site.nome }}</span>
+        <span class="marca__sub">{{ site.programa }} · {{ site.instituicao }}</span>
+      </span>
+    </a>
+    <nav aria-label="Navegação principal">
+      <ul class="nav">
+        {% for item in site.nav %}
+        <li>
+          <a href="{{ item.href }}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.titulo }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

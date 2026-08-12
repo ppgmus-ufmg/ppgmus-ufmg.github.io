@@ -1,0 +1,56 @@
+/*
+  Design tokens do site da COMAPE.
+  Esquema de cores único e fixo (sem modo escuro/claro alternável).
+  Para "rebrandar" o site, basta editar os valores abaixo.
+*/
+:root {
+  /* Cor de marca — tons inspirados na identidade institucional UFMG/Escola de Música */
+  --cor-primaria-900: #1b2a4a;
+  --cor-primaria-700: #253a63;
+  --cor-primaria-500: #33507f;
+  --cor-primaria-300: #6d84ab;
+  --cor-primaria-100: #dde4f2;
+
+  /* Cor de destaque — usada para o 4º Fórum e chamadas de ação */
+  --cor-destaque-700: #b5541c;
+  --cor-destaque-500: #d9701f;
+  --cor-destaque-100: #fbe6d3;
+
+  /* Neutros */
+  --cor-texto: #1c1f26;
+  --cor-texto-suave: #4c5566;
+  --cor-fundo: #fbfaf7;
+  --cor-superficie: #ffffff;
+  --cor-borda: #e3e0d8;
+
+  /* Tipografia */
+  --fonte-base: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --fonte-titulo: "Fraunces", Georgia, "Times New Roman", serif;
+
+  --texto-xs: 0.8125rem;
+  --texto-sm: 0.9375rem;
+  --texto-base: 1.0625rem;
+  --texto-lg: 1.25rem;
+  --texto-xl: 1.75rem;
+  --texto-2xl: 2.5rem;
+  --texto-3xl: 3.25rem;
+
+  /* Espaçamento (escala de 8px) */
+  --espaco-1: 0.5rem;
+  --espaco-2: 1rem;
+  --espaco-3: 1.5rem;
+  --espaco-4: 2rem;
+  --espaco-5: 3rem;
+  --espaco-6: 4.5rem;
+  --espaco-7: 6rem;
+
+  /* Formas */
+  --raio-sm: 6px;
+  --raio-md: 12px;
+  --raio-lg: 20px;
+  --sombra-suave: 0 1px 3px rgba(27, 42, 74, 0.08), 0 6px 20px rgba(27, 42, 74, 0.06);
+
+  /* Layout */
+  --largura-conteudo: 72rem;
+  --largura-leitura: 42rem;
+}

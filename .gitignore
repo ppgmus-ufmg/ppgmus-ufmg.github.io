@@ -1,0 +1,20 @@
+# Dependências
+node_modules/
+
+# Saída do build do Eleventy
+_site/
+.cache/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+*.swp
+
+# Nunca commitar documentos internos/rascunhos (docx, etc.)
+*.docx
+*.doc
+/privado/
+/rascunhos/

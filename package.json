@@ -1,0 +1,15 @@
+{
+  "name": "comape-ppgmus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site da COMAPE — Comissão de Autoavaliação e Planejamento Estratégico do PPGMUS/UFMG",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "luxon": "^3.5.0"
+  }
+}
