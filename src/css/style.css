@@ -78,11 +78,24 @@ p {
   z-index: 10;
 }
 
+/* Desktop: o menu some ao rolar para baixo e volta ao rolar para cima
+   (ver script em layouts/base.njk). No mobile o comportamento é outro
+   (botão fixo sempre visível), por isso isso fica restrito a telas largas. */
+@media (min-width: 40.0625rem) {
+  .cabecalho {
+    transition: transform 0.3s ease, opacity 1s ease;
+  }
+
+  .cabecalho.escondido {
+    transform: translateY(-100%);
+  }
+}
+
 /* Na página inicial, o menu só aparece junto com a foto de fundo (fase 3) */
 .pagina-inicial .cabecalho {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 1s ease;
+  transition: opacity 1s ease, transform 0.3s ease;
 }
 
 .pagina-inicial .cabecalho.visivel {

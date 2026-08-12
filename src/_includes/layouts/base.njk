@@ -50,6 +50,32 @@
       );
       elementos.forEach(function (el) { observador.observe(el); });
     })();
+
+    // Menu (versão web/desktop): some ao rolar para baixo, volta ao rolar
+    // para cima ou ao chegar perto do topo — padrão comum de header
+    // "auto-hide". No mobile o menu segue outra lógica (ver .menu-toggle
+    // / .pagina-inicial .cabecalho), então isso só faz efeito em telas
+    // largas (ver a media query em style.css).
+    (function () {
+      var cabecalho = document.querySelector(".cabecalho");
+      if (!cabecalho) return;
+      var ultimoY = window.scrollY;
+      window.addEventListener(
+        "scroll",
+        function () {
+          var atualY = window.scrollY;
+          if (atualY <= 80) {
+            cabecalho.classList.remove("escondido");
+          } else if (atualY > ultimoY) {
+            cabecalho.classList.add("escondido");
+          } else {
+            cabecalho.classList.remove("escondido");
+          }
+          ultimoY = atualY;
+        },
+        { passive: true }
+      );
+    })();
   </script>
 </body>
 </html>
