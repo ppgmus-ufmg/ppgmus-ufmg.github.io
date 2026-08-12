@@ -327,11 +327,16 @@ p {
 /* "PPGMUS | UFMG" — entre o logo e a data. PPGMUS (texto) desliza para a
    esquerda, a barra central aparece, e o logo da UFMG desliza para a
    direita — cada um com sua própria animação (ver .mostrar abaixo). */
+:root {
+  /* Espaço entre "PPGMUS", a barra "|" e o logo da UFMG */
+  --subtitulo-forum-espacamento: 2.5rem;
+}
+
 .subtitulo-forum {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: var(--subtitulo-forum-espacamento);
   text-align: center;
   font-size: clamp(1.25rem, 0.55rem + 3vw, 2.95rem);
   font-weight: 700;
@@ -364,9 +369,9 @@ p {
 /* Ajuste fino do logo da UFMG ao lado de "PPGMUS |" — mude só estes 3
    valores para calibrar tamanho e posição (px ou em, o que preferir). */
 :root {
-  --ufmg-logo-tamanho: 0.95em;
+  --ufmg-logo-tamanho: 1.2em;
   --ufmg-logo-deslocamento-x: 0px;
-  --ufmg-logo-deslocamento-y: 0px;
+  --ufmg-logo-deslocamento-y: 6px;
 }
 
 .subtitulo-forum__ufmg {
@@ -400,13 +405,27 @@ p {
 }
 
 @keyframes entrarDaDireita {
-  from { opacity: 0; transform: translateX(1.5em); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(1.5em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes entrarDaEsquerda {
-  from { opacity: 0; transform: translateX(-1.5em); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-1.5em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .hero__lead {
