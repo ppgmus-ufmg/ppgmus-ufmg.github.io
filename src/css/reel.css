@@ -51,13 +51,50 @@
   margin: 0 auto;
 }
 
-/* Tela em branco até apertar espaço (ver script inline em teaser1.md) —
-   suprime só o fade-in do símbolo; o resto (texto, foto, "programação em
-   breve") já começa invisível por padrão e só é revelado em cascata pelo
-   próprio sketch do p5.js, que fica pausado (noLoop) enquanto espera. */
-.pagina-reel.aguardando-espaco .logo-forum #wrapper {
+/* Tela em branco até apertar espaço (teaser1) ou clicar em "Gravar"
+   (teaser2) — ver scripts inline em cada página. Suprime só o fade-in do
+   símbolo; o resto (texto, foto, "programação em breve") já começa
+   invisível por padrão e só é revelado em cascata pelo próprio sketch do
+   p5.js, que fica pausado (noLoop) enquanto espera. */
+.pagina-reel.aguardando-espaco .logo-forum #wrapper,
+.pagina-reel.aguardando-inicio .logo-forum #wrapper {
   animation: none;
   opacity: 0;
+}
+
+/* teaser2: a .tela-fone preenche a viewport real do navegador (em vez do
+   tamanho fixo 405x720 do teaser1), porque a gravação é feita com
+   getDisplayMedia — captura exatamente o que está na aba. Redimensione a
+   janela do navegador para o formato desejado antes de gravar. */
+.tela-fone--fluida {
+  width: 100vw;
+  height: 100dvh;
+}
+
+.tela-fone--fluida .tela-fone__hero.hero {
+  min-height: 100dvh;
+  height: 100dvh;
+}
+
+.botao-gravar {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  font-family: var(--fonte-base);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: var(--raio-sm);
+  background: var(--cor-destaque-500);
+  color: #fff;
+  cursor: pointer;
+}
+
+.botao-gravar:disabled {
+  opacity: 0.7;
+  cursor: default;
 }
 
 .pagina-reel .subtitulo-forum {
