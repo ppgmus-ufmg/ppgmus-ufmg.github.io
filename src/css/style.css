@@ -381,7 +381,7 @@ p {
   left: var(--ufmg-logo-deslocamento-x);
   top: var(--ufmg-logo-deslocamento-y);
   /* o SVG já vem branco — visível apenas na fase com a foto de fundo */
-  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.65));
 }
 
 .subtitulo-forum__ppgmus,
