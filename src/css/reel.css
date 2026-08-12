@@ -76,11 +76,17 @@
   height: 100dvh;
 }
 
-.botao-gravar {
+.botoes-teaser2 {
   position: fixed;
   top: 1rem;
   left: 1rem;
   z-index: 10;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.botao-gravar {
   font-family: var(--fonte-base);
   font-weight: 700;
   font-size: 0.95rem;
@@ -90,6 +96,12 @@
   background: var(--cor-destaque-500);
   color: #fff;
   cursor: pointer;
+}
+
+.botao-gravar--secundario {
+  background: transparent;
+  color: var(--cor-destaque-500);
+  border: 1.5px solid var(--cor-destaque-500);
 }
 
 .botao-gravar:disabled {

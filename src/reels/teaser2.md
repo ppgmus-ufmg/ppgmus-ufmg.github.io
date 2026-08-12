@@ -15,7 +15,10 @@ eleventyExcludeFromCollections: true
   document.body.classList.add("aguardando-inicio");
 </script>
 
-<button id="botao-gravar" type="button" class="botao-gravar">Gravar e iniciar</button>
+<div class="botoes-teaser2">
+  <button id="botao-janela" type="button" class="botao-gravar botao-gravar--secundario">Abrir em janela 9:16</button>
+  <button id="botao-gravar" type="button" class="botao-gravar">Gravar e iniciar</button>
+</div>
 
 <div class="tela-fone tela-fone--fluida">
   <section class="hero hero--media tela-fone__hero">
@@ -47,12 +50,30 @@ eleventyExcludeFromCollections: true
 </div>
 
 <script>
+  // "Abrir em janela 9:16" — não dá pra redimensionar a janela principal do
+  // navegador via JS (bloqueado por segurança), mas window.open() aceita
+  // width/height pra uma janela NOVA. Abre esta mesma página numa janela já
+  // no formato certo — é essa janela que deve ser gravada.
+  document.getElementById("botao-janela").addEventListener("click", () => {
+    const largura = 480;
+    const altura = Math.round((largura * 16) / 9);
+    const left = Math.round((screen.width - largura) / 2);
+    const top = Math.round((screen.height - altura) / 2);
+    window.open(
+      location.href,
+      "_blank",
+      `width=${largura},height=${altura},left=${left},top=${top},resizable=yes,toolbar=no,menubar=no,location=no,status=no`
+    );
+  });
+</script>
+
+<script>
   // Grava a própria aba com getDisplayMedia + MediaRecorder — captura os
   // pixels e o framerate reais do navegador, sem OBS ou qualquer app externo.
-  // Redimensione a janela do navegador para o formato desejado (ex.: estreita
-  // e alta, tipo celular) ANTES de clicar em "Gravar": a .tela-fone preenche
-  // 100% da viewport nesta página (ver .tela-fone--fluida em reel.css), então
-  // o vídeo final sai exatamente do tamanho da janela.
+  // Se abriu pelo botão "Abrir em janela 9:16", clique em "Gravar e iniciar"
+  // DENTRO da janela nova (ela já está no formato certo); a .tela-fone
+  // preenche 100% da viewport (ver .tela-fone--fluida em reel.css), então o
+  // vídeo final sai exatamente do tamanho da janela gravada.
   (function () {
     const DURACAO_MS = 40000; // duração da gravação — ajuste aqui
     const botao = document.getElementById("botao-gravar");
