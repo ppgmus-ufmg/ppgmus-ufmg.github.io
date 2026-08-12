@@ -97,7 +97,7 @@ eleventyExcludeFromCollections: true
 
     botao.addEventListener("click", async () => {
       botao.disabled = true;
-      botao.textContent = "Confirme a captura…";
+      botao.textContent = "Escolha esta janela (não a aba/tela) na caixa…";
 
       // Largura/altura reais em pixels de tela (CSS px × devicePixelRatio).
       // getDisplayMedia só aceita "ideal" aqui (não "exact" — a API rejeita
@@ -111,13 +111,16 @@ eleventyExcludeFromCollections: true
       let stream;
       try {
         stream = await navigator.mediaDevices.getDisplayMedia({
-          // Captura direto a própria janela/aba que chamou isto, sem caixa
-          // de escolha — só uma confirmação rápida. Clique sempre em
-          // "Gravar e iniciar" DENTRO da janela que você quer gravar (o
-          // botão da janela original trava sozinho ao abrir a pop-up 9:16,
-          // pra evitar gravar a janela errada por engano).
-          preferCurrentTab: true,
           video: {
+            // Pede captura de JANELA (não aba, não tela toda) — dá pra
+            // escolher "esta janela" na caixa do navegador. NÃO usar
+            // preferCurrentTab aqui: captura de aba mostra uma barra de
+            // aviso "compartilhando esta aba" DENTRO da página, que encolhe
+            // a viewport depois que a resolução do vídeo já foi fixada —
+            // sobra uma borda escura embaixo. Captura de janela não tem
+            // esse aviso dentro do conteúdo (fica na moldura do SO), então
+            // não redimensiona nada.
+            displaySurface: "window",
             frameRate: { ideal: 60 },
             width: { ideal: larguraCaptura },
             height: { ideal: alturaCaptura },
