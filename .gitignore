@@ -18,3 +18,10 @@ Thumbs.db
 *.doc
 /privado/
 /rascunhos/
+
+# Pastas de apoio/fonte que ficam só locais — os PDFs públicos já foram
+# copiados para src/assets/documentos/, as fotos convertidas em P&B para
+# src/assets/img/. O material bruto abaixo não é publicado.
+/documentos/
+/fotos_ufmg/
+/esquemas_de_cores_modelo_logo/

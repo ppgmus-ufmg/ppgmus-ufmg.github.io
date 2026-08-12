@@ -8,7 +8,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body{% if corpoClasse %} class="{{ corpoClasse }}"{% endif %}>
   {% include "partials/nav.njk" %}
 
   <main>
@@ -30,5 +30,26 @@
       <p>Contato: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
     </div>
   </footer>
+
+  <script>
+    // Revela elementos com a classe "reveal-scroll" (ex.: a tabela de
+    // programação) com um fade + leve deslocamento assim que entram na tela.
+    (function () {
+      var elementos = document.querySelectorAll(".reveal-scroll");
+      if (!elementos.length) return;
+      var observador = new IntersectionObserver(
+        function (entradas) {
+          entradas.forEach(function (entrada) {
+            if (entrada.isIntersecting) {
+              entrada.target.classList.add("visivel");
+              observador.unobserve(entrada.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      elementos.forEach(function (el) { observador.observe(el); });
+    })();
+  </script>
 </body>
 </html>

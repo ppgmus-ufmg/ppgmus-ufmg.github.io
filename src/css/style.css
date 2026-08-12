@@ -8,6 +8,7 @@
 
 html {
   color-scheme: light;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -32,18 +33,31 @@ a:hover {
   color: var(--cor-destaque-700);
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--fonte-titulo);
   line-height: 1.15;
   color: var(--cor-primaria-900);
   margin: 0 0 var(--espaco-2);
 }
 
-h1 { font-size: var(--texto-3xl); }
-h2 { font-size: var(--texto-2xl); }
-h3 { font-size: var(--texto-xl); }
+h1 {
+  font-size: var(--texto-3xl);
+}
 
-p { margin: 0 0 var(--espaco-2); }
+h2 {
+  font-size: var(--texto-2xl);
+}
+
+h3 {
+  font-size: var(--texto-xl);
+}
+
+p {
+  margin: 0 0 var(--espaco-2);
+}
 
 .container {
   max-width: var(--largura-conteudo);
@@ -62,6 +76,18 @@ p { margin: 0 0 var(--espaco-2); }
   position: sticky;
   top: 0;
   z-index: 10;
+}
+
+/* Na página inicial, o menu só aparece junto com a foto de fundo (fase 3) */
+.pagina-inicial .cabecalho {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+.pagina-inicial .cabecalho.visivel {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .cabecalho__barra {
@@ -124,12 +150,100 @@ p { margin: 0 0 var(--espaco-2); }
   color: #fff;
 }
 
-/* Hero */
+/* Hero
+   Fundo claro e neutro de propósito: deixa espaço para, no futuro, uma
+   foto/vídeo de fundo em preto e branco (ver .hero--media abaixo) sem
+   competir com o degradê de cor. */
 .hero {
+  min-height: calc(100vh - 4.5rem);
+  display: flex;
+  align-items: center;
   padding: var(--espaco-6) 0 var(--espaco-5);
-  background:
-    radial-gradient(circle at 85% 20%, var(--cor-destaque-100), transparent 55%),
-    linear-gradient(180deg, var(--cor-primaria-100) 0%, var(--cor-fundo) 65%);
+  background: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.hero .container {
+  width: 100%;
+}
+
+/* Variante preparada para receber uma imagem/vídeo de fundo em P&B:
+   adicionar a classe "hero--media" e, dentro de .hero, um elemento
+   .hero__media (img/video) como primeiro filho.
+
+   A entrada acontece em duas fases, controladas via JS
+   (ver mostrarTextoForum em partials/logo-forum.njk):
+     Fase 1/2 — fundo ainda branco: só o símbolo (centralizado) e depois o
+                texto "4º Fórum..." (preto) aparecem.
+     Fase 3   — classe "foto-visivel" é adicionada: a foto de fundo, a
+                barra institucional, a data, o texto de chamada e a seta
+                surgem juntos, e o texto do logo passa a branco. */
+.hero--media {
+  position: relative;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.hero--media.foto-visivel {
+  border-bottom: none;
+}
+
+.hero--media .hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.hero--media.foto-visivel .hero__media {
+  opacity: 1;
+}
+
+.hero--media .hero__media img,
+.hero--media .hero__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+
+.hero--media .hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.4));
+}
+
+.hero--media .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero--media.foto-visivel .hero__eyebrow,
+.hero--media.foto-visivel .hero__lead {
+  color: #f2f2f2;
+}
+
+.hero--media.foto-visivel .logo-forum #logo-text {
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.hero--media.foto-visivel .seta-scroll {
+  color: #f2f2f2;
+}
+
+.hero--media.foto-visivel .seta-scroll__icone {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero--media.foto-visivel .seta-scroll:hover {
+  color: var(--cor-destaque-500);
+}
+
+.hero--media.foto-visivel .data-forum {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 0.9);
 }
 
 .hero__eyebrow {
@@ -142,10 +256,91 @@ p { margin: 0 0 var(--espaco-2); }
   margin-bottom: var(--espaco-1);
 }
 
+/* "PPGMUS UFMG" — entre o logo e a data */
+.subtitulo-forum {
+  text-align: center;
+  font-size: 2.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-primaria-700);
+  margin: 0 0 var(--espaco-1);
+}
+
+.hero--media.foto-visivel .subtitulo-forum {
+  color: #f2f2f2;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
 .hero__lead {
-  font-size: var(--texto-lg);
+  font-size: 1.4rem;
   color: var(--cor-texto-suave);
-  max-width: var(--largura-leitura);
+  max-width: 46rem;
+}
+
+/* Indicador de scroll — seta + chamada apontando para a Programação */
+.seta-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin: var(--espaco-4) auto 0;
+  width: fit-content;
+  color: var(--cor-primaria-700);
+  text-decoration: none;
+}
+
+.seta-scroll:hover {
+  color: var(--cor-destaque-500);
+}
+
+.seta-scroll__texto {
+  font-size: var(--texto-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.seta-scroll__icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1.5px solid var(--cor-borda);
+  border-radius: 999px;
+  animation: flutuarSeta 1.8s ease-in-out infinite;
+}
+
+.seta-scroll:hover .seta-scroll__icone {
+  border-color: var(--cor-destaque-500);
+}
+
+.seta-scroll svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@keyframes flutuarSeta {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* Data do Fórum — texto simples, sem cartão */
+.data-forum {
+  text-align: center;
+  font-size: 2.75rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--cor-destaque-500);
+  margin: 0 auto;
 }
 
 /* Cartão de destaque do Fórum */
@@ -153,10 +348,9 @@ p { margin: 0 0 var(--espaco-2); }
   margin-top: var(--espaco-4);
   background: var(--cor-superficie);
   border: 1px solid var(--cor-borda);
-  border-left: 6px solid var(--cor-destaque-500);
-  border-radius: var(--raio-lg);
-  box-shadow: var(--sombra-suave);
-  padding: var(--espaco-4);
+  border-radius: var(--raio-sm);
+  padding: var(--espaco-4) var(--espaco-4) calc(var(--espaco-4) - 3px);
+  border-top: 3px solid var(--cor-destaque-500);
   display: flex;
   flex-wrap: wrap;
   gap: var(--espaco-3);
@@ -164,9 +358,18 @@ p { margin: 0 0 var(--espaco-2); }
   justify-content: space-between;
 }
 
+.destaque-forum--datas {
+  justify-content: center;
+  text-align: center;
+  max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .destaque-forum__titulo {
   margin: 0 0 0.25rem;
   font-size: var(--texto-xl);
+  color: var(--cor-texto);
 }
 
 .destaque-forum__data {
@@ -207,9 +410,16 @@ p { margin: 0 0 var(--espaco-2); }
 }
 
 .secao--alt {
-  background: var(--cor-superficie);
+  background: var(--cor-fundo-alt);
   border-top: 1px solid var(--cor-borda);
   border-bottom: 1px solid var(--cor-borda);
+  scroll-margin-top: 4.5rem;
+}
+
+.sufixo-titulo {
+  font-size: 0.55em;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
 }
 
 .grade {
@@ -221,13 +431,28 @@ p { margin: 0 0 var(--espaco-2); }
 .cartao {
   background: var(--cor-superficie);
   border: 1px solid var(--cor-borda);
-  border-radius: var(--raio-md);
+  border-radius: var(--raio-sm);
   padding: var(--espaco-3);
-  box-shadow: var(--sombra-suave);
 }
 
 .cartao h3 {
   margin-top: 0;
+}
+
+.titulo-forum {
+  color: var(--cor-texto);
+}
+
+.lista-pessoas {
+  list-style: none;
+  margin: var(--espaco-3) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.lista-pessoas li {
+  padding: var(--espaco-2) 0;
+  border-bottom: 1px solid var(--cor-borda);
 }
 
 .etiqueta {
@@ -249,6 +474,53 @@ p { margin: 0 0 var(--espaco-2); }
   border-radius: var(--raio-md);
   padding: var(--espaco-3);
   color: var(--cor-primaria-900);
+}
+
+/* Tabela de programação */
+.tabela-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-sm);
+}
+
+.tabela-programacao {
+  width: 100%;
+  min-width: 46rem;
+  border-collapse: collapse;
+  background: var(--cor-superficie);
+  font-size: var(--texto-sm);
+}
+
+.tabela-programacao th,
+.tabela-programacao td {
+  text-align: left;
+  vertical-align: top;
+  padding: var(--espaco-2);
+  border-bottom: 1px solid var(--cor-borda);
+  border-right: 1px solid var(--cor-borda);
+}
+
+.tabela-programacao th:last-child,
+.tabela-programacao td:last-child {
+  border-right: none;
+}
+
+.tabela-programacao thead th {
+  background: var(--cor-fundo-alt);
+  color: var(--cor-texto);
+  font-size: var(--texto-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tabela-programacao tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tabela-programacao td:first-child {
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--cor-primaria-700);
 }
 
 /* Logos institucionais */
@@ -277,11 +549,173 @@ p { margin: 0 0 var(--espaco-2); }
   color: var(--cor-texto-suave);
 }
 
+/* Logo animado do 4º Fórum (p5.js) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.logo-forum {
+  position: relative;
+  width: 100%;
+  max-width: 1120px;
+  aspect-ratio: 800 / 160;
+  margin: 1.7rem auto 0;
+  overflow: hidden;
+  /* Começa deslocado à direita para que o símbolo (à esquerda da caixa)
+     fique visualmente centralizado na tela enquanto o texto ainda está
+     invisível — ver .logo-forum.mover-esquerda, disparada pelo JS. */
+  transform: translateX(38%);
+  transition: transform 1s cubic-bezier(.65, 0, .35, 1);
+}
+
+.logo-forum.mover-esquerda {
+  transform: translateX(0);
+}
+
+.logo-forum #wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 800px;
+  height: 160px;
+  transform-origin: top left;
+}
+
+.logo-forum canvas {
+  display: block;
+}
+
+.logo-forum #logo-text {
+  position: absolute;
+  left: 190px;
+  top: 60px;
+  transform: translateY(-50%);
+  font-family: var(--fonte-base);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.3;
+  color: var(--cor-texto);
+  pointer-events: none;
+  white-space: nowrap;
+  transition: color 1s ease, text-shadow 1s ease;
+}
+
+/* Texto do logo — revelado por um "wipe" da direita para a esquerda,
+   acompanhando o sentido em que o símbolo desliza (ver .mover-esquerda). */
+.logo-forum #logo-text p {
+  margin: 0;
+  padding: 0;
+  clip-path: inset(0 0 0 100%);
+}
+
+.logo-forum #logo-text.mostrar p {
+  animation: revelarTextoLogoWipe 0.7s cubic-bezier(.22, .61, .36, 1) forwards;
+}
+
+.logo-forum #logo-text.mostrar p:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.logo-forum #logo-text.mostrar p:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.logo-forum #logo-text.mostrar p:nth-child(3) {
+  animation-delay: .3s;
+}
+
+@keyframes revelarTextoLogoWipe {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0%);
+  }
+}
+
+@keyframes revelarTextoLogo {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Barra institucional, data, texto de chamada e seta — fase 3: entram em
+   sequência junto com a foto de fundo (ver iniciarFaseFoto em
+   partials/logo-forum.njk). */
+.anim-entrada {
+  opacity: 0;
+  transform: translateY(0.6em);
+}
+
+.anim-entrada.mostrar {
+  animation: revelarTextoLogo 0.6s cubic-bezier(.22, .61, .36, 1) forwards;
+}
+
+.anim-entrada--eyebrow.mostrar {
+  animation-delay: 0s;
+}
+
+.anim-entrada--data.mostrar {
+  animation-delay: 0.15s;
+}
+
+.anim-entrada--lead.mostrar {
+  animation-delay: 0.3s;
+}
+
+.anim-entrada--seta.mostrar {
+  animation-delay: 0.45s;
+}
+
+/* Revelação ao rolar a página (ex.: tabela de programação) */
+.reveal-scroll {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.7s cubic-bezier(.22, .61, .36, 1),
+    transform 0.7s cubic-bezier(.22, .61, .36, 1);
+}
+
+.reveal-scroll.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Utilitários responsivos */
 @media (max-width: 40rem) {
-  h1 { font-size: var(--texto-2xl); }
-  h2 { font-size: var(--texto-xl); }
-  .destaque-forum { flex-direction: column; align-items: flex-start; }
-  .cabecalho__barra { justify-content: center; text-align: center; }
-  .nav { justify-content: center; }
+  h1 {
+    font-size: var(--texto-2xl);
+  }
+
+  h2 {
+    font-size: var(--texto-xl);
+  }
+
+  .destaque-forum {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cabecalho__barra {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav {
+    justify-content: center;
+  }
 }

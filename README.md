@@ -5,26 +5,29 @@ Estratégico do PPGMUS), com as informações do **4º Fórum de Autoavaliação
 Planejamento Estratégico** (26 a 28 de agosto de 2026).
 
 Site estático gerado com [Eleventy](https://www.11ty.dev/), publicado via
-GitHub Pages a partir da organização [`ppgmus-ufmg`](https://github.com/organizations/ppgmus-ufmg).
+GitHub Pages como página principal da organização
+[`ppgmus-ufmg`](https://github.com/ppgmus-ufmg) — **https://ppgmus-ufmg.github.io/**.
 
 ## Estrutura
 
 ```
 src/
-  _data/site.json        → dados globais (nome, e-mail de contato, menu de navegação)
-  _includes/              → layout base (src/_includes/layouts/base.njk) e navegação
-  css/tokens.css          → design tokens: cores, tipografia, espaçamento
-  css/style.css           → estilos do site, consumindo os tokens
-  assets/logos/           → logos institucionais (UFMG, PPGMUS, EMUS 100 anos, CAPES)
-  index.md                → aba "Atual" (página inicial)
-  programacao.md          → aba "Programação" (4º Fórum em destaque)
-  documentos.md           → aba "Documentos" (lista a coleção abaixo)
-  documentos/*.md         → um arquivo por documento
-  historico.md            → aba "Histórico" (lista a coleção abaixo)
-  historico/*.md          → um arquivo por edição anterior do Fórum
-  pessoas.md              → aba "Pessoas" (lista a coleção abaixo)
-  pessoas/*.md            → um arquivo por membro da COMAPE
-  contato.md              → aba "Contato"
+  _data/site.json          → dados globais (nome, e-mail de contato, menu de navegação)
+  _includes/                → layout base (layouts/base.njk), navegação e o logo animado (partials/logo-forum.njk)
+  css/tokens.css            → design tokens: cores, tipografia, espaçamento
+  css/style.css             → estilos do site, consumindo os tokens
+  assets/logos/             → logos institucionais (UFMG, PPGMUS, EMUS 100 anos, CAPES)
+  assets/documentos/        → PDFs públicos referenciados em src/documentos/*.md
+  assets/img/                → imagens usadas no site (ex.: foto de fundo do topo)
+  assets/logo-forum/         → sketch p5.js do logo animado do Fórum
+  index.md                  → página inicial (home + Programação do 4º Fórum, tudo em uma página)
+  documentos.md              → aba "Documentos" (lista a coleção abaixo, em duas seções)
+  documentos/*.md             → um arquivo por documento
+  historico.md                → aba "Histórico"
+  pessoas.md                   → aba "Pessoas" (lista a coleção abaixo)
+  pessoas/*.md                  → um arquivo por membro da COMAPE
+  formularios.md                → aba "Formulários" (links de Google Forms, a preencher)
+  contato.md                     → aba "Contato"
 ```
 
 ## Como testar localmente (offline)
@@ -60,25 +63,29 @@ formas de editar:
    site do GitHub, clique no ícone de lápis (editar), altere o texto e
    clique em "Commit changes" direto na branch `main`. Cerca de 1 minuto
    depois, a Action de deploy publica a mudança automaticamente no site.
-   Para criar uma pessoa/documento/edição nova, use "Add file → Create new
-   file" dentro da pasta correspondente (`src/pessoas/`, `src/documentos/`,
-   `src/historico/`) e copie o modelo de um dos arquivos de exemplo já
-   existentes.
+   Para criar uma pessoa/documento nova, use "Add file → Create new
+   file" dentro da pasta correspondente (`src/pessoas/`, `src/documentos/`)
+   e copie o modelo de um dos arquivos já existentes.
 
 ### Adicionar um documento
 
-Crie `src/documentos/nome-do-documento.md`:
+Crie `src/documentos/nome-do-documento.md`. Para enviar o PDF junto, coloque-o
+em `src/assets/documentos/` e aponte `arquivo` para `/assets/documentos/nome-do-arquivo.pdf`.
 
 ```markdown
 ---
 title: "Nome do documento"
 categoria: "Avaliação"
-arquivo: "https://link-para-o-arquivo"
+arquivo: "/assets/documentos/nome-do-arquivo.pdf"
+grupo: atual
 permalink: false
 ---
 
 Uma breve descrição do documento (opcional).
 ```
+
+`grupo: atual` faz o documento aparecer na seção principal da página. Use
+`grupo: 2021-2024` para ele aparecer na seção "Documentos 2021–2024".
 
 ### Adicionar uma pessoa
 
@@ -90,34 +97,15 @@ title: "Nome Completo"
 funcao: "Função na COMAPE"
 permalink: false
 ---
-
-Uma breve apresentação (opcional).
-```
-
-### Adicionar uma edição ao Histórico
-
-Crie `src/historico/N-forum.md`:
-
-```markdown
----
-title: "Nº Fórum de Autoavaliação e Planejamento Estratégico"
-edicao: N
-data: "mês/ano"
-permalink: false
----
-
-Resumo da edição.
 ```
 
 > `permalink: false` evita que o item gere uma página própria — ele só
-> aparece como cartão dentro da respectiva aba (Documentos/Pessoas/Histórico).
+> aparece como item dentro da respectiva aba (Documentos/Pessoas).
 
 ### Atualizar a Programação do 4º Fórum
 
-Edite `src/programacao.md` diretamente — quando a grade de horários da
-COMAPE estiver fechada, substitua o aviso "programação detalhada em
-fechamento" pela tabela/lista de mesas por dia e horário (há um comentário
-no próprio arquivo com um exemplo de estrutura em Markdown).
+A tabela de programação fica direto em `src/index.md` (seção com
+`id="programacao"`), junto com o resto da página inicial.
 
 ## Design tokens
 
@@ -128,20 +116,33 @@ claro/escuro) — para trocar a paleta, basta editar os valores desse
 arquivo; o restante do CSS (`src/css/style.css`) consome as variáveis e não
 precisa ser alterado.
 
+## O logo animado e a entrada da página inicial
+
+A home (`src/index.md`) tem uma animação de entrada em 3 fases, coordenada
+entre p5.js e CSS — ver comentários em `src/_includes/partials/logo-forum.njk`
+e nas seções `.hero--media` / `.anim-entrada` de `src/css/style.css`:
+
+1. Fundo branco: o símbolo (painéis) abre, centralizado.
+2. O símbolo desliza para a esquerda e o texto "4º Fórum..." aparece em preto.
+3. A foto de fundo entra em fade, o texto passa a branco, e o menu, a data,
+   o texto de chamada e a seta de "confira a programação" aparecem juntos.
+
 ## Publicação (GitHub Pages)
 
-1. Crie o repositório na organização `ppgmus-ufmg` (ex.: `ppgmus-ufmg/comape`)
-   e envie este código para a branch `main`.
-2. Em **Settings → Pages**, em "Build and deployment", selecione **Source:
-   GitHub Actions**.
-3. A cada push em `main` (incluindo edições feitas direto pelo GitHub), o
+Este repositório **é** a página principal da organização `ppgmus-ufmg`
+(nome do repo: `ppgmus-ufmg.github.io`), então basta:
+
+1. Em **Settings → Pages**, em "Build and deployment", selecionar **Source:
+   GitHub Actions** (só precisa ser feito uma vez).
+2. A cada push em `main` (incluindo edições feitas direto pelo GitHub), o
    workflow em `.github/workflows/deploy.yml` builda o site com Eleventy e
-   publica automaticamente.
+   publica automaticamente em **https://ppgmus-ufmg.github.io/**.
 
 ## Sobre materiais internos
 
 Documentos internos de planejamento (rascunhos, atas, propostas em
-discussão da COMAPE) **não ficam neste repositório**, que é público. Eles
-são mantidos em uma pasta separada fora da árvore do projeto. Apenas
-material já revisado e aprovado para divulgação deve entrar em
-`src/documentos/`.
+discussão da COMAPE) **não ficam neste repositório**, que é público. Fotos
+originais e material de referência de design (`fotos_ufmg/`,
+`esquemas_de_cores_modelo_logo/`) e a pasta bruta `documentos/` também
+ficam fora do git (ver `.gitignore`) — os PDFs já revisados para publicação
+são copiados para `src/assets/documentos/`.

@@ -1,14 +1,14 @@
 ---
 layout: layouts/base.njk
 templateEngineOverride: njk
-title: Histórico
-permalink: /historico/
-descricao: Histórico dos Fóruns de Autoavaliação e Planejamento Estratégico do PPGMUS.
+title: Formulários
+permalink: /formularios/
+descricao: Formulários do IV Fórum e da COMAPE — PPGMUS/UFMG.
 ---
 
 <section class="secao">
   <div class="container prosa">
-    <h1>Histórico</h1>
+    <h1>Formulários</h1>
     <p>Página em construção.</p>
   </div>
 </section>

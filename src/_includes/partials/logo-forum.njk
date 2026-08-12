@@ -1,0 +1,48 @@
+<div class="logo-forum" id="logo-forum-outer" aria-hidden="true">
+  <div id="wrapper">
+    <div id="logo-text">
+      <p>4º Fórum de Autoavaliação</p>
+      <p>e Planejamento Estratégico</p>
+    </div>
+  </div>
+</div>
+<p class="sr-only">4º Fórum de Autoavaliação e Planejamento Estratégico — PPGMUS/UFMG</p>
+
+<script>
+  // Chamado pelo sketch p5.js (que anima só o símbolo/janelas) quando a
+  // abertura termina. Fase 2: o símbolo desliza da posição centralizada
+  // para a esquerda e o texto do logo (ainda preto, fundo branco) aparece.
+  function mostrarTextoForum() {
+    const outer = document.getElementById("logo-forum-outer");
+    const texto = document.getElementById("logo-text");
+    if (outer) outer.classList.add("mover-esquerda");
+    if (texto) texto.classList.add("mostrar");
+
+    // Fase 3: com o símbolo e o texto do logo já estabilizados, a foto de
+    // fundo entra em fade e a barra institucional, data, texto de chamada
+    // e seta aparecem juntas — nesse momento o texto do logo passa a branco.
+    setTimeout(iniciarFaseFoto, 1500);
+  }
+
+  function iniciarFaseFoto() {
+    const hero = document.querySelector(".hero--media");
+    if (hero) hero.classList.add("foto-visivel");
+    document.querySelectorAll(".anim-entrada").forEach((el) => el.classList.add("mostrar"));
+    const cabecalho = document.querySelector(".cabecalho");
+    if (cabecalho) cabecalho.classList.add("visivel");
+  }
+
+  function scaleLogoForum() {
+    const outer = document.getElementById("logo-forum-outer");
+    const inner = document.getElementById("wrapper");
+    if (!outer || !inner) return;
+    const scale = outer.clientWidth / 800;
+    inner.style.transform = "scale(" + scale + ")";
+  }
+  window.addEventListener("resize", scaleLogoForum);
+  document.addEventListener("DOMContentLoaded", scaleLogoForum);
+  scaleLogoForum();
+</script>
+<script src="/assets/logo-forum/p5.min.js"></script>
+<script src="/assets/logo-forum/logo-classes.js"></script>
+<script src="/assets/logo-forum/sketch-forum.js"></script>

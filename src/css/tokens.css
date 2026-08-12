@@ -1,31 +1,65 @@
 /*
   Design tokens do site da COMAPE.
   Esquema de cores único e fixo (sem modo escuro/claro alternável).
+  Paleta baseada no Manual da Marca UFMG (2011) + cores extraídas da
+  identidade visual do PPGMUS (terracota). Ver esquemas_de_cores_modelo_logo/
+  esquemacoresufmgppgmus.md para a origem dos valores.
   Para "rebrandar" o site, basta editar os valores abaixo.
 */
-:root {
-  /* Cor de marca — tons inspirados na identidade institucional UFMG/Escola de Música */
-  --cor-primaria-900: #1b2a4a;
-  --cor-primaria-700: #253a63;
-  --cor-primaria-500: #33507f;
-  --cor-primaria-300: #6d84ab;
-  --cor-primaria-100: #dde4f2;
 
-  /* Cor de destaque — usada para o 4º Fórum e chamadas de ação */
-  --cor-destaque-700: #b5541c;
-  --cor-destaque-500: #d9701f;
-  --cor-destaque-100: #fbe6d3;
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts/poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts/poppins/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts/poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Cor de marca — terracota PPGMUS (extraída da identidade visual do programa) */
+  --cor-primaria-900: #7a3712;
+  --cor-primaria-700: #9f4e20;
+  --cor-primaria-500: #d88644;
+  --cor-primaria-300: #d59a6e;
+  --cor-primaria-100: #e9c3a6;
+
+  /* Cor de destaque — Vermelho UFMG (Manual da Marca 2011), usada para o 4º Fórum e CTAs */
+  --cor-destaque-700: #a50d26;
+  --cor-destaque-500: #c8102e;
+  --cor-destaque-100: #f5d9de;
 
   /* Neutros */
-  --cor-texto: #1c1f26;
-  --cor-texto-suave: #4c5566;
-  --cor-fundo: #fbfaf7;
+  --cor-texto: #1a1a1a;
+  --cor-texto-suave: #4a4a4a;
+  --cor-fundo: #ffffff;
+  --cor-fundo-alt: #f6e7db;
   --cor-superficie: #ffffff;
-  --cor-borda: #e3e0d8;
+  --cor-borda: #e9c3a6;
 
-  /* Tipografia */
-  --fonte-base: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --fonte-titulo: "Fraunces", Georgia, "Times New Roman", serif;
+  /* Tipografia — Poppins para tudo (títulos e texto) */
+  --fonte-base: "Poppins", "Segoe UI", Arial, sans-serif;
+  --fonte-titulo: "Poppins", "Segoe UI", Arial, sans-serif;
 
   --texto-xs: 0.8125rem;
   --texto-sm: 0.9375rem;

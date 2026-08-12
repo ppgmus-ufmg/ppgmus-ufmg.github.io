@@ -1,5 +1,6 @@
 ---
 layout: layouts/base.njk
+templateEngineOverride: njk
 title: Contato
 permalink: /contato/
 descricao: Fale com a COMAPE — PPGMUS/UFMG.
@@ -18,12 +19,5 @@ descricao: Fale com a COMAPE — PPGMUS/UFMG.
       <h3>E-mail</h3>
       <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
     </div>
-
-    <p style="margin-top: var(--espaco-3);">
-      <em>
-        (E-mail de contato a confirmar — atualize o campo <code>email</code>
-        em <code>src/_data/site.json</code> quando definido.)
-      </em>
-    </p>
   </div>
 </section>
