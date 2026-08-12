@@ -18,6 +18,7 @@ body {
   line-height: 1.6;
   color: var(--cor-texto);
   background: var(--cor-fundo);
+  overflow-x: hidden;
 }
 
 img {
@@ -367,11 +368,13 @@ p {
 }
 
 /* Ajuste fino do logo da UFMG ao lado de "PPGMUS |" — mude só estes 3
-   valores para calibrar tamanho e posição (px ou em, o que preferir). */
+   valores para calibrar tamanho e posição. Use "em" (não "px") no
+   deslocamento — assim o ajuste escala junto com o tamanho do texto em
+   qualquer tela, em vez de ficar desproporcional no mobile (fonte menor). */
 :root {
   --ufmg-logo-tamanho: 1.2em;
-  --ufmg-logo-deslocamento-x: 0px;
-  --ufmg-logo-deslocamento-y: 10px;
+  --ufmg-logo-deslocamento-x: 0em;
+  --ufmg-logo-deslocamento-y: 0.22em;
 }
 
 .subtitulo-forum__ufmg {
@@ -880,13 +883,14 @@ p {
     align-items: flex-start;
   }
 
-  /* Deixa o conjunto logo+texto "vazar" o padding do container, para
-     ficar um pouco maior no celular (a caixa escala junto via JS). */
+  /* Deixa o conjunto logo+texto "vazar" o padding do container — e um
+     pouco além da borda da tela — para ficar maior no celular (a caixa
+     escala junto via JS; overflow-x:hidden no body cobre o sangramento). */
   .logo-forum {
-    width: calc(100% + 2 * var(--espaco-3));
-    max-width: calc(100% + 2 * var(--espaco-3));
-    margin-left: calc(-1 * var(--espaco-3));
-    margin-right: calc(-1 * var(--espaco-3));
+    width: calc(100% + 2 * var(--espaco-3) + 2rem);
+    max-width: calc(100% + 2 * var(--espaco-3) + 2rem);
+    margin-left: calc(-1 * var(--espaco-3) - 1rem);
+    margin-right: calc(-1 * var(--espaco-3) - 1rem);
   }
 
   .cabecalho__barra {
