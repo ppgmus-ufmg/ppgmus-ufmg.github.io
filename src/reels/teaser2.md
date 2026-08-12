@@ -75,7 +75,7 @@ eleventyExcludeFromCollections: true
   // preenche 100% da viewport (ver .tela-fone--fluida em reel.css), então o
   // vídeo final sai exatamente do tamanho da janela gravada.
   (function () {
-    const DURACAO_MS = 60000; // duração da gravação — ajuste aqui
+    const DURACAO_MS = 10000; // duração da gravação — ajuste aqui
     const botao = document.getElementById("botao-gravar");
     let recorder = null;
 
@@ -90,7 +90,7 @@ eleventyExcludeFromCollections: true
 
     botao.addEventListener("click", async () => {
       botao.disabled = true;
-      botao.textContent = "Escolha ESTA janela na caixa do navegador…";
+      botao.textContent = "Escolha esta janela (não a aba/tela) na caixa…";
 
       // Largura/altura reais em pixels de tela (CSS px × devicePixelRatio).
       // getDisplayMedia só aceita "ideal" aqui (não "exact" — a API rejeita
@@ -104,12 +104,11 @@ eleventyExcludeFromCollections: true
       let stream;
       try {
         stream = await navigator.mediaDevices.getDisplayMedia({
-          // Sem preferCurrentTab: em janela pop-up (aberta pelo botão "Abrir
-          // em janela 9:16") essa opção capturava a aba original (em branco)
-          // em vez do pop-up. Escolha manualmente ESTA janela na caixa do
-          // navegador — mais lento, mas confiável nos dois casos (aba normal
-          // ou pop-up).
           video: {
+            // Pede captura de JANELA (não aba, não tela toda) — dá pra
+            // escolher "esta janela" na caixa do navegador. É esse modo que
+            // deu o resultado bom (qualidade + cursor escondido) antes.
+            displaySurface: "window",
             frameRate: { ideal: 60 },
             width: { ideal: larguraCaptura },
             height: { ideal: alturaCaptura },
@@ -140,7 +139,10 @@ eleventyExcludeFromCollections: true
       recorder.onstop = () => {
         stream.getTracks().forEach((t) => t.stop());
         const blob = new Blob(pedacos, { type: mimeType || "video/webm" });
-        const extensao = (mimeType || "").includes("mp4") ? "mp4" : "webm";
+        // H.264/AAC em contêiner mp4 abre igual num .mov (QuickTime não
+        // distingue o conteúdo, só a extensão) — nomeia como .mov, que foi
+        // o formato que funcionou bem para subir no Instagram.
+        const extensao = (mimeType || "").includes("mp4") ? "mov" : "webm";
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
