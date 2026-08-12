@@ -112,12 +112,16 @@ eleventyExcludeFromCollections: true
       // tamanho da caixa em pixels ANTES da barra aparecer, para ela não
       // encolher: na pior hipótese, uma faixa embaixo fica fora da área
       // visível (bem menos perceptível que uma borda escura).
+      // Arredonda para múltiplos de 16: o H.264 comprime em blocos de 16x16
+      // px (macroblocks). Uma altura/largura que não seja múltiplo de 16 faz
+      // sobrar uma fileira de blocos "incompleta" na borda, comprimida com
+      // menos qualidade — dá um leve borrão bem na última faixa da imagem.
       const dpr = window.devicePixelRatio || 1;
-      const larguraCaptura = Math.round(window.innerWidth * dpr);
-      const alturaCaptura = Math.round(window.innerHeight * dpr);
+      const larguraCaptura = Math.floor((window.innerWidth * dpr) / 16) * 16;
+      const alturaCaptura = Math.floor((window.innerHeight * dpr) / 16) * 16;
       const telaFone = document.querySelector(".tela-fone--fluida");
-      telaFone.style.width = window.innerWidth + "px";
-      telaFone.style.height = window.innerHeight + "px";
+      telaFone.style.width = larguraCaptura / dpr + "px";
+      telaFone.style.height = alturaCaptura / dpr + "px";
 
       let stream;
       try {
