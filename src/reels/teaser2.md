@@ -101,6 +101,9 @@ eleventyExcludeFromCollections: true
             frameRate: { ideal: 60 },
             width: { ideal: larguraCaptura },
             height: { ideal: alturaCaptura },
+            // Tira o cursor do mouse da gravação — não dá pra fazer isso via
+            // CSS porque o cursor é do sistema, não desenhado pela página.
+            cursor: "never",
           },
           audio: false,
         });
@@ -135,7 +138,7 @@ eleventyExcludeFromCollections: true
         a.remove();
       };
 
-      botao.style.display = "none";
+      document.querySelector(".botoes-teaser2").style.display = "none";
       recorder.start();
 
       // Dispara a animação no exato instante em que a gravação já está rodando.
