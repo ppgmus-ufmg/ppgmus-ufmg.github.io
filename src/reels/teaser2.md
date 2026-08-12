@@ -75,8 +75,18 @@ eleventyExcludeFromCollections: true
   // preenche 100% da viewport (ver .tela-fone--fluida em reel.css), então o
   // vídeo final sai exatamente do tamanho da janela gravada.
   (function () {
-    const DURACAO_MS = 40000; // duração da gravação — ajuste aqui
+    const DURACAO_MS = 60000; // duração da gravação — ajuste aqui
     const botao = document.getElementById("botao-gravar");
+    let recorder = null;
+
+    // Aperta espaço durante a gravação para encerrar antes do tempo — o que
+    // já foi capturado até ali é baixado normalmente (não descarta nada).
+    document.addEventListener("keydown", (e) => {
+      if (e.code !== "Space" && e.key !== " ") return;
+      if (!recorder || recorder.state !== "recording") return;
+      e.preventDefault();
+      recorder.stop();
+    });
 
     botao.addEventListener("click", async () => {
       botao.disabled = true;
@@ -121,7 +131,7 @@ eleventyExcludeFromCollections: true
         "video/webm",
       ];
       const mimeType = candidatosMime.find((m) => MediaRecorder.isTypeSupported(m)) || "";
-      const recorder = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
+      recorder = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
       const pedacos = [];
       recorder.ondataavailable = (e) => { if (e.data.size > 0) pedacos.push(e.data); };
 
