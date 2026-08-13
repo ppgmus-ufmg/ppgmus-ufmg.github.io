@@ -79,6 +79,14 @@ function setup() {
   pixelDensity(3);
   const cnv = createCanvas(800, 160, WEBGL);
   cnv.parent("wrapper");
+  // Trava em 60fps: a animação de abertura das janelas é cronometrada em
+  // número de frames (FRAMES_INIT_PAUSE etc.), não em tempo real. Sem isso,
+  // em telas de taxa de atualização alta (120Hz+) ou em ambientes sem
+  // vsync real (ex.: captura headless para os vídeos do /reels/), o
+  // requestAnimationFrame pode disparar mais rápido que 60Hz e a animação
+  // toda — símbolo e a revelação de texto/foto que ela dispara depois —
+  // acaba correndo mais rápido do que o previsto.
+  frameRate(60);
   angleMode(DEGREES);
   logoSymbol.init();
 
