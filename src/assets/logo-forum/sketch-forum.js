@@ -159,6 +159,14 @@ function draw() {
       if (stateTimer >= FRAMES_FINAL_PAUSE) {
         if (typeof window.mostrarTextoForum === "function") window.mostrarTextoForum();
         _transition(STATES.DONE);
+        // O canvas não muda mais depois disso — para de redesenhar a cada
+        // frame. Sem isso, o WebGL seguia consumindo CPU/composição à toa
+        // bem no momento em que várias transições CSS disparam juntas
+        // (texto, foto, cor), e isso podia atrapalhar a entrega de frames
+        // de capturas de tela/aba (getDisplayMedia e a gravação automática
+        // dos vídeos do /reels/), gerando saltos na transição em vez de
+        // um fade suave.
+        noLoop();
       }
       break;
 
