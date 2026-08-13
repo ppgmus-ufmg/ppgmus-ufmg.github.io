@@ -655,16 +655,22 @@ p {
   min-width: 40rem;
   border-collapse: collapse;
   background: var(--cor-superficie);
-  font-size: var(--texto-sm);
+  font-size: var(--texto-xs);
+  line-height: 1.4;
 }
 
 .tabela-programacao th,
 .tabela-programacao td {
   text-align: left;
   vertical-align: top;
-  padding: var(--espaco-2);
+  padding: 0.6rem 0.75rem;
   border-bottom: 1px solid var(--cor-borda);
   border-right: 1px solid var(--cor-borda);
+}
+
+.tabela-programacao small {
+  display: inline-block;
+  margin-top: 0.35em;
 }
 
 /* Em telas médias/estreitas, encolhe um pouco a tabela em vez de deixá-la
@@ -672,12 +678,11 @@ p {
 @media (max-width: 64rem) {
   .tabela-programacao {
     min-width: 34rem;
-    font-size: var(--texto-xs);
   }
 
   .tabela-programacao th,
   .tabela-programacao td {
-    padding: var(--espaco-1);
+    padding: 0.4rem 0.5rem;
   }
 }
 
@@ -920,6 +925,14 @@ p {
 .reveal-scroll.visivel {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Utilitário: suprime qualquer transição enquanto presente (ex.: ao pular
+   direto para uma âncora, para não animar estados que deveriam já
+   nascer prontos). */
+.sem-transicao,
+.sem-transicao * {
+  transition: none !important;
 }
 
 /* Utilitários responsivos */

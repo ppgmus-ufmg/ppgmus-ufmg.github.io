@@ -58,48 +58,67 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
             <td>9h–10h30</td>
             <td>
               <strong>Mesa de Abertura: "PPGMUS ontem, hoje, amanhã"</strong><br>
-              Coordenadores/as e ex-coordenadores/as do PPGMUS (participantes a confirmar). Mediação: José H. Padovani.
+              Mesa com ex-coordenadores/as do PPGMUS, oferecendo perspectivas sobre a trajetória, os desafios e o futuro do Programa.<br/>
+              <small><strong>Com:</strong> participantes a confirmar. <br/><strong>Mediação:</strong> José Henrique Padovani</small>
             </td>
             <td>
-              <strong>Processos e projeto de Autoavaliação e Planejamento Estratégico do PPGMUS</strong> — 1ª versão da Proposta de Planejamento Estratégico.<br>
-              Apresentação: COMAPE
+              <strong>Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS</strong><br/> Apresentação da versão preliminar do Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS.<br/>
+              <small><strong>Apresentação:</strong> Edite Rocha e José Henrique Padovani</small>
+
             </td>
             <td>
-              <strong>Palestra — Luís Ricardo Queiroz</strong> (transversalidade / avaliação multidimensional) — "Construção democrática de um Planejamento Estratégico"
+              <strong>Palestra "Construção democrática de um Planejamento Estratégico"</strong><br/>
+              Palestra do consultor externo do PPGMUS, Prof. Dr. Luís Ricardo Queiroz, cobrindo aspectos relacionados à transversalidade, à avaliação multidimensional e à estruturação democrática de processos de autoavaliação e planejamento estratégico na Pós-Graduação.<br/>
+              <small><strong>Palestrante:</strong> Luís Ricardo Queiroz</small>
             </td>
           </tr>
           <tr>
             <td>11h–12h30</td>
             <td>
-              <strong>Panorama institucional e produção intelectual</strong>: avaliação, desafios e perspectivas dos quadriênios 2021–2024 e 2025-2028 . Apresentação: Helena Lopes e José Henrique Padovani.
+              <strong>A avaliação do PPGMUS no contexto da CAPES</strong><br/> conquistas de 2021-2024 e desafios para 2025-2028. 
+               <br/><small><strong>Apresentação:</strong> Helena Lopes e José Henrique Padovani</small>
             </td>
             <td>
-              <strong>Diálogo com o Colegiado PPGMUS</strong> (coletiva, consultivo) — processo seletivo, (re)credenciamento, Plataforma Sucupira.
+              <strong>Diálogo e Construção Coletiva II</strong><br/> Diálogo entre GTs, docentes, discentes, TAEs, COMAPE e Colegiado do PPGMUS; apresentação e consolidação de propostas ao Colegiado e à COMAPE.
+              <br/><small><strong>Mediação:</strong> Edite Rocha</small>
             </td>
             <td>
-              Conversa com Luís Ricardo Queiroz
+              <strong>Diálogo com o Consultor Externo</strong><br/> 
+              Diálogo com o consultor externo do PPGMUS, Prof. Dr. Luís Ricardo Queiroz, cobrindo aspectos levantados ao longo do Fórum e de sua apresentação.<br/>
+              <small><strong>Mediação:</strong> Edite Rocha e José Henrique Padovani</small>
             </td>
           </tr>
           <tr>
             <td>14h–15h30</td>
-            <td>
-              GTs das linhas de pesquisa sobre novo modelo de processo seletivo do PPGMUS. Mediação: COMAPE.
+            <td rowspan="2">
+              <strong>Diálogo e Construção Coletiva I</strong><br/>
+              Elaboração coletiva de propostas para enfrentar desafios atuais do PPGMUS, a partir de informações, exigências institucionais e estudos/propostas preliminares.
+              <br/>
+              <br/>
+              <b>14h00-14h20:</b> Apresentação de desafios e estudos/propostas preliminares<br/><small><strong>Apresentação:</strong>
+               José Henrique Padovani e Helena Lopes</small>
+              <br/>
+              <br/>
+              <b>14h20-17h30:</b> GTs de construção coletiva (análise de questões específicas a partir de documentos, estudos e propostas preliminares; elaboração de propostas a serem debatidas ao longo do Fórum). <br/>
+              <small><strong>Mediação:</strong> COMAPE e Coordenadores de Linhas de Pesquisa</small>
             </td>
             <td>
-              <strong>Recepção de ingressantes</strong> — especificidades e procedimentos acadêmicos + Espaço de escuta com discentes (coletiva).<br>
-              Apresentação: Coordenação PPGMUS; representantes discentes; TAEs.
+              <strong>Recepção de ingressantes</strong><br/>
+              Apresentação de procedimentos acadêmicos e de informações diversas relacionadas ao curso, auxílios, bolsas, aproveitamento de créditos, integralização, marcação de bancas, etc.<br/>
+              <small><strong>Apresentação:</strong> Coordenação; TAEs; representantes discentes.</small>
             </td>
-            <td>
+            <td rowspan="2">
               Reunião interna Colegiado do PPGMUS e COMAPE com consultor externo, Luís Ricardo Queiroz (UFPB).
             </td>
           </tr>
           <tr>
             <td>16h–17h30</td>
-            <td>(continuação)</td>
             <td>
-              <strong>Mesa com egressos do PPGMUS: "Após a pós"</strong>: inserção e atuação profissional em diferentes contextos. Mediação: Andressa Zanette.
+              <strong>Mesa: "Após a pós"</strong><br/> 
+              Mesa com egressos do PPGMUS sobre inserção e atuação profissional em diferentes contextos.<br/>
+              <small><strong>Com:</strong> participantes a confirmar. <br/>
+              <strong>Mediação:</strong> Andressa Zanette</small>
             </td>
-            <td>—</td>
           </tr>
         </tbody>
       </table>

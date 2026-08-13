@@ -32,11 +32,78 @@
   </footer>
 
   <script>
+    // Enquanto true, o auto-hide do cabeçalho (mais abaixo) fica em pausa.
+    // Evita que, ao pular para uma âncora (#programacao etc.), o cabeçalho
+    // suma bem no momento em que a seção alvo chega ao topo — o que
+    // deixaria à mostra um pedaço da seção anterior no espaço reservado
+    // pelo scroll-margin-top da seção (pensado para o cabeçalho, visível,
+    // cobrir esse espaço).
+    var suprimirAutoHideCabecalho = false;
+    function pausarAutoHideCabecalho() {
+      suprimirAutoHideCabecalho = true;
+      var cabecalho = document.querySelector(".cabecalho");
+      if (cabecalho) cabecalho.classList.remove("escondido");
+
+      var liberar = function () {
+        suprimirAutoHideCabecalho = false;
+        window.removeEventListener("scrollend", liberar);
+      };
+      if ("onscrollend" in window) {
+        window.addEventListener("scrollend", liberar, { once: true });
+      } else {
+        // Navegadores sem "scrollend": tempo generoso para uma rolagem
+        // suave (scroll-behavior: smooth) terminar.
+        setTimeout(liberar, 1000);
+      }
+    }
+
+    // Acesso direto via #hash (ex.: link para #programacao): pula a
+    // animação de abertura do logo/foto e deixa cabeçalho e foto já no
+    // estado final, sem transição.
+    (function () {
+      if (!window.location.hash) return;
+      pausarAutoHideCabecalho();
+
+      var elementosSemAnimacao = [
+        document.querySelector(".cabecalho"),
+        document.querySelector(".hero--media"),
+      ].filter(Boolean);
+      elementosSemAnimacao.forEach(function (el) { el.classList.add("sem-transicao"); });
+
+      if (typeof window.iniciarFaseFoto === "function") {
+        window.iniciarFaseFoto();
+      }
+
+      // Duas frames para garantir que o estado "revelado" já foi pintado
+      // sem transição antes de voltar a permitir transições normais
+      // (ex.: o cabeçalho some/aparece ao rolar a página).
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          elementosSemAnimacao.forEach(function (el) { el.classList.remove("sem-transicao"); });
+        });
+      });
+    })();
+
+    // Clique em qualquer link interno para uma âncora (ex.: "Programação"
+    // no menu): mesma pausa do auto-hide, para o cabeçalho não sumir
+    // durante a rolagem suave até lá.
+    document.addEventListener("click", function (evento) {
+      var link = evento.target.closest('a[href^="#"]');
+      if (link) pausarAutoHideCabecalho();
+    });
+
     // Revela elementos com a classe "reveal-scroll" (ex.: a tabela de
     // programação) com um fade + leve deslocamento assim que entram na tela.
     (function () {
       var elementos = document.querySelectorAll(".reveal-scroll");
       if (!elementos.length) return;
+
+      // Acesso direto via #hash (ex.: vindo de um link para #programacao):
+      // exibe o conteúdo já revelado, sem tocar a animação de entrada.
+      var alvoHash = window.location.hash
+        ? document.querySelector(window.location.hash)
+        : null;
+
       var observador = new IntersectionObserver(
         function (entradas) {
           entradas.forEach(function (entrada) {
@@ -48,7 +115,13 @@
         },
         { threshold: 0.15 }
       );
-      elementos.forEach(function (el) { observador.observe(el); });
+      elementos.forEach(function (el) {
+        if (alvoHash && (el === alvoHash || alvoHash.contains(el))) {
+          el.classList.add("sem-transicao", "visivel");
+        } else {
+          observador.observe(el);
+        }
+      });
     })();
 
     // Menu (versão web/desktop): some ao rolar para baixo, volta ao rolar
@@ -64,7 +137,9 @@
         "scroll",
         function () {
           var atualY = window.scrollY;
-          if (atualY <= 80) {
+          if (suprimirAutoHideCabecalho) {
+            cabecalho.classList.remove("escondido");
+          } else if (atualY <= 80) {
             cabecalho.classList.remove("escondido");
           } else if (atualY > ultimoY) {
             cabecalho.classList.add("escondido");
