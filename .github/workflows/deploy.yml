@@ -38,3 +38,56 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Espelha o build estático (HTML/CSS/JS já prontos) no repositório
+  # ppgmus-ufmg/sitecomape, para que outra equipe (ex.: o site
+  # institucional do PPGMUS) possa baixar/clonar e servir em outro
+  # domínio, sem precisar rodar o build aqui. Só roda se o secret
+  # MIRROR_TOKEN estiver configurado (repo settings → Secrets and
+  # variables → Actions); sem ele, esse job é pulado silenciosamente.
+  mirror:
+    needs: build
+    if: ${{ secrets.MIRROR_TOKEN != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+      - name: Adiciona README ao build espelhado
+        run: |
+          cat > _site/README.md << 'EOF'
+          # 4º Fórum de Autoavaliação e Planejamento Estratégico — build estático
+
+          Este repositório é gerado automaticamente a partir de
+          [ppgmus-ufmg/ppgmus-ufmg.github.io](https://github.com/ppgmus-ufmg/ppgmus-ufmg.github.io)
+          a cada atualização do site (GitHub Actions). Contém o HTML/CSS/JS
+          já prontos para servir em qualquer servidor estático — por
+          exemplo, o site institucional do PPGMUS — sem precisar instalar
+          nada nem rodar build.
+
+          ## Como usar
+
+          Baixe ou clone este repositório e aponte o servidor web para a
+          raiz dele — o `index.html` já está aqui, junto com `css/`,
+          `assets/` e as demais páginas.
+
+          ## Importante
+
+          Não edite estes arquivos diretamente: qualquer alteração é
+          sobrescrita no próximo build automático. Mudanças de conteúdo
+          devem ser feitas no repositório de origem.
+          EOF
+      - name: Publica no repositório sitecomape
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.MIRROR_TOKEN }}
+          external_repository: ppgmus-ufmg/sitecomape
+          publish_branch: main
+          publish_dir: ./_site
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_message: "Atualiza build a partir de ${{ github.repository }}@${{ github.sha }}"
