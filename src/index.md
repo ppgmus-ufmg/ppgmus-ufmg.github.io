@@ -67,7 +67,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
 
             </td>
             <td>
-              <strong>Palestra "Construção democrática de um Planejamento Estratégico"</strong><br/>
+              <strong>Palestra "Construção democrática do planejamento estratégico: nuances e singularidades da área de Música"</strong><br/>
               Palestra do consultor externo do PPGMUS, Prof. Dr. Luís Ricardo Queiroz, cobrindo aspectos relacionados à transversalidade, à avaliação multidimensional e à estruturação democrática de processos de autoavaliação e planejamento estratégico na Pós-Graduação.<br/>
               <small><strong>Palestrante:</strong> Luís Ricardo Queiroz</small>
             </td>
