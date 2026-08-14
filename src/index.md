@@ -57,7 +57,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           <tr>
             <td>9h–10h30</td>
             <td>
-              <strong>Mesa de Abertura: "PPGMUS ontem, hoje, amanhã"</strong><br>
+              <strong>Mesa de Abertura: <i>PPGMUS ontem, hoje, amanhã</i></strong><br>
               Mesa com ex-coordenadores/as do PPGMUS, oferecendo perspectivas sobre a trajetória, os desafios e o futuro do Programa.<br/>
               <small><strong>Com:</strong> Sérgio Freire, Ana Cláudia Assis, Luciana Monteiro, Flavio Barbeitas, Edite Rocha, Helena Lopes e José Henrique Padovani. <br/><strong>Mediação:</strong> José Henrique Padovani</small>
             </td>
@@ -67,7 +67,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
 
             </td>
             <td>
-              <strong>Palestra "Construção democrática do planejamento estratégico: nuances e singularidades da área de Música"</strong><br/>
+              <strong>Palestra: <i>Construção democrática do planejamento estratégico: nuances e singularidades da área de Música</i></strong><br/>
               Palestra do consultor externo do PPGMUS, Prof. Dr. Luís Ricardo Queiroz, cobrindo aspectos relacionados à transversalidade, à avaliação multidimensional e à estruturação democrática de processos de autoavaliação e planejamento estratégico na Pós-Graduação.<br/>
               <small><strong>Palestrante:</strong> Luís Ricardo Queiroz</small>
             </td>
@@ -121,7 +121,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           <tr>
             <td>16h–17h30</td>
             <td>
-              <strong>Mesa: "Após a pós"</strong><br/> 
+              <strong>Mesa: <i>Após a pós</i></strong><br/> 
               Mesa com egressos do PPGMUS sobre inserção e atuação profissional em diferentes contextos.<br/>
               <small><strong>Com:</strong> Alexandra Monticelli, Aline Azevedo, Artur M. Azzi, Fellipe M. Martins, Marcelo Chiaretti, ...a confirmar. <br/>
               <strong>Mediação:</strong> Andressa Zanette</small>
