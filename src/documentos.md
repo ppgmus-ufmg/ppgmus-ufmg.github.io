@@ -13,41 +13,48 @@ descricao: Documentos e materiais de apoio da COMAPE e do PPGMUS.
       Fichas de avaliação, relatórios e materiais de apoio do processo de
       autoavaliação do PPGMUS.
     </p>
-  </div>
-</section>
 
-<section class="secao secao--alt">
-  <div class="container">
-    <div class="grade">
+    <h2>Documentos PPGMUS</h2>
+    <ul class="lista-documentos">
       {%- for doc in collections.documentos %}
-      {%- if doc.data.grupo != "2021-2024" %}
-      <div class="cartao">
+      {%- if doc.data.grupo == "ppgmus" %}
+      <li>
         {%- if doc.data.categoria %}<p class="etiqueta">{{ doc.data.categoria }}</p>{% endif -%}
-        <h3>{{ doc.data.title }}</h3>
+        <strong>{{ doc.data.title }}</strong>
         {{ doc.templateContent | safe }}
-        {%- if doc.data.arquivo %}<p><a class="botao botao--secundario" href="{{ doc.data.arquivo }}">Abrir documento</a></p>{% endif -%}
-      </div>
+        {%- if doc.data.arquivo %}<p><a class="botao botao--secundario" href="{{ doc.data.arquivo | rel }}">Abrir documento</a></p>{% endif -%}
+      </li>
       {%- endif %}
       {%- endfor %}
-    </div>
-  </div>
-</section>
+    </ul>
 
-<section class="secao">
-  <div class="container">
-    <h2>Documentos 2021–2024</h2>
-    <p class="prosa">Materiais do quadriênio anterior, usados como referência.</p>
-    <div class="grade">
+    <h2>Quadriênio 2025–28</h2>
+    <ul class="lista-documentos">
+      {%- for doc in collections.documentos %}
+      {%- if doc.data.grupo == "atual" %}
+      <li>
+        {%- if doc.data.categoria %}<p class="etiqueta">{{ doc.data.categoria }}</p>{% endif -%}
+        <strong>{{ doc.data.title }}</strong>
+        {{ doc.templateContent | safe }}
+        {%- if doc.data.arquivo %}<p><a class="botao botao--secundario" href="{{ doc.data.arquivo | rel }}">Abrir documento</a></p>{% endif -%}
+      </li>
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+
+    <h2>Quadriênio 2021–24</h2>
+    <p>Materiais do quadriênio anterior, usados como referência.</p>
+    <ul class="lista-documentos">
       {%- for doc in collections.documentos %}
       {%- if doc.data.grupo == "2021-2024" %}
-      <div class="cartao">
+      <li>
         {%- if doc.data.categoria %}<p class="etiqueta">{{ doc.data.categoria }}</p>{% endif -%}
-        <h3>{{ doc.data.title }}</h3>
+        <strong>{{ doc.data.title }}</strong>
         {{ doc.templateContent | safe }}
-        {%- if doc.data.arquivo %}<p><a class="botao botao--secundario" href="{{ doc.data.arquivo }}">Abrir documento</a></p>{% endif -%}
-      </div>
+        {%- if doc.data.arquivo %}<p><a class="botao botao--secundario" href="{{ doc.data.arquivo | rel }}">Abrir documento</a></p>{% endif -%}
+      </li>
       {%- endif %}
       {%- endfor %}
-    </div>
+    </ul>
   </div>
 </section>

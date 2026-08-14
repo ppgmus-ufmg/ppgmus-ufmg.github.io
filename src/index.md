@@ -9,7 +9,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
 
 <section class="hero hero--media">
   <div class="hero__media">
-    <img src="/assets/img/hero-ufmg-pb.jpg" alt="">
+    <img src="{{ '/assets/img/hero-ufmg-pb.jpg' | rel }}" alt="">
   </div>
   <div class="container">
     {% include "partials/logo-forum.njk" %}
@@ -17,7 +17,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
     <div class="subtitulo-forum anim-entrada anim-entrada--eyebrow">
       <span class="subtitulo-forum__ppgmus">PPGMUS</span>
       <span class="subtitulo-forum__barra">|</span>
-      <img class="subtitulo-forum__ufmg" src="/assets/logos/logo-ufmg-branco.svg" alt="UFMG">
+      <img class="subtitulo-forum__ufmg" src="{{ '/assets/logos/logo-ufmg-branco.svg' | rel }}" alt="UFMG">
     </div>
 
     <p class="data-forum anim-entrada anim-entrada--data">26 a 28 de agosto de 2026</p>
@@ -59,7 +59,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
             <td>
               <strong>Mesa de Abertura: "PPGMUS ontem, hoje, amanhã"</strong><br>
               Mesa com ex-coordenadores/as do PPGMUS, oferecendo perspectivas sobre a trajetória, os desafios e o futuro do Programa.<br/>
-              <small><strong>Com:</strong> participantes a confirmar. <br/><strong>Mediação:</strong> José Henrique Padovani</small>
+              <small><strong>Com:</strong> Sérgio Freire, Ana Cláudia Assis, Luciana Monteiro, Flavio Barbeitas, Edite Rocha, Helena Lopes e José Henrique Padovani. <br/><strong>Mediação:</strong> José Henrique Padovani</small>
             </td>
             <td>
               <strong>Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS</strong><br/> Apresentação da versão preliminar do Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS.<br/>
@@ -93,13 +93,18 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
             <td rowspan="2">
               <strong>Diálogo e Construção Coletiva I</strong><br/>
               Elaboração coletiva de propostas para enfrentar desafios atuais do PPGMUS, a partir de informações, exigências institucionais e estudos/propostas preliminares.
+             <br/>
+              <br/>
+              <b>14h00-14h10:</b> Lançamento do formulário de propostas de ações/aperfeiçoamentos<br/><small><strong>Apresentação:</strong>
+               Edite Rocha</small>
               <br/>
               <br/>
-              <b>14h00-14h20:</b> Apresentação de desafios e estudos/propostas preliminares<br/><small><strong>Apresentação:</strong>
+              <br/>
+              <b>14h10-14h30:</b> Apresentação de desafios e estudos/propostas preliminares<br/><small><strong>Apresentação:</strong>
                José Henrique Padovani e Helena Lopes</small>
               <br/>
               <br/>
-              <b>14h20-17h30:</b> GTs de construção coletiva (análise de questões específicas a partir de documentos, estudos e propostas preliminares; elaboração de propostas a serem debatidas ao longo do Fórum). <br/>
+              <b>14h30-17h30:</b> GTs de construção coletiva (análise de questões específicas a partir de documentos, estudos e propostas preliminares; elaboração de propostas a serem debatidas ao longo do Fórum). <br/>
               <small><strong>Mediação:</strong> COMAPE e Coordenadores de Linhas de Pesquisa</small>
             </td>
             <td>
@@ -108,7 +113,9 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
               <small><strong>Apresentação:</strong> Coordenação; TAEs; representantes discentes.</small>
             </td>
             <td rowspan="2">
-              Reunião interna Colegiado do PPGMUS e COMAPE com consultor externo, Luís Ricardo Queiroz (UFPB).
+              <strong>Reunião fechada com Consultor Externo</strong><br/>
+              Reunião conjunta do Colegiado do PPGMUS e da COMAPE com consultor externo do Programa, Prof. Dr. Luís Ricardo Queiroz (UFPB).<br/>
+              <small><strong>Participantes:</strong> Colegiado do PPGMUS, COMAPE e Prof. Dr. Luís Ricardo Queiroz (UFPB).</small>
             </td>
           </tr>
           <tr>
@@ -116,7 +123,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
             <td>
               <strong>Mesa: "Após a pós"</strong><br/> 
               Mesa com egressos do PPGMUS sobre inserção e atuação profissional em diferentes contextos.<br/>
-              <small><strong>Com:</strong> participantes a confirmar. <br/>
+              <small><strong>Com:</strong> Alexandra Monticelli, Aline Azevedo, Artur M. Azzi, Fellipe M. Martins, Marcelo Chiaretti, ...a confirmar. <br/>
               <strong>Mediação:</strong> Andressa Zanette</small>
             </td>
           </tr>
@@ -124,11 +131,11 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
       </table>
     </div>
 
-    <p style="margin-top: var(--espaco-3);">
+    <!-- <p style="margin-top: var(--espaco-3);">
       <strong>Ainda sem horário definido:</strong> lançamento do formulário
       de propostas de ações/aperfeiçoamentos (ação de engajamento contínua);
       "a pesquisa no PPGMUS" — panorama geral dos grupos e das produções.
-    </p>
+    </p> -->
   </div>
 </section>
 
@@ -142,7 +149,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           processo de autoavaliação do PPGMUS e coordena, junto ao
           Colegiado, a elaboração do Plano Estratégico do Programa — ouvindo
           docentes, discentes, egressos e TAEs. Conheça as
-          <a href="/pessoas/">pessoas da comissão</a>.
+          <a href="{{ '/pessoas/' | rel }}">pessoas da comissão</a>.
         </p>
       </div>
       <div class="cartao">
@@ -150,14 +157,14 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
         <p>
           Periodicamente promovemos Fóruns abertos à comunidade para
           apresentar o panorama institucional, ouvir demandas e pactuar
-          próximos passos. Veja o <a href="/historico/">histórico de edições</a>.
+          próximos passos. Veja o <a href="{{ '/historico/' | rel }}">histórico de edições</a>.
         </p>
       </div>
       <div class="cartao">
         <h3>Documentos</h3>
         <p>
           Fichas de avaliação, relatórios e materiais de apoio ficam
-          reunidos na aba <a href="/documentos/">Documentos</a>.
+          reunidos na aba <a href="{{ '/documentos/' | rel }}">Documentos</a>.
         </p>
       </div>
     </div>

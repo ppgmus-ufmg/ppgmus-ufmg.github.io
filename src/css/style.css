@@ -622,6 +622,30 @@ p {
   border-bottom: 1px solid var(--cor-borda);
 }
 
+.lista-documentos {
+  list-style: none;
+  margin: var(--espaco-2) 0 var(--espaco-4);
+  padding: 0;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.lista-documentos li {
+  padding: var(--espaco-2) 0;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.lista-documentos li > strong {
+  display: block;
+}
+
+.lista-documentos li > p {
+  margin: 0.35em 0 0;
+}
+
+.lista-documentos li > p.etiqueta {
+  margin: 0 0 var(--espaco-1);
+}
+
 .etiqueta {
   display: inline-block;
   font-size: var(--texto-xs);

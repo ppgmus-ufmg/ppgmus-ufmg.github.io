@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>{{ title or "COMAPE" }}</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/reel.css">
+  <link rel="icon" href="{{ '/favicon.svg' | rel }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/css/style.css' | rel }}">
+  <link rel="stylesheet" href="{{ '/css/reel.css' | rel }}">
 </head>
 <body class="pagina-reel">
   {{ content | safe }}

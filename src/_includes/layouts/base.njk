@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if title %}{{ title }} · {% endif %}{{ site.nome }} — {{ site.programa }}/{{ site.instituicao }}</title>
   <meta name="description" content="{{ descricao or (site.nomeCompleto + ' do ' + site.programaCompleto + ', ' + site.instituicao + '.') }}">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="{{ '/favicon.svg' | rel }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/css/style.css' | rel }}">
 </head>
 <body{% if corpoClasse %} class="{{ corpoClasse }}"{% endif %}>
   {% include "partials/nav.njk" %}
@@ -18,10 +18,10 @@
   <footer class="rodape">
     <div class="container">
       <div class="logos-institucionais" aria-label="Instituições vinculadas">
-        <img src="/assets/logos/logo-ufmg.svg" alt="UFMG">
-        <img src="/assets/logos/logo-ppgmus.jpeg" alt="PPGMUS" style="height:2.2rem;">
-        <img src="/assets/logos/logo-emus100.png" alt="Escola de Música UFMG — 100 anos">
-        <img src="/assets/logos/logo-capes.svg" alt="CAPES">
+        <img src="{{ '/assets/logos/logo-ufmg.svg' | rel }}" alt="UFMG">
+        <img src="{{ '/assets/logos/logo-ppgmus.jpeg' | rel }}" alt="PPGMUS" style="height:2.2rem;">
+        <img src="{{ '/assets/logos/logo-emus100.png' | rel }}" alt="Escola de Música UFMG — 100 anos">
+        <img src="{{ '/assets/logos/logo-capes.svg' | rel }}" alt="CAPES">
       </div>
       <p>
         {{ site.nomeCompleto }} ({{ site.nome }}) — {{ site.programaCompleto }} ({{ site.programa }}),
