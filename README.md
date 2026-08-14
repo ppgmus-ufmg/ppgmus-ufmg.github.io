@@ -28,6 +28,9 @@ src/
   pessoas/*.md                  → um arquivo por membro da COMAPE
   formularios.md                → aba "Formulários" (links de Google Forms, a preencher)
   contato.md                     → aba "Contato"
+  reels/*.md                      → páginas 9:16 para gerar o vídeo de teaser (ver seção abaixo)
+scripts/
+  gravar-reel.js           → gera o MP4 do teaser para Reels (npm run reel)
 ```
 
 ## Como testar localmente (offline)
@@ -126,6 +129,53 @@ e nas seções `.hero--media` / `.anim-entrada` de `src/css/style.css`:
 2. O símbolo desliza para a esquerda e o texto "4º Fórum..." aparece em preto.
 3. A foto de fundo entra em fade, o texto passa a branco, e o menu, a data,
    o texto de chamada e a seta de "confira a programação" aparecem juntos.
+
+## Gerar o vídeo do teaser para Instagram Reels
+
+As páginas `src/reels/teaser1.md` e `src/reels/teaser2.md` reproduzem a
+animação de entrada da home em formato de celular (9:16), para virar vídeo
+de Reels. O jeito recomendado de gerar o vídeo é o script
+`scripts/gravar-reel.js`, que abre `/reels/teaser1/` num Chrome headless e
+captura a animação **frame a frame, de forma determinística** (o relógio da
+animação é controlado passo a passo pelo script), o que garante 30fps
+constantes sem frames perdidos — ver histórico e racional em
+`problema_reels.md`.
+
+Pré-requisitos: `npm install` já feito, `ffmpeg` no PATH e o servidor de
+dev rodando na porta 8082:
+
+```bash
+npx eleventy --serve --port=8082
+```
+
+Em outro terminal, na raiz do repositório:
+
+```bash
+# 10 segundos (padrão), salva em ~/Desktop/teaser-comape.mp4
+npm run reel
+
+# duração e arquivo de saída específicos
+npm run reel -- --dur 15 --out ~/Desktop/teaser-15s.mp4
+```
+
+Opções (o `--` após `npm run reel` é obrigatório; `--help` lista todas):
+
+- `--dur <segundos>` — duração **total** do vídeo. A animação em si dura
+  ~5,5s; o restante é preenchido segurando o frame final.
+- `--fps <n>` — padrão 30.
+- `--out <arquivo>` — padrão `~/Desktop/teaser-comape.mp4` (sobrescreve se
+  já existir).
+- `--url <url>` — padrão `http://localhost:8082/reels/teaser1/`.
+
+O resultado é um MP4 1080x1920 (H.264, `+faststart`), pronto para o
+Instagram. Cada execução gera uma animação ligeiramente diferente — o
+sorteio das janelas do símbolo é aleatório, por design. Se o Puppeteer
+reclamar de browser ausente (máquina nova), rode
+`npx puppeteer browsers install chrome`.
+
+A página `/reels/teaser2/` é a alternativa manual: um botão grava a aba
+pelo próprio navegador (`getDisplayMedia`), útil fora do ambiente de dev,
+mas menos confiável (metadados de duração imprecisos; testada só no Chrome).
 
 ## Publicação (GitHub Pages)
 
