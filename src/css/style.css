@@ -710,8 +710,8 @@ p {
   }
 }
 
-.tabela-programacao th:last-child,
-.tabela-programacao td:last-child {
+.tabela-programacao th:nth-child(4),
+.tabela-programacao td:nth-child(4) {
   border-right: none;
 }
 

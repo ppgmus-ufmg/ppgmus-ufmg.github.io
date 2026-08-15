@@ -57,7 +57,8 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           <tr>
             <td>9h–10h30</td>
             <td>
-              <strong>Mesa de Abertura: <i>PPGMUS ontem, hoje, amanhã</i></strong><br>
+              <small><strong>[Mesa de Abertura]</strong></small><br/>
+              <strong>"PPGMUS ontem, hoje, amanhã"</strong><br>
               Mesa com ex-coordenadores/as do PPGMUS, oferecendo perspectivas sobre a trajetória, os desafios e o futuro do Programa.<br/>
               <small><strong>Com:</strong> Sérgio Freire, Ana Cláudia Assis, Luciana Monteiro, Flavio Barbeitas, Edite Rocha, Helena Lopes e José Henrique Padovani. <br/><strong>Mediação:</strong> José Henrique Padovani</small>
             </td>
@@ -67,7 +68,8 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
 
             </td>
             <td>
-              <strong>Palestra: <i>Construção democrática do planejamento estratégico: nuances e singularidades da área de Música</i></strong><br/>
+              <small><strong>[Palestra]</strong></small><br/>
+              <strong>"Construção democrática do planejamento estratégico: nuances e singularidades da área de Música"</strong><br/>
               Palestra do consultor externo do PPGMUS, Prof. Dr. Luís Ricardo Queiroz, cobrindo aspectos relacionados à transversalidade, à avaliação multidimensional e à estruturação democrática de processos de autoavaliação e planejamento estratégico na Pós-Graduação.<br/>
               <small><strong>Palestrante:</strong> Luís Ricardo Queiroz</small>
             </td>
@@ -75,7 +77,8 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           <tr>
             <td>11h–12h30</td>
             <td>
-              <strong>A avaliação do PPGMUS no contexto da CAPES</strong><br/> conquistas de 2021-2024 e desafios para 2025-2028. 
+              <strong>A avaliação do PPGMUS no contexto da CAPES</strong><br/> 
+              Apresentação da coordenação sobre as conquistas do PPGMUS na avaliação de 2021-2024 e os desafios que se apresentam no quadriênio atual.
                <br/><small><strong>Apresentação:</strong> Helena Lopes e José Henrique Padovani</small>
             </td>
             <td>
@@ -121,9 +124,9 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           <tr>
             <td>16h–17h30</td>
             <td>
-              <strong>Mesa: <i>Após a pós</i></strong><br/> 
+              <strong>Mesa:<br/>"Após a pós"</strong><br/> 
               Mesa com egressos do PPGMUS sobre inserção e atuação profissional em diferentes contextos.<br/>
-              <small><strong>Com:</strong> Alexandra Monticelli, Aline Azevedo, Artur M. Azzi, Fellipe M. Martins, Marcelo Chiaretti, ...a confirmar. <br/>
+              <small><strong>Com:</strong> Aline Azevedo, Artur M. Azzi, Fellipe M. Martins, Ivan Moriá, Marcelo Chiaretti, ...a confirmar. <br/>
               <strong>Mediação:</strong> Andressa Zanette</small>
             </td>
           </tr>
