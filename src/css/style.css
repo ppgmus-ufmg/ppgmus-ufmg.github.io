@@ -300,6 +300,7 @@ p {
 .hero--media.foto-visivel .hero__eyebrow,
 .hero--media.foto-visivel .hero__lead {
   color: #f2f2f2;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .hero--media.foto-visivel .logo-forum #logo-text {

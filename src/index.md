@@ -60,7 +60,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
               <small><strong>[Mesa de Abertura]</strong></small><br/>
               <strong>"PPGMUS ontem, hoje, amanhã"</strong><br>
               Mesa com ex-coordenadores/as do PPGMUS, oferecendo perspectivas sobre a trajetória, os desafios e o futuro do Programa.<br/>
-              <small><strong>Com:</strong> Sérgio Freire, Ana Cláudia Assis, Luciana Monteiro, Flavio Barbeitas, Edite Rocha, Helena Lopes e José Henrique Padovani. <br/><strong>Mediação:</strong> José Henrique Padovani</small>
+              <small><strong>Com:</strong> Maurício Loureiro, Sérgio Freire, Ana Cláudia Assis, Luciana Monteiro, Flavio Barbeitas, Edite Rocha, Helena Lopes e José Henrique Padovani. <br/><strong>Mediação:</strong> José Henrique Padovani</small>
             </td>
             <td>
               <strong>Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS</strong><br/> Apresentação da versão preliminar do Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS.<br/>
