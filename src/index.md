@@ -134,7 +134,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
               <small><strong>[Mesa com egressos]</strong></small><br/>
               <strong>"Após a pós"</strong><br/> 
               Mesa com egressos do PPGMUS sobre: trajetórias, inserção e atuação profissional em diferentes contextos; perspectivas e contribuições críticas sobre o Programa. <br/>
-              <small><strong>Com:</strong> Aline Azevedo, Artur M. Azzi, Fellipe M. Martins, Ivan Moriá, Marcelo Chiaretti, ...a confirmar. <br/>
+              <small><strong>Com:</strong> Aline Azevedo, Artur M. Azzi, Fellipe M. Martins, Ivan Moriá, Luigi Brandão e Marcelo Chiaretti. <br/>
               <strong>Mediação:</strong> Andressa Zanette</small>
             </td>
           </tr>
