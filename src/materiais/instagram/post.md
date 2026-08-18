@@ -1,35 +1,27 @@
 ---
-layout: layouts/reel.njk
+layout: layouts/estatico.njk
 templateEngineOverride: njk
-title: "COMAPE — teaser"
-permalink: /materiais/reels/teaser1/
+title: "COMAPE — post Instagram"
+permalink: /materiais/instagram/
 eleventyExcludeFromCollections: true
 ---
 
-<script>
-  // Página fica em branco (nada anima) até apertar espaço — pensada para
-  // gravação manual de tela: dá pra ficar com a captura já rodando e
-  // disparar a animação no momento exato. Precisa rodar antes dos scripts
-  // do p5 (incluídos logo abaixo, em partials/logo-forum.njk), que checam
-  // essa flag em setup() pra decidir se já começam a desenhar ou esperam.
-  window.COMAPE_AGUARDAR_ESPACO = true;
-  document.body.classList.add("aguardando-espaco");
-  function iniciarTeaserAoApertarEspaco(e) {
-    if (e.code !== "Space" && e.key !== " ") return;
-    e.preventDefault();
-    document.removeEventListener("keydown", iniciarTeaserAoApertarEspaco);
-    document.body.classList.remove("aguardando-espaco");
-    if (typeof window.loop === "function") window.loop();
-  }
-  document.addEventListener("keydown", iniciarTeaserAoApertarEspaco);
-</script>
+<div class="aviso-captura">
+  Espere a animação terminar (~4s). Depois, no DevTools (F12) → aba
+  <strong>Elements</strong>, clique com o botão direito na tag
+  <code>&lt;div class="tela-post"&gt;</code> → <strong>Capture node
+  screenshot</strong>. Sai um PNG 1080×1350px exato, pronto para postar.
+  Sem a chamada "Programação em breve"? Use
+  <a href="{{ '/materiais/instagram/sem-programacao/' | rel }}">esta versão</a>.
+  <br><a href="{{ '/materiais/' | rel }}">← voltar para Materiais</a>
+</div>
 
-<div class="tela-fone">
-  <section class="hero hero--media tela-fone__hero">
+<div class="tela-post">
+  <section class="hero hero--media tela-post__hero">
     <div class="hero__media">
       <img src="{{ '/assets/img/hero-ufmg-pb.jpg' | rel }}" alt="">
     </div>
-    <div class="tela-fone__conteudo">
+    <div class="tela-post__conteudo">
       {% include "partials/logo-forum.njk" %}
 
       <div class="subtitulo-forum anim-entrada anim-entrada--eyebrow">

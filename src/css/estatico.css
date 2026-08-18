@@ -1,0 +1,270 @@
+/* Páginas estáticas para exportar imagens a partir do mesmo hero animado do
+   site: o post de Instagram (4:5) e o pôster A3 (com e sem "Programação em
+   breve"). Cada página usa a animação de entrada normal (sem o mecanismo de
+   "aguardar espaço" dos /reels/ — aqui não há captura de vídeo frame a
+   frame, só uma imagem final; basta deixar a entrada rodar (~4s) antes de
+   capturar). Ver README, seção "Gerar imagens para Instagram e pôster A3".
+
+   Medidas fixas de propósito (não vw/vh) para que a saída (screenshot ou
+   impressão) tenha sempre exatamente o tamanho esperado, independente da
+   janela do navegador — mesmo raciocínio de src/css/reel.css. */
+
+.pagina-estatica {
+  margin: 0;
+  background: #0c0c0c;
+}
+
+/* Hub /materiais/ (src/materiais/index.md): página normal de conteúdo, não
+   um "palco" de captura em tamanho fixo — sobrescreve o fundo escuro do
+   .pagina-estatica genérico. */
+.pagina-estatica:has(.pagina-materiais) {
+  background: var(--cor-fundo);
+}
+
+.pagina-materiais {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: var(--espaco-5) var(--espaco-4);
+  font-family: var(--fonte-base);
+  color: var(--cor-texto);
+}
+
+.pagina-materiais h1 {
+  margin-top: 0;
+}
+
+.pagina-materiais__intro {
+  color: var(--cor-texto-suave);
+  margin-bottom: var(--espaco-5);
+}
+
+.cartao-material {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-sm);
+  padding: var(--espaco-3) var(--espaco-4);
+  margin-bottom: var(--espaco-3);
+}
+
+.cartao-material h2 {
+  margin-top: 0;
+  font-size: var(--texto-lg);
+}
+
+.cartao-material__botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.botao-material {
+  font-family: var(--fonte-base);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.1rem;
+  border: none;
+  border-radius: var(--raio-sm);
+  background: var(--cor-destaque-500);
+  color: #fff;
+  cursor: pointer;
+}
+
+.botao-material:hover {
+  background: var(--cor-destaque-700);
+}
+
+.aviso-captura {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10;
+  max-width: 26rem;
+  font-family: var(--fonte-base);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  background: #fff;
+  color: #111;
+  padding: 0.85rem 1rem;
+  border-radius: var(--raio-sm);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.aviso-captura code {
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: 0.25em;
+}
+
+/* ── Post Instagram — 1080×1350px (proporção 4:5) ──────────────────────── */
+
+.tela-post {
+  width: 1080px;
+  height: 1350px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.tela-post__hero.hero {
+  min-height: 1350px;
+  height: 1350px;
+  padding: 0;
+  border-bottom: none;
+}
+
+.tela-post__conteudo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 0 4.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:root {
+  --logo-forum-escala-post: 1;
+}
+
+.tela-post .logo-forum-escala {
+  --logo-forum-escala: var(--logo-forum-escala-post);
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+}
+
+.tela-post .logo-forum {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}
+
+.tela-post .subtitulo-forum {
+  font-size: 3.4rem;
+  gap: 1.5rem;
+  margin: 0 0 1.6rem;
+}
+
+.tela-post .data-forum {
+  font-size: 4.2rem;
+  margin: 0 0 1.6rem;
+}
+
+.tela-post .hero__lead {
+  font-size: 1.9rem;
+  line-height: 1.55;
+  max-width: 840px;
+  margin: 0 0 2.6rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.tela-post .brevemente-rotacao {
+  transform: rotate(-6deg);
+}
+
+.tela-post .brevemente {
+  font-family: var(--fonte-base);
+  font-weight: 700;
+  font-size: 2.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-destaque-500);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+/* ── Pôster A3 retrato — 297×420mm ──────────────────────────────────────
+   mm é uma unidade CSS válida e corresponde 1:1 ao papel na impressão —
+   usá-la aqui evita ter que converter para px/DPI na hora de imprimir. */
+
+.folha-a3 {
+  width: 297mm;
+  height: 420mm;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.folha-a3__hero.hero {
+  min-height: 420mm;
+  height: 420mm;
+  padding: 0;
+  border-bottom: none;
+}
+
+.folha-a3__conteudo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 0 30mm;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:root {
+  --logo-forum-escala-a3: 1.05;
+}
+
+.folha-a3 .logo-forum-escala {
+  --logo-forum-escala: var(--logo-forum-escala-a3);
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 14mm;
+}
+
+.folha-a3 .logo-forum {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.folha-a3 .subtitulo-forum {
+  font-size: 15mm;
+  gap: 10mm;
+  margin: 0 0 12mm;
+}
+
+.folha-a3 .data-forum {
+  font-size: 19mm;
+  margin: 0 0 12mm;
+}
+
+.folha-a3 .hero__lead {
+  font-size: 8.5mm;
+  line-height: 1.55;
+  max-width: 220mm;
+  margin: 0 0 18mm;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.folha-a3 .brevemente-rotacao {
+  transform: rotate(-6deg);
+}
+
+.folha-a3 .brevemente {
+  font-family: var(--fonte-base);
+  font-weight: 700;
+  font-size: 10mm;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-destaque-500);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+@page {
+  size: A3 portrait;
+  margin: 0;
+}
+
+@media print {
+  .aviso-captura {
+    display: none;
+  }
+
+  .pagina-estatica {
+    background: none;
+  }
+}

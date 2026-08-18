@@ -2,7 +2,7 @@
 layout: layouts/reel.njk
 templateEngineOverride: njk
 title: "COMAPE — teaser 2"
-permalink: /reels/teaser2/
+permalink: /materiais/reels/teaser2/
 eleventyExcludeFromCollections: true
 ---
 
@@ -18,6 +18,7 @@ eleventyExcludeFromCollections: true
 <div class="botoes-teaser2">
   <button id="botao-janela" type="button" class="botao-gravar botao-gravar--secundario">Abrir em janela 9:16</button>
   <button id="botao-gravar" type="button" class="botao-gravar">Gravar e iniciar</button>
+  <a href="{{ '/materiais/' | rel }}" class="botao-gravar botao-gravar--secundario">← Materiais</a>
 </div>
 
 <div class="tela-fone tela-fone--fluida">

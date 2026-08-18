@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Gera o vídeo do teaser para Instagram Reels (1080x1920) a partir da página
-// /reels/teaser1/, com captura determinística frame a frame — ver a seção
+// /materiais/reels/teaser1/, com captura determinística frame a frame — ver a seção
 // "Solução" em problema_reels.md para o racional completo.
 //
 // Uso:
@@ -37,7 +37,7 @@ function parseArgs() {
     dur: 10,
     fps: 30,
     out: path.join(os.homedir(), "Desktop", "teaser-comape.mp4"),
-    url: "http://localhost:8082/reels/teaser1/",
+    url: "http://localhost:8082/materiais/reels/teaser1/",
   };
   for (let i = 0; i < args.length; i++) {
     switch (args[i]) {
@@ -51,7 +51,7 @@ function parseArgs() {
   --dur <segundos>   duração total do vídeo (padrão: 10; mínimo: o que a animação durar, ~5.5s)
   --fps <n>          frames por segundo (padrão: 30)
   --out <arquivo>    arquivo de saída (padrão: ~/Desktop/teaser-comape.mp4)
-  --url <url>        página a gravar (padrão: http://localhost:8082/reels/teaser1/)`);
+  --url <url>        página a gravar (padrão: http://localhost:8082/materiais/reels/teaser1/)`);
         process.exit(0);
       default:
         console.error(`Opção desconhecida: ${args[i]} (use --help)`);
