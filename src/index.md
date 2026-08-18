@@ -57,7 +57,12 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           <tr>
             <td>9h–10h30</td>
             <td>
-              <small><strong>[Mesa de Abertura]</strong></small><br/>
+              <b>9h00-9h10:</b> <small><strong>[Abertura]</strong></small><br/>
+              Abertura institucional do 4º Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS.<br/>
+              <small><strong>Com:</strong> Marcos Flávio Freitas e Jessé Máximo Pereira (diretor e vice-diretor da Escola de Música), José Henrique Padovani e Helena Lopes (coordenador e subcoordenadora do PPGMUS) e Edite Rocha (presidenta da COMAPE)</small>
+              <br/>
+              <br/>
+              <b>9h10-10h30:</b> <small><strong>[Mesa de Abertura]</strong></small><br/>
               <strong>"PPGMUS ontem, hoje, amanhã"</strong><br>
               Mesa com ex-coordenadores/as do PPGMUS, oferecendo perspectivas sobre a trajetória, os desafios e o futuro do Programa.<br/>
               <small><strong>Com:</strong> Maurício Loureiro, Sérgio Freire, Ana Cláudia Assis, Luciana Monteiro, Flavio Barbeitas, Edite Rocha, Helena Lopes e José Henrique Padovani. <br/><strong>Mediação:</strong> José Henrique Padovani</small>
