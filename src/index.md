@@ -57,6 +57,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           <tr>
             <td>9h–10h30</td>
             <td>
+              <span class="tag-local tag-local--auditorio">Auditório | Escola de Música</span><br/>
               <small><strong>[Abertura]</strong></small><br/>
               <b>9h00-9h10:</b> 
               Abertura institucional do 4º Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS.<br/>
@@ -70,11 +71,13 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
               <small><strong>Com:</strong> Maurício Loureiro, Sérgio Freire, Ana Cláudia Assis, Luciana Monteiro, Flavio Barbeitas, Edite Rocha, Helena Lopes e José Henrique Padovani. <br/><strong>Mediação:</strong> José Henrique Padovani</small>
             </td>
             <td>
+              <span class="tag-local tag-local--cad2">Sala 207 | CAD2</span><br/>
               <strong>Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS</strong><br/> Apresentação da versão preliminar do Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS.<br/>
               <small><strong>Apresentação:</strong> Edite Rocha e José Henrique Padovani</small>
 
             </td>
             <td>
+              <span class="tag-local tag-local--auditorio">Auditório | Escola de Música</span><br/>
               <small><strong>[Palestra]</strong></small><br/>
               <strong>"Construção democrática do planejamento estratégico: nuances e singularidades da área de Música"</strong><br/>
               Palestra do consultor externo do PPGMUS, Prof. Dr. Luís Ricardo Queiroz, cobrindo aspectos relacionados à transversalidade, à avaliação multidimensional e à estruturação democrática de processos de autoavaliação e planejamento estratégico na Pós-Graduação.<br/>
@@ -82,17 +85,24 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
             </td>
           </tr>
           <tr>
+            <td>10h30–11h</td>
+            <td colspan="3" class="celula-coffee">coffee break</td>
+          </tr>
+          <tr>
             <td>11h–12h30</td>
             <td>
+              <span class="tag-local tag-local--auditorio">Auditório | Escola de Música</span><br/>
               <strong>A avaliação do PPGMUS no contexto da CAPES</strong><br/> 
               Apresentação da coordenação sobre as conquistas do PPGMUS na avaliação de 2021-2024 e os desafios que se apresentam no quadriênio atual.
                <br/><small><strong>Apresentação:</strong> Helena Lopes e José Henrique Padovani</small>
             </td>
             <td>
+              <span class="tag-local tag-local--cad2">Sala 207 | CAD2</span><br/>
               <strong>Diálogo e Construção Coletiva II</strong><br/> Diálogo entre GTs, docentes, discentes, TAEs, COMAPE e Colegiado do PPGMUS; apresentação e consolidação de propostas ao Colegiado e à COMAPE.
               <br/><small><strong>Mediação:</strong> Edite Rocha</small>
             </td>
             <td>
+              <span class="tag-local tag-local--cad2">Sala 207 | CAD2</span><br/>
               <strong>Diálogo com o Consultor Externo</strong><br/> 
               Diálogo com o consultor externo do PPGMUS, Prof. Dr. Luís Ricardo Queiroz, cobrindo aspectos levantados ao longo do Fórum e de sua apresentação.<br/>
               <small><strong>Mediação:</strong> Edite Rocha e José Henrique Padovani</small>
@@ -100,7 +110,8 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           </tr>
           <tr>
             <td>14h–15h30</td>
-            <td rowspan="2">
+            <td rowspan="3">
+              <span class="tag-local tag-local--sala3003">Sala 3003 | Escola de Música</span><br/>
               <strong>Diálogo e Construção Coletiva I</strong><br/>
               Elaboração coletiva de propostas para enfrentar desafios atuais do PPGMUS, a partir de informações, exigências institucionais e estudos/propostas preliminares.
              <br/>
@@ -118,19 +129,26 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
               <small><strong>Mediação:</strong> COMAPE e Coordenadores de Linhas de Pesquisa</small>
             </td>
             <td>
+              <span class="tag-local tag-local--cad2">Sala 207 | CAD2</span><br/>
               <strong>Recepção de ingressantes</strong><br/>
               Apresentação de procedimentos acadêmicos e de informações diversas relacionadas ao curso, auxílios, bolsas, aproveitamento de créditos, integralização, marcação de bancas, etc.<br/>
               <small><strong>Apresentação:</strong> Coordenação; TAEs; representantes discentes.</small>
             </td>
-            <td rowspan="2">
+            <td rowspan="3">
+              <span class="tag-local tag-local--sala1014">Sala 1014 (sala de reuniões) | Escola de Música</span><br/>
               <strong>Reunião fechada com Consultor Externo</strong><br/>
               Reunião conjunta do Colegiado do PPGMUS e da COMAPE com consultor externo do Programa, Prof. Dr. Luís Ricardo Queiroz (UFPB).<br/>
               <small><strong>Participantes:</strong> Colegiado do PPGMUS, COMAPE e Prof. Dr. Luís Ricardo Queiroz (UFPB).</small>
             </td>
           </tr>
           <tr>
+            <td>15h30–16h</td>
+            <td class="celula-coffee">coffee break</td>
+          </tr>
+          <tr>
             <td>16h–17h30</td>
             <td>
+              <span class="tag-local tag-local--cad2">Sala 207 | CAD2</span><br/>
               <small><strong>[Mesa com egressos]</strong></small><br/>
               <strong>"Após a pós"</strong><br/> 
               Mesa com egressos do PPGMUS sobre: trajetórias, inserção e atuação profissional em diferentes contextos; perspectivas e contribuições críticas sobre o Programa. <br/>

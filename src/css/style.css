@@ -635,15 +635,15 @@ p {
   border-bottom: 1px solid var(--cor-borda);
 }
 
-.lista-documentos li > strong {
+.lista-documentos li>strong {
   display: block;
 }
 
-.lista-documentos li > p {
+.lista-documentos li>p {
   margin: 0.35em 0 0;
 }
 
-.lista-documentos li > p.etiqueta {
+.lista-documentos li>p.etiqueta {
   margin: 0 0 var(--espaco-1);
 }
 
@@ -732,6 +732,45 @@ p {
   font-weight: 700;
   white-space: nowrap;
   color: var(--cor-primaria-700);
+}
+
+/* Coffee break: célula própria, com fundo diferente do resto da tabela
+   para se destacar visualmente como um intervalo (não uma atividade). */
+.tabela-programacao .celula-coffee {
+  background: var(--cor-cinza-muito-suave);
+  color: var(--cor-primaria-900);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Tag de local/sala: identifica onde cada atividade acontece, destacada
+   no topo da respectiva célula da tabela de programação. */
+.tag-local {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  margin: 0 0 0.4em;
+  border-radius: var(--raio-sm);
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  line-height: 1.3;
+  color: #ffffff;
+  white-space: normal;
+}
+
+.tag-local--auditorio {
+  background: var(--cor-primaria-700);
+}
+
+.tag-local--sala3003 {
+  background: var(--cor-primaria-500);
+}
+
+.tag-local--cad2 {
+  background: var(--cor-destaque-700);
+}
+
+.tag-local--sala1014 {
+  background: var(--cor-cinza-escuro-suave);
 }
 
 /* Logos institucionais */

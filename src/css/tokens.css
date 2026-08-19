@@ -59,6 +59,15 @@
   --cor-superficie: #ffffff;
   --cor-borda: #d7e6f5;
 
+  --cor-cinza-muito-suave: #f2f2f2;
+  --cor-cinza-suave: #e0e0e0;
+  --cor-cinza-medio-claro: #d7d7d7;
+  --cor-cinza-medio: #b7b7b7;
+  --cor-cinza-medio-escuro: #8a8a8a;
+  --cor-cinza-escuro-suave: #616161;
+  --cor-cinza-escuro: #4a4a4a;
+  --cor-cinza-muito-escuro: #1a1a1a;
+
   /* Tipografia — Poppins para tudo (títulos e texto) */
   --fonte-base: "Poppins", "Segoe UI", Arial, sans-serif;
   --fonte-titulo: "Poppins", "Segoe UI", Arial, sans-serif;
