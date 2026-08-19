@@ -743,6 +743,25 @@ p {
   text-align: center;
 }
 
+.tabela-programacao .celula-coffee small {
+  display: inline;
+  margin-top: 0;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+}
+
+/* Coffee break "parcial": em 15h30–16h só a quinta-feira tem intervalo
+   (quarta e sexta seguem em atividade, cobrindo a linha via rowspan). Uma
+   borda tracejada no topo/base da célula do horário e da célula do coffee
+   break marca a mesma "faixa" horizontal da tabela, ajudando a enxergar
+   que os dois pertencem à mesma linha mesmo com a célula de rowspan da
+   quarta-feira no meio. */
+.tabela-programacao .linha-coffee-parcial td:first-child,
+.tabela-programacao .linha-coffee-parcial .celula-coffee {
+  border-top: 2px dashed var(--cor-cinza-medio-escuro);
+  border-bottom: 2px dashed var(--cor-cinza-medio-escuro);
+}
+
 /* Tag de local/sala: identifica onde cada atividade acontece, destacada
    no topo da respectiva célula da tabela de programação. */
 .tag-local {

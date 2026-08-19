@@ -145,9 +145,9 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
               <small><strong>Participantes:</strong> Colegiado do PPGMUS, COMAPE e Prof. Dr. Luís Ricardo Queiroz (UFPB).</small>
             </td>
           </tr>
-          <tr>
+          <tr class="linha-coffee-parcial">
             <td>15h30–16h</td>
-            <td class="celula-coffee">coffee break</td>
+            <td class="celula-coffee">coffee break <small>(quinta-feira)</small></td>
           </tr>
           <tr>
             <td>16h–17h30</td>
