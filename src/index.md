@@ -140,7 +140,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
             </td>
             <td rowspan="3">
               <span class="tag-local tag-local--sala1014">Sala 1014 | Escola de Música da UFMG</span><br/>
-              <strong>Reunião fechada com Consultor Externo</strong><br/>
+              <strong>Reunião interna com Consultor Externo</strong><br/>
               Reunião conjunta do Colegiado do PPGMUS e da COMAPE com consultor externo do Programa, Prof. Dr. Luís Ricardo Queiroz (UFPB).<br/>
               <small><strong>Participantes:</strong> Colegiado do PPGMUS, COMAPE e Prof. Dr. Luís Ricardo Queiroz (UFPB).</small>
             </td>
