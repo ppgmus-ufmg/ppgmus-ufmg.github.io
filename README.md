@@ -28,9 +28,6 @@ src/
   pessoas/*.md                  → um arquivo por membro da COMAPE
   formularios.md                → aba "Formulários" (links de Google Forms, a preencher)
   contato.md                     → aba "Contato"
-  materiais/                       → ferramentas internas p/ gerar Reels, post Instagram e pôster A3 (ver seção abaixo; só em npm start, não vai para o site publicado)
-scripts/
-  gravar-reel.js           → gera o MP4 do teaser para Reels (npm run reel)
 ```
 
 ## Como testar localmente (offline)
@@ -129,98 +126,6 @@ e nas seções `.hero--media` / `.anim-entrada` de `src/css/style.css`:
 2. O símbolo desliza para a esquerda e o texto "4º Fórum..." aparece em preto.
 3. A foto de fundo entra em fade, o texto passa a branco, e o menu, a data,
    o texto de chamada e a seta de "confira a programação" aparecem juntos.
-
-## Materiais para divulgação (Reels, Instagram, pôster A3)
-
-`src/materiais/` reúne ferramentas internas que reaproveitam o mesmo hero
-animado da home (logo, data, texto de chamada e "Programação em breve")
-para gerar o vídeo de Reels, o post de Instagram e o pôster A3. É **uso
-local só**: essas páginas só existem rodando `npm start` — o data file
-`src/materiais/materiais.11tydata.js` zera o `permalink` delas quando
-`eleventy.env.runMode` é `"build"` (ou seja, durante `npm run build`, que é
-o que o workflow de deploy roda), então elas nunca vão para o `_site/`
-publicado no GitHub Pages.
-
-Rode `npm start` e abra **http://localhost:8080/materiais/** — o hub lista
-os três materiais, cada um com um botão que abre a página geradora numa
-janela nova já dimensionada na proporção certa (mesmo mecanismo do botão
-"Abrir em janela 9:16" descrito abaixo) e as instruções de como capturar o
-resultado final.
-
-### Vídeo para Reels/Stories (9:16)
-
-As páginas `src/materiais/reels/teaser1.md` e `.../teaser2.md` reproduzem a
-animação de entrada da home em formato de celular (9:16). O jeito
-recomendado de gerar o vídeo é o script `scripts/gravar-reel.js`, que abre
-`/materiais/reels/teaser1/` num Chrome headless e captura a animação
-**frame a frame, de forma determinística** (o relógio da animação é
-controlado passo a passo pelo script), o que garante 30fps constantes sem
-frames perdidos — ver histórico e racional em `problema_reels.md`.
-
-Pré-requisitos: `npm install` já feito, `ffmpeg` no PATH e o servidor de
-dev rodando na porta 8082:
-
-```bash
-npx eleventy --serve --port=8082
-```
-
-Em outro terminal, na raiz do repositório:
-
-```bash
-# 10 segundos (padrão), salva em ~/Desktop/teaser-comape.mp4
-npm run reel
-
-# duração e arquivo de saída específicos
-npm run reel -- --dur 15 --out ~/Desktop/teaser-15s.mp4
-```
-
-Opções (o `--` após `npm run reel` é obrigatório; `--help` lista todas):
-
-- `--dur <segundos>` — duração **total** do vídeo. A animação em si dura
-  ~5,5s; o restante é preenchido segurando o frame final.
-- `--fps <n>` — padrão 30.
-- `--out <arquivo>` — padrão `~/Desktop/teaser-comape.mp4` (sobrescreve se
-  já existir).
-- `--url <url>` — padrão `http://localhost:8082/materiais/reels/teaser1/`.
-
-O resultado é um MP4 1080x1920 (H.264, `+faststart`), pronto para o
-Instagram. Cada execução gera uma animação ligeiramente diferente — o
-sorteio das janelas do símbolo é aleatório, por design. Se o Puppeteer
-reclamar de browser ausente (máquina nova), rode
-`npx puppeteer browsers install chrome`.
-
-A página `/materiais/reels/teaser2/` é a alternativa manual: o botão "Abrir
-em janela 9:16" abre a mesma página numa janela nova já no formato
-9:16 (`window.open` com `width`/`height` fixos — não dá para redimensionar
-a janela atual via JS por segurança do navegador), e o botão "Gravar e
-iniciar", clicado **dentro dessa janela nova**, grava a própria aba com
-`getDisplayMedia` — útil fora do ambiente de dev, mas menos confiável
-(metadados de duração imprecisos; testada só no Chrome).
-
-### Post para Instagram (4:5, 1080×1350px)
-
-`src/materiais/instagram/post.md` (`/materiais/instagram/`, com a chamada
-"Programação em breve") e `post-sem-programacao.md`
-(`/materiais/instagram/sem-programacao/`, sem ela — para quando a
-programação já estiver definida). Abra a página, espere a animação de
-entrada terminar (~4s) e, no DevTools (F12) → aba **Elements**, clique com
-o botão direito na `<div class="tela-post">` → **Capture node screenshot**.
-Sai um PNG 1080×1350px exato, já pronto para postar.
-
-### Pôster A3 retrato (297×420mm)
-
-`src/materiais/poster/a3.md` (`/materiais/poster/a3/`, com a chamada) e
-`a3-sem-programacao.md` (`/materiais/poster/a3-sem-programacao/`, sem
-ela). Espere a animação terminar e use Ctrl/Cmd+P → "Salvar como PDF" →
-papel **A3**, margens **nenhuma**, sem cabeçalho/rodapé, escala 100%.
-
----
-
-Instagram e pôster usam `src/css/estatico.css` e o layout
-`layouts/estatico.njk`; os Reels usam `src/css/reel.css` e
-`layouts/reel.njk`. Em ambos os casos os tamanhos das páginas geradoras são
-fixos (não responsivos) para que a captura/impressão saia sempre na
-resolução esperada, independente da janela do navegador.
 
 ## Publicação (GitHub Pages)
 

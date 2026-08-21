@@ -280,8 +280,8 @@ p {
    grayscale, não colorido+filtro) — não precisa de filter:grayscale(1) aqui.
    Esse filtro chegou a estar presente e é caro de recompor a cada frame
    durante o fade de opacidade (especialmente sob renderização por
-   software), o que causava saltos na animação nos vídeos gerados para o
-   /reels/. Se algum dia entrar um vídeo ou imagem colorida nesse lugar,
+   software), o que causava saltos na animação em capturas de vídeo desta
+   página. Se algum dia entrar um vídeo ou imagem colorida nesse lugar,
    aplique o preto-e-branco no arquivo em si (ex.: ffmpeg/photoshop), não
    via CSS. */
 

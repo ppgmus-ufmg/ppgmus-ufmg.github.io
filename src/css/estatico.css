@@ -3,7 +3,7 @@
    breve"). Cada página usa a animação de entrada normal (sem o mecanismo de
    "aguardar espaço" dos /reels/ — aqui não há captura de vídeo frame a
    frame, só uma imagem final; basta deixar a entrada rodar (~4s) antes de
-   capturar). Ver README, seção "Gerar imagens para Instagram e pôster A3".
+   capturar). Como usar cada página: ver src/materiais/index.md.
 
    Medidas fixas de propósito (não vw/vh) para que a saída (screenshot ou
    impressão) tenha sempre exatamente o tamanho esperado, independente da

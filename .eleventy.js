@@ -1,8 +1,25 @@
 const { DateTime } = require("luxon");
+const fs = require("fs");
 const path = require("path");
 
+// CSS usado só pelas ferramentas locais de src/materiais/, que nunca são
+// publicadas (o permalink delas é zerado em modo "build" — ver
+// src/materiais/materiais.11tydata.js). Sem a exclusão abaixo esses arquivos
+// eram copiados para o _site/ mesmo sem nenhuma página publicada referenciá-los.
+// Em `npm start` continuam sendo servidos normalmente, para as ferramentas
+// locais seguirem funcionando.
+const CSS_SO_LOCAL = new Set(["estatico.css", "reel.css"]);
+
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/css");
+  if (process.env.ELEVENTY_RUN_MODE === "build") {
+    for (const arquivo of fs.readdirSync(path.join(__dirname, "src", "css"))) {
+      if (!CSS_SO_LOCAL.has(arquivo)) {
+        eleventyConfig.addPassthroughCopy({ [`src/css/${arquivo}`]: `css/${arquivo}` });
+      }
+    }
+  } else {
+    eleventyConfig.addPassthroughCopy("src/css");
+  }
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
 

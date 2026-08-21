@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // Gera o vídeo do teaser para Instagram Reels (1080x1920) a partir da página
-// /materiais/reels/teaser1/, com captura determinística frame a frame — ver a seção
-// "Solução" em problema_reels.md para o racional completo.
+// /materiais/reels/teaser1/, com captura determinística frame a frame: o relógio
+// da animação é avançado passo a passo pelo script, o que garante 30fps constantes
+// sem frames perdidos (não usar screencast nem setVirtualTimePolicy — ver o
+// comentário sobre o laço de captura mais abaixo).
 //
 // Uso:
 //   npm run reel                        → 10s, salva em ~/Desktop/teaser-comape.mp4

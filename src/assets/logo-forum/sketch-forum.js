@@ -66,8 +66,8 @@ let windowsToOpen = [];
 
 function setup() {
   setAttributes("alpha", true);
-  // Sem isso, capturas de tela/aba (getDisplayMedia, usado em
-  // /reels/teaser2/) às vezes não pegam o conteúdo de canvas WebGL — o
+  // Sem isso, capturas de tela/aba (getDisplayMedia) às vezes não pegam
+  // o conteúdo de canvas WebGL — o
   // navegador pode ler um buffer já limpo entre frames. Custo de
   // performance desprezível pra um canvas deste tamanho.
   setAttributes("preserveDrawingBuffer", true);
@@ -82,7 +82,7 @@ function setup() {
   // Trava em 60fps: a animação de abertura das janelas é cronometrada em
   // número de frames (FRAMES_INIT_PAUSE etc.), não em tempo real. Sem isso,
   // em telas de taxa de atualização alta (120Hz+) ou em ambientes sem
-  // vsync real (ex.: captura headless para os vídeos do /reels/), o
+  // vsync real (ex.: captura headless frame a frame), o
   // requestAnimationFrame pode disparar mais rápido que 60Hz e a animação
   // toda — símbolo e a revelação de texto/foto que ela dispara depois —
   // acaba correndo mais rápido do que o previsto.
@@ -120,9 +120,9 @@ function setup() {
     startFrame: floor(random(0, maxOffset + 1))
   }));
 
-  // Páginas de gravação (reels/teaser1 e teaser2): fica parado até apertar
-  // espaço ou clicar em "Gravar" — ver os scripts inline em cada página,
-  // que chamam loop() de volta.
+  // Páginas de captura: se a página definir COMAPE_AGUARDAR_ESPACO ou
+  // COMAPE_AGUARDAR_INICIO, a animação fica parada até o disparo — ver o
+  // script inline da própria página, que chama loop() de volta.
   if (window.COMAPE_AGUARDAR_ESPACO || window.COMAPE_AGUARDAR_INICIO) {
     noLoop();
   }
@@ -163,8 +163,8 @@ function draw() {
         // frame. Sem isso, o WebGL seguia consumindo CPU/composição à toa
         // bem no momento em que várias transições CSS disparam juntas
         // (texto, foto, cor), e isso podia atrapalhar a entrega de frames
-        // de capturas de tela/aba (getDisplayMedia e a gravação automática
-        // dos vídeos do /reels/), gerando saltos na transição em vez de
+        // de capturas de tela/aba (getDisplayMedia) e de gravações
+        // automáticas da página, gerando saltos na transição em vez de
         // um fade suave.
         noLoop();
       }
