@@ -21,6 +21,10 @@ Thumbs.db
 *.doc
 /privado/
 /rascunhos/
+/convites/
+# Ferramenta interna de geração de posts do Instagram (imagens e textos).
+# Também tem um /instagram/.gitignore com "*" como segunda trava.
+/instagram/
 
 # Pastas de apoio/fonte que ficam só locais — os PDFs públicos já foram
 # copiados para src/assets/documentos/, as fotos convertidas em P&B para

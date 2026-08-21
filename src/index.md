@@ -42,7 +42,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
 
 <section class="secao secao--alt" id="programacao">
   <div class="container">
-    <h2>Programação <span class="sufixo-titulo">(em revisão)</span></h2>
+    <h2>Programação</h2>
     <div class="tabela-wrapper reveal-scroll">
       <table class="tabela-programacao">
         <thead>
