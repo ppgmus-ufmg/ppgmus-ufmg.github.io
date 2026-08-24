@@ -9,6 +9,24 @@ descricao: Histórico dos Fóruns de Autoavaliação e Planejamento Estratégico
 <section class="secao">
   <div class="container prosa">
     <h1>Histórico</h1>
-    <p>Página em construção.</p>
+    <p>
+      Edições anteriores do Fórum de Autoavaliação e Planejamento
+      Estratégico do PPGMUS, com os materiais e apresentações de cada uma.
+    </p>
+
+    {%- for edicao in collections.historico %}
+    <h2>{{ edicao.data.title }}</h2>
+    {%- if edicao.data.data %}<p class="etiqueta">{{ edicao.data.data }}</p>{% endif %}
+    {{ edicao.templateContent | safe }}
+    <ul class="lista-documentos">
+      {%- for doc in edicao.data.arquivos %}
+      <li>
+        <strong>{{ doc.titulo }}</strong>
+        <p>{{ doc.descricao }}</p>
+        <p><a class="botao botao--secundario" href="{{ doc.arquivo | rel }}">Abrir documento</a></p>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- endfor %}
   </div>
 </section>
