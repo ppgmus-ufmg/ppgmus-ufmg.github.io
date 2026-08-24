@@ -120,16 +120,12 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
               Elaboração coletiva de propostas para enfrentar desafios atuais do PPGMUS, a partir de informações, exigências institucionais e estudos/propostas preliminares.
              <br/>
               <br/>
-              <b>14h00-14h10:</b> Lançamento do formulário de propostas de ações/aperfeiçoamentos<br/><small><strong>Apresentação:</strong>
-               Edite Rocha</small>
-              <br/>
-              <br/>
-              <br/>
-              <b>14h10-14h30:</b> Apresentação de desafios e estudos/propostas preliminares<br/><small><strong>Apresentação:</strong>
+
+              <b>14h00-14h20:</b> Apresentação de desafios e estudos/propostas preliminares<br/><small><strong>Apresentação:</strong>
                José Henrique Padovani e Helena Lopes</small>
               <br/>
               <br/>
-              <b>14h30-17h30:</b> GTs de construção coletiva (análise de questões específicas a partir de documentos, estudos e propostas preliminares; elaboração de propostas a serem debatidas ao longo do Fórum). <br/>
+              <b>14h20-17h30:</b> GTs de construção coletiva (análise de questões específicas a partir de documentos, estudos e propostas preliminares; elaboração de propostas a serem debatidas ao longo do Fórum). <br/>
               <small><strong>Mediação:</strong> COMAPE e Coordenadores de Linhas de Pesquisa</small>
             </td>
             <td>
