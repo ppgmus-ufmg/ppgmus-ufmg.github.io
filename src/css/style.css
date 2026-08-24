@@ -734,13 +734,23 @@ p {
   color: var(--cor-primaria-700);
 }
 
-/* Coffee break: célula própria, com fundo diferente do resto da tabela
-   para se destacar visualmente como um intervalo (não uma atividade). */
+/* Coffee break / intervalo: célula própria, com fundo diferente do resto
+   da tabela para se destacar visualmente como uma pausa (não uma
+   atividade). Coffee break usa um cinza um pouco mais escuro que
+   intervalo (e intervalo de almoço), para diferenciar os dois tipos de
+   pausa à primeira vista. */
 .tabela-programacao .celula-coffee {
-  background: var(--cor-cinza-muito-suave);
   color: var(--cor-primaria-900);
   font-weight: 700;
   text-align: center;
+}
+
+.tabela-programacao .celula-coffee--break {
+  background: var(--cor-cinza-suave);
+}
+
+.tabela-programacao .celula-coffee--intervalo {
+  background: var(--cor-cinza-muito-suave);
 }
 
 .tabela-programacao .celula-coffee small {
@@ -748,18 +758,6 @@ p {
   margin-top: 0;
   font-weight: 600;
   color: var(--cor-texto-suave);
-}
-
-/* Coffee break "parcial": em 15h30–16h só a quinta-feira tem intervalo
-   (quarta e sexta seguem em atividade, cobrindo a linha via rowspan). Uma
-   borda tracejada no topo/base da célula do horário e da célula do coffee
-   break marca a mesma "faixa" horizontal da tabela, ajudando a enxergar
-   que os dois pertencem à mesma linha mesmo com a célula de rowspan da
-   quarta-feira no meio. */
-.tabela-programacao .linha-coffee-parcial td:first-child,
-.tabela-programacao .linha-coffee-parcial .celula-coffee {
-  border-top: 2px dashed var(--cor-cinza-medio-escuro);
-  border-bottom: 2px dashed var(--cor-cinza-medio-escuro);
 }
 
 /* Tag de local/sala: identifica onde cada atividade acontece, destacada

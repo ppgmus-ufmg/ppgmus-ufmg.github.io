@@ -86,9 +86,9 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           </tr>
           <tr>
             <td>10h30–11h</td>
-            <td class="celula-coffee">coffee break</td>
-            <td class="celula-coffee">intervalo</td>
-            <td class="celula-coffee">coffee break</td>
+            <td class="celula-coffee celula-coffee--break">coffee break</td>
+            <td class="celula-coffee celula-coffee--intervalo">intervalo</td>
+            <td class="celula-coffee celula-coffee--break">coffee break</td>
           </tr>
           <tr>
             <td>11h–12h30</td>
@@ -113,7 +113,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           </tr>
           <tr>
             <td>12h30–14h</td>
-            <td colspan="3" class="celula-coffee">intervalo para almoço</td>
+            <td colspan="3" class="celula-coffee celula-coffee--intervalo">intervalo para almoço</td>
           </tr>
           <tr>
             <td>14h–15h30</td>
@@ -144,10 +144,10 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
               <small><strong>Participantes:</strong> Colegiado do PPGMUS, COMAPE e Prof. Dr. Luís Ricardo Queiroz (UFPB).</small>
             </td>
           </tr>
-          <tr class="linha-coffee-parcial">
+          <tr>
             <td>15h30–16h</td>
-            <td class="celula-coffee">intervalo</td>
-            <td class="celula-coffee">coffee break <small>(quinta-feira)</small></td>
+            <td class="celula-coffee celula-coffee--intervalo">intervalo</td>
+            <td class="celula-coffee celula-coffee--break">coffee break</td>
           </tr>
           <tr>
             <td>16h–17h30</td>
