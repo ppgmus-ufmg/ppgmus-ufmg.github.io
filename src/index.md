@@ -86,7 +86,9 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           </tr>
           <tr>
             <td>10h30–11h</td>
-            <td colspan="3" class="celula-coffee">coffee break</td>
+            <td class="celula-coffee">coffee break</td>
+            <td class="celula-coffee">intervalo</td>
+            <td class="celula-coffee">coffee break</td>
           </tr>
           <tr>
             <td>11h–12h30</td>
@@ -115,7 +117,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           </tr>
           <tr>
             <td>14h–15h30</td>
-            <td rowspan="3">
+            <td>
               <span class="tag-local tag-local--sala3003">Sala 3003 | Escola de Música da UFMG</span><br/>
               <strong>Diálogo e Construção Coletiva I</strong><br/>
               Elaboração coletiva de propostas para enfrentar desafios atuais do PPGMUS, a partir de informações, exigências institucionais e estudos/propostas preliminares.
@@ -126,7 +128,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
                José Henrique Padovani e Helena Lopes</small>
               <br/>
               <br/>
-              <b>14h20-17h30:</b> GTs de construção coletiva (análise de questões específicas a partir de documentos, estudos e propostas preliminares; elaboração de propostas a serem debatidas ao longo do Fórum). <br/>
+              <b>14h20-15h30:</b> GTs de construção coletiva — primeira parte (análise de questões específicas a partir de documentos, estudos e propostas preliminares; elaboração de propostas a serem debatidas ao longo do Fórum). <br/>
               <small><strong>Mediação:</strong> COMAPE e Coordenadores de Linhas de Pesquisa</small>
             </td>
             <td>
@@ -144,10 +146,17 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           </tr>
           <tr class="linha-coffee-parcial">
             <td>15h30–16h</td>
+            <td class="celula-coffee">intervalo</td>
             <td class="celula-coffee">coffee break <small>(quinta-feira)</small></td>
           </tr>
           <tr>
             <td>16h–17h30</td>
+            <td>
+              <span class="tag-local tag-local--sala3003">Sala 3003 | Escola de Música da UFMG</span><br/>
+              <strong>Diálogo e Construção Coletiva I</strong> <small>(continuação)</small><br/>
+              <b>16h-17h30:</b> GTs de construção coletiva — segunda parte (análise de questões específicas a partir de documentos, estudos e propostas preliminares; elaboração de propostas a serem debatidas ao longo do Fórum). <br/>
+              <small><strong>Mediação:</strong> COMAPE e Coordenadores de Linhas de Pesquisa</small>
+            </td>
             <td>
               <span class="tag-local tag-local--cad2">Sala 207 | CAD2</span><br/>
               <small><strong>[Mesa com egressos]</strong></small><br/>
