@@ -103,7 +103,8 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
             </td>
             <td>
               <span class="tag-local tag-local--auditorio">Auditório | Escola de Música da UFMG</span><br/>
-              <strong>Diálogo e Construção Coletiva III -  com o Consultor Externo</strong><br/> 
+              <strong>Diálogo e Construção Coletiva III<br/> 
+              (com o consultor externo)</strong><br/> 
               Diálogo com o consultor externo do PPGMUS, Prof. Dr. Luís Ricardo Queiroz, cobrindo aspectos levantados ao longo do Fórum e de sua apresentação.<br/>
               <small><strong>Mediação:</strong> Edite Rocha e José Henrique Padovani</small>
             </td>
