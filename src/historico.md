@@ -6,7 +6,7 @@ permalink: /historico/
 descricao: Histórico dos Fóruns de Autoavaliação e Planejamento Estratégico do PPGMUS.
 ---
 
-{%- from "partials/lista-documentos.njk" import linhaDocumento %}
+{%- from "partials/lista-documentos.njk" import linhaDocumento with context %}
 
 <section class="secao">
   <div class="container">

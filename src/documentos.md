@@ -6,7 +6,7 @@ permalink: /documentos/
 descricao: Documentos e materiais de apoio da COMAPE e do PPGMUS.
 ---
 
-{%- from "partials/lista-documentos.njk" import linhaDocumento %}
+{%- from "partials/lista-documentos.njk" import linhaDocumento with context %}
 
 {%- macro descricaoComCategoria(doc) %}
 {%- set corpo = doc.templateContent | semParagrafo %}
