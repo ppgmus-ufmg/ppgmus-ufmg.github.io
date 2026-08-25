@@ -74,6 +74,16 @@ module.exports = function (eleventyConfig) {
     (html || "").trim().replace(/^<p>([\s\S]*)<\/p>$/, "$1")
   );
 
+  // Formato de um link de documento, para o selo exibido em
+  // lista-documentos.njk: extensão real do arquivo (PDF, DOCX...) quando
+  // houver uma antes do fim da URL (ignorando pontos do domínio, ex.
+  // "www.ufmg.br"), ou "LINK" para páginas externas sem extensão de
+  // arquivo (ex. o Regimento Geral da UFMG, uma página HTML).
+  eleventyConfig.addFilter("formatoArquivo", (url) => {
+    const m = /\.([a-z0-9]{2,5})(?:[?#]|$)/i.exec(url || "");
+    return m ? m[1].toUpperCase() : "LINK";
+  });
+
   return {
     dir: {
       input: "src",

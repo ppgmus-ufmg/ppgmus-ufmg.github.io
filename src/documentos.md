@@ -30,6 +30,15 @@ descricao: Documentos e materiais de apoio da COMAPE e do PPGMUS.
       {%- endfor %}
     </ul>
 
+    <h2>Administração Central da UFMG e PRPG</h2>
+    <ul class="lista-documentos-compacta">
+      {%- for doc in collections.documentos %}
+      {%- if doc.data.grupo == "central-ufmg" %}
+      {{ linhaDocumento(doc.data.title, doc.data.tipo, doc.data.arquivo, doc.templateContent | semParagrafo) }}
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+
     <h2>Documentos CAPES</h2>
     <h3>Quadriênio 2025–28</h3>
     <ul class="lista-documentos-compacta">

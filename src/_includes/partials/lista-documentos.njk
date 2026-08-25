@@ -11,18 +11,22 @@
 {%- endif %}
 {%- endmacro %}
 
-{%- macro iconeFormato() %}
+{%- macro iconeFormato(formato) %}
+{%- if formato == "LINK" %}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+{%- else %}
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+{%- endif %}
 {%- endmacro %}
 
 {%- macro linhaDocumento(titulo, tipo, arquivo, descricao) %}
-{%- set formato = arquivo.split(".") | last | upper %}
+{%- set formato = arquivo | formatoArquivo %}
 <li>
-  <a href="{{ arquivo | rel }}" class="lista-documentos-compacta__item">
+  <a href="{{ arquivo | rel }}" class="lista-documentos-compacta__item"{% if formato == "LINK" %} target="_blank" rel="noopener"{% endif %}>
     <span class="lista-documentos-compacta__tipo">
       {{ iconeTipo(tipo) }}
       {{ tipo }}
-      <span class="lista-documentos-compacta__formato">{{ iconeFormato() }}{{ formato }}</span>
+      <span class="lista-documentos-compacta__formato">{{ iconeFormato(formato) }}{{ formato }}</span>
     </span>
     <span class="lista-documentos-compacta__desc"><strong>{{ titulo }}</strong> — {{ descricao | safe }}</span>
   </a>
