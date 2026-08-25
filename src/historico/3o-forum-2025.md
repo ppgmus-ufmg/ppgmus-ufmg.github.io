@@ -113,9 +113,4 @@ proposta do programa, corpo docente/discente e produção (o de maior peso
 na nota) e inovação/impacto; e a **FINEP**, que sustenta grandes
 investimentos em infraestrutura negociados diretamente com a instituição.
 
-Entre os diagnósticos apresentados para a área de música no país: pouca
-cultura de pesquisa já na graduação, baixa procura por editais de demanda
-induzida e forte assimetria regional na pós-graduação (apenas 12 dos 26
-programas de música do Brasil oferecem doutorado). O consultor defendeu
-que a estratégia do PPGMUS foque na consolidação de uma identidade e produção próprias,
-articuladas também às lógicas de financiamento de agências de fomento.
+Entre os diagnósticos apresentados para a área de música no país: pouca cultura de pesquisa já na graduação, levando à tendência de reprodução em detrimento da inovação; baixa procura por editais de demanda induzida; e forte assimetria regional na pós-graduação (apenas 12 dos 26 programas de música do Brasil oferecem doutorado). O consultor defendeu que o PPGMUS não se limite a perseguir diretrizes e parâmetros da CAPES, mas que foque na consolidação de  identidade e produção próprias, articuladas também às lógicas de financiamento das agências de fomento.
