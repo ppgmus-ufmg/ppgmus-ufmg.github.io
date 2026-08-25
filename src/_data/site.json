@@ -10,10 +10,10 @@
   "nav": [
     { "titulo": "Início", "href": "/" },
     { "titulo": "Programação (4º Fórum)", "href": "/#programacao" },
-    { "titulo": "Formulários", "href": "/formularios/" },
-    { "titulo": "Documentos", "href": "/documentos/" },
-    { "titulo": "Estudos", "href": "/estudos/" },
     { "titulo": "Histórico", "href": "/historico/" },
+    { "titulo": "Documentos", "href": "/documentos/" },
+    { "titulo": "Dados/Estudos", "href": "/estudos/" },
+    { "titulo": "Formulários", "href": "/formularios/" },
     { "titulo": "Pessoas", "href": "/pessoas/" },
     { "titulo": "Contato", "href": "/contato/" }
   ]
