@@ -86,9 +86,9 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           </tr>
           <tr>
             <td>10h30–11h</td>
-            <td class="celula-coffee celula-coffee--break">coffee break</td>
+            <td class="celula-coffee celula-coffee--break">café</td>
             <td class="celula-coffee celula-coffee--intervalo">intervalo</td>
-            <td class="celula-coffee celula-coffee--break">coffee break</td>
+            <td class="celula-coffee celula-coffee--break">café</td>
           </tr>
           <tr>
             <td>11h–12h30</td>
@@ -147,7 +147,7 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
           <tr>
             <td>15h30–16h</td>
             <td class="celula-coffee celula-coffee--intervalo">intervalo</td>
-            <td class="celula-coffee celula-coffee--break">coffee break</td>
+            <td class="celula-coffee celula-coffee--break">café</td>
           </tr>
           <tr>
             <td>16h–17h30</td>
