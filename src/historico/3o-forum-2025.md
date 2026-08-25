@@ -3,7 +3,7 @@ title: "3º Fórum de Autoavaliação e Planejamento Estratégico"
 edicao: 3
 data: "4 e 5 de dezembro de 2025"
 coordenacao_ppgmus: "Helena Lopes (coordenadora) e José Henrique Padovani (subcoordenador)"
-comape: "Fávio Barbeitas, Edite Rocha, Maurício Loureiro, Sérgio Freire, Helena Lopes, José Henrique Padovani"
+comape: "Flavio Barbeitas (presidente), Edite Rocha, Maurício Loureiro, Sérgio Freire, Helena Lopes, José Henrique Padovani"
 participantes: >-
   Aberto a docentes, discentes e egressos do PPGMUS. Palestrantes
   convidados: Prof. Dr. Aloysio Fagerlande (UFRJ/CAPES) e Prof. Dr. Luís

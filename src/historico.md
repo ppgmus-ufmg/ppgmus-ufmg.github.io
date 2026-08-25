@@ -48,7 +48,7 @@ descricao: Histórico dos Fóruns de Autoavaliação e Planejamento Estratégico
       {%- for atividade in dia.atividades %}
       <li>
         <strong>{{ atividade.horario }}</strong> — {{ atividade.titulo }}
-        {%- if atividade.responsavel %} <em>({{ atividade.responsavel }})</em>{% endif -%}
+        {%- if atividade.responsavel %} — <em>{{ atividade.responsavel }}</em>{% endif -%}
       </li>
       {%- endfor %}
     </ul>

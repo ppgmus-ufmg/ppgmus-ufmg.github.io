@@ -3,7 +3,7 @@ title: "1º Fórum de Autoavaliação e Planejamento Estratégico"
 edicao: 1
 data: "9 e 10 de novembro de 2023"
 coordenacao_ppgmus: "Edite Rocha (coordenadora) e Betânia Parisi (subcoordenadora)"
-comape: "Fávio Barbeitas, Edite Rocha, Maurício Loureiro, Sérgio Freire, Edite Rocha, Betânia Parisi, Ana Cláudia Assis, Luciana Monteiro"
+comape: "Flavio Barbeitas (presidente), Maurício Loureiro, Sérgio Freire, Edite Rocha, Betânia Parisi, Ana Cláudia Assis, Luciana Monteiro"
 participantes: >-
   Participação obrigatória de docentes, discentes, candidatos a
   credenciamento e egressos do PPGMUS, em substituição às demais
