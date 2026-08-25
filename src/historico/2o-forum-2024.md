@@ -2,6 +2,8 @@
 title: "2º Fórum de Autoavaliação e Planejamento Estratégico"
 edicao: 2
 data: "2024"
+coordenacao_ppgmus: ""
+comape: ""
 permalink: false
 arquivos:
   - titulo: "Resultados do 1º questionário de autoavaliação"

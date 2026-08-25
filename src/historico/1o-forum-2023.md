@@ -2,6 +2,8 @@
 title: "1º Fórum de Autoavaliação e Planejamento Estratégico"
 edicao: 1
 data: "9 e 10 de novembro de 2023"
+coordenacao_ppgmus: ""
+comape: "Edite Rocha (presidenta, gestão 2021–2024)"
 permalink: false
 arquivos:
   - titulo: "Panorama do PPGMUS no contexto da autoavaliação"
