@@ -647,6 +647,84 @@ p {
   margin: 0 0 var(--espaco-1);
 }
 
+/* Lista compacta de documentos (usada em /historico/): cada linha mostra
+   tipo + formato do arquivo à esquerda (com ícones) e uma descrição breve
+   à direita, tudo como um único link clicável. */
+.lista-documentos-compacta {
+  list-style: none;
+  margin: var(--espaco-2) 0 var(--espaco-4);
+  padding: 0;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.lista-documentos-compacta li {
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.lista-documentos-compacta__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--espaco-2) var(--espaco-3);
+  padding: var(--espaco-2) 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.lista-documentos-compacta__item:hover {
+  background: var(--cor-fundo-alt);
+}
+
+.lista-documentos-compacta__item:hover .lista-documentos-compacta__desc strong {
+  text-decoration: underline;
+}
+
+.lista-documentos-compacta__tipo {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  flex: 0 0 auto;
+  min-width: 8rem;
+  font-weight: 700;
+  font-size: var(--texto-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--cor-primaria-700);
+}
+
+.lista-documentos-compacta__tipo svg {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+}
+
+.lista-documentos-compacta__formato {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2em;
+  margin-left: 0.4em;
+  padding: 0.1em 0.5em;
+  border-radius: 999px;
+  background: var(--cor-cinza-muito-suave);
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+}
+
+.lista-documentos-compacta__formato svg {
+  width: 0.9em;
+  height: 0.9em;
+}
+
+.lista-documentos-compacta__desc {
+  flex: 1 1 16rem;
+  font-size: var(--texto-sm);
+  color: var(--cor-texto-suave);
+}
+
+.lista-documentos-compacta__desc strong {
+  color: var(--cor-texto);
+}
+
 .etiqueta {
   display: inline-block;
   font-size: var(--texto-xs);

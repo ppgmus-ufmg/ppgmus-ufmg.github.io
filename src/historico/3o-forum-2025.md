@@ -1,50 +1,84 @@
 ---
 title: "3º Fórum de Autoavaliação e Planejamento Estratégico"
 edicao: 3
-data: "5 e 6 de dezembro de 2025"
-coordenacao_ppgmus: "Helena Lopes (coordenadora)"
+data: "4 e 5 de dezembro de 2025"
+coordenacao_ppgmus: "Helena Lopes (coordenadora) e José Henrique Padovani"
 comape: ""
+participantes: >-
+  Aberto a docentes, discentes e egressos do PPGMUS. Palestrantes
+  convidados: Prof. Dr. Aloysio Fagerlande (UFRJ/CAPES) e Prof. Dr. Luís
+  Ricardo Queiroz (UFPB/CNPq — consultor externo da COMAPE).
+programacao:
+  - dia: "Quinta-feira, 04/12/2025"
+    local: "Auditório da Escola de Música"
+    atividades:
+      - horario: "09:00"
+        titulo: "O momento atual (2025–2028): as diretrizes de avaliação do novo ciclo e a Ficha de Avaliação da área de Artes"
+        responsavel: "Aloysio Fagerlande (UFRJ/CAPES)"
+      - horario: "11:00"
+        titulo: "Censo da Pós-Graduação"
+        responsavel: ""
+      - horario: "14:00–17:30"
+        titulo: "Roda de conversa: Avaliação e Planejamento Estratégico do PPGMUS (2025–2028)"
+        responsavel: "COMAPE"
+  - dia: "Sexta-feira, 05/12/2025"
+    local: "Conservatório de Música"
+    atividades:
+      - horario: "09:00"
+        titulo: "Pesquisa e pós-graduação em Música no contexto atual da Ciência, Tecnologia e Inovação no Brasil"
+        responsavel: "Luís Ricardo Queiroz (UFPB/CNPq)"
+      - horario: "14:00–17:30"
+        titulo: "Reflexões finais e encaminhamentos (reunião fechada)"
+        responsavel: "COMAPE, Colegiado do PPGMUS e consultor externo"
 permalink: false
 arquivos:
-  - titulo: "Resumo consolidado dos questionários de autoavaliação"
+  - titulo: "Resumo consolidado"
+    tipo: "Slides"
     arquivo: "/assets/documentos/historico/3o-forum-2025/resumo-consolidado-questionarios.pdf"
     descricao: >-
       Síntese conjunta das respostas de docentes, discentes e egressos ao
       questionário de autoavaliação de 2025.
-  - titulo: "Resumo das respostas — Docentes"
+  - titulo: "Respostas — Docentes"
+    tipo: "Slides"
     arquivo: "/assets/documentos/historico/3o-forum-2025/resumo-respostas-docentes.pdf"
     descricao: >-
       Recorte específico das respostas dos docentes ao questionário de
       autoavaliação de 2025.
-  - titulo: "Resumo das respostas — Discentes"
+  - titulo: "Respostas — Discentes"
+    tipo: "Slides"
     arquivo: "/assets/documentos/historico/3o-forum-2025/resumo-respostas-discentes.pdf"
     descricao: >-
       Recorte específico das respostas dos discentes ao questionário de
       autoavaliação de 2025.
-  - titulo: "Resumo das respostas — Egressos"
+  - titulo: "Respostas — Egressos"
+    tipo: "Slides"
     arquivo: "/assets/documentos/historico/3o-forum-2025/resumo-respostas-egressos.pdf"
     descricao: >-
       Recorte específico das respostas dos egressos ao questionário de
       autoavaliação de 2025.
-  - titulo: "Reflexões sobre produção intelectual no ciclo avaliativo 2025–2028 (slides)"
+  - titulo: "Reflexões sobre produção intelectual 2025–2028"
+    tipo: "Slides"
     arquivo: "/assets/documentos/historico/3o-forum-2025/reflexoes-producao-intelectual-slides.pdf"
     descricao: >-
-      Apresenta os novos critérios de avaliação da CAPES para a área de
-      Artes no quadriênio 2025–2028 — aderência, impacto, inovação e
-      qualidade da formação — e suas implicações para o planejamento
-      estratégico do PPGMUS.
-  - titulo: "Reflexões sobre produção intelectual no ciclo avaliativo 2025–2028 (texto)"
+      Novos critérios de avaliação da CAPES para a área de Artes no
+      quadriênio 2025–2028 — aderência, impacto, inovação e qualidade da
+      formação.
+  - titulo: "Reflexões sobre produção intelectual 2025–2028"
+    tipo: "Texto"
     arquivo: "/assets/documentos/historico/3o-forum-2025/reflexoes-producao-intelectual-texto.pdf"
     descricao: >-
-      Versão em texto corrido da mesma discussão, detalhando os quatro
-      pilares da avaliação (aderência, impacto, inovação e qualidade da
-      formação) com exemplos aplicados à produção do Programa.
+      Versão em texto corrido da mesma discussão, com exemplos aplicados à
+      produção do Programa.
 ---
 
-Terceira edição do Fórum, realizada em 5 e 6 de dezembro de 2025: consolidação
-dos resultados do questionário de autoavaliação por grupo (docentes,
-discentes e egressos) e discussão dos novos critérios de avaliação da
-CAPES para o quadriênio 2025–2028.
+Terceira edição do Fórum, realizada em 4 e 5 de dezembro de 2025, para
+examinar criticamente os resultados da avaliação do PPGMUS na quadrienal
+2021–2024 e elaborar as proposições do Programa para o novo ciclo
+(2025–2028): apresentação das novas diretrizes de avaliação da CAPES,
+consolidação dos resultados do questionário de autoavaliação por grupo
+(docentes, discentes e egressos) e uma roda de conversa da COMAPE com a
+comunidade sobre gestão, formação discente, pesquisa e impacto do
+Programa.
 
 ### Palestra: "Pesquisa e pós-graduação em Música no contexto atual da Ciência, Tecnologia e Inovação no Brasil"
 

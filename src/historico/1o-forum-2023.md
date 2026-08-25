@@ -6,7 +6,8 @@ coordenacao_ppgmus: ""
 comape: "Edite Rocha (presidenta, gestão 2021–2024)"
 permalink: false
 arquivos:
-  - titulo: "Panorama do PPGMUS no contexto da autoavaliação"
+  - titulo: "Panorama do PPGMUS"
+    tipo: "Slides"
     arquivo: "/assets/documentos/historico/1o-forum-2023/panorama-ppgmus-autoavaliacao.pdf"
     descricao: >-
       Slides de abertura do Fórum: trajetória do Programa (mestrado em 1999,

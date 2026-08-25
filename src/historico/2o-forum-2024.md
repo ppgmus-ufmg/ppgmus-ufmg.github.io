@@ -6,7 +6,8 @@ coordenacao_ppgmus: ""
 comape: ""
 permalink: false
 arquivos:
-  - titulo: "Resultados do 1º questionário de autoavaliação"
+  - titulo: "Resultados do 1º questionário"
+    tipo: "Slides"
     arquivo: "/assets/documentos/historico/2o-forum-2024/resultados-questionario-autoavaliacao-2023-2024.pdf"
     descricao: >-
       Apresentação da COMAPE com os resultados e a análise do primeiro
