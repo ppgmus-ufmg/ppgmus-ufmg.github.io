@@ -8,7 +8,7 @@
   "email": "ppgmus@musica.ufmg.br",
   "url": "https://ppgmus-ufmg.github.io/",
   "nav": [
-    { "titulo": "Autoavaliação e Planejamento Estratégico", "href": "/" },
+    { "titulo": "Início", "href": "/" },
     { "titulo": "Formulários", "href": "/formularios/" },
     { "titulo": "Documentos", "href": "/documentos/" },
     { "titulo": "Estudos", "href": "/estudos/" },
