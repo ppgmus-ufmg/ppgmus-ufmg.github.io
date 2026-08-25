@@ -31,9 +31,9 @@ descricao: Histórico dos Fóruns de Autoavaliação e Planejamento Estratégico
     {%- if edicao.data.data %}<p class="etiqueta">{{ edicao.data.data }}</p>{% endif %}
     {%- if edicao.data.coordenacao_ppgmus or edicao.data.comape %}
     <p style="color: var(--cor-texto-suave); font-size: var(--texto-sm);">
-      {%- if edicao.data.coordenacao_ppgmus %}Coordenação do PPGMUS: {{ edicao.data.coordenacao_ppgmus }}{% endif -%}
-      {%- if edicao.data.coordenacao_ppgmus and edicao.data.comape %} · {% endif -%}
-      {%- if edicao.data.comape %}COMAPE: {{ edicao.data.comape }}{% endif -%}
+      {%- if edicao.data.coordenacao_ppgmus %}<b>Coordenação do PPGMUS:</b> {{ edicao.data.coordenacao_ppgmus }}{% endif -%}
+      {%- if edicao.data.coordenacao_ppgmus and edicao.data.comape %}<br/>{% endif -%}
+      {%- if edicao.data.comape %}<b>COMAPE:</b> {{ edicao.data.comape }}{% endif -%}
     </p>
     {%- endif %}
 
@@ -41,7 +41,7 @@ descricao: Histórico dos Fóruns de Autoavaliação e Planejamento Estratégico
     {{ edicao.templateContent | safe }}
 
     {%- if edicao.data.programacao %}
-    <h3>Programação</h3>
+    <h4>Programação</h4>
     {%- for dia in edicao.data.programacao %}
     <p style="margin-bottom: 0.35em;"><strong>{{ dia.dia }}</strong>{% if dia.local %} · {{ dia.local }}{% endif %}</p>
     <ul style="margin-top: 0;">

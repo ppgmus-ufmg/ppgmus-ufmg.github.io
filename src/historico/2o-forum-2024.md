@@ -2,8 +2,8 @@
 title: "2º Fórum de Autoavaliação e Planejamento Estratégico"
 edicao: 2
 data: "2024"
-coordenacao_ppgmus: ""
-comape: ""
+coordenacao_ppgmus: "Helena Lopes (coordenadora) e Igor Leão Maia (subcoordenador)"
+comape: "Fávio Barbeitas, Edite Rocha, Maurício Loureiro, Sérgio Freire, Helena Lopes, Igor Leão Maia"
 permalink: false
 arquivos:
   - titulo: "Resultados do 1º questionário"

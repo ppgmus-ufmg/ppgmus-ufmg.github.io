@@ -2,8 +2,8 @@
 title: "3º Fórum de Autoavaliação e Planejamento Estratégico"
 edicao: 3
 data: "4 e 5 de dezembro de 2025"
-coordenacao_ppgmus: "Helena Lopes (coordenadora) e José Henrique Padovani"
-comape: ""
+coordenacao_ppgmus: "Helena Lopes (coordenadora) e José Henrique Padovani (subcoordenador)"
+comape: "Fávio Barbeitas, Edite Rocha, Maurício Loureiro, Sérgio Freire, Helena Lopes, José Henrique Padovani"
 participantes: >-
   Aberto a docentes, discentes e egressos do PPGMUS. Palestrantes
   convidados: Prof. Dr. Aloysio Fagerlande (UFRJ/CAPES) e Prof. Dr. Luís
@@ -71,10 +71,7 @@ arquivos:
       produção do Programa.
 ---
 
-Terceira edição do Fórum, realizada em 4 e 5 de dezembro de 2025, para
-examinar criticamente os resultados da avaliação do PPGMUS na quadrienal
-2021–2024 e elaborar as proposições do Programa para o novo ciclo
-(2025–2028): apresentação das novas diretrizes de avaliação da CAPES,
+Terceira edição do Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UFMG, ealizada em 4 e 5 de dezembro de 2025, para examinar criticamente os resultados da avaliação do PPGMUS na quadrienal 2021–2024 e elaborar as proposições do Programa para o novo ciclo (2025–2028): apresentação das novas diretrizes de avaliação da CAPES,
 consolidação dos resultados do questionário de autoavaliação por grupo
 (docentes, discentes e egressos) e uma roda de conversa da COMAPE com a
 comunidade sobre gestão, formação discente, pesquisa e impacto do
@@ -100,8 +97,6 @@ investimentos em infraestrutura negociados diretamente com a instituição.
 Entre os diagnósticos apresentados para a área de música no país: pouca
 cultura de pesquisa já na graduação, baixa procura por editais de demanda
 induzida e forte assimetria regional na pós-graduação (apenas 12 dos 26
-programas de música do Brasil oferecem doutorado). Como recomendação
-central, o consultor defendeu que a estratégia do PPGMUS não deve se
-pautar apenas pelos critérios — móveis — da ficha de avaliação da CAPES,
-e sim pela consolidação de uma identidade e produção próprias,
-articuladas também às lógicas de financiamento do CNPq e da FINEP.
+programas de música do Brasil oferecem doutorado). O consultor defendeu 
+que a estratégia do PPGMUS foque na consolidação de uma identidade e produção próprias,
+articuladas também às lógicas de financiamento de agências de fomento.
