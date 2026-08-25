@@ -8,11 +8,6 @@ descricao: Documentos e materiais de apoio da COMAPE e do PPGMUS.
 
 {%- from "partials/lista-documentos.njk" import linhaDocumento with context %}
 
-{%- macro descricaoComCategoria(doc) %}
-{%- set corpo = doc.templateContent | semParagrafo %}
-{%- if doc.data.categoria %}<em>{{ doc.data.categoria }}.</em> {{ corpo | safe }}{% else %}{{ corpo | safe }}{% endif %}
-{%- endmacro %}
-
 <section class="secao">
   <div class="container">
     <h1>Documentos</h1>
@@ -25,7 +20,7 @@ descricao: Documentos e materiais de apoio da COMAPE e do PPGMUS.
     <ul class="lista-documentos-compacta">
       {%- for doc in collections.documentos %}
       {%- if doc.data.grupo == "ppgmus" %}
-      {{ linhaDocumento(doc.data.title, doc.data.tipo, doc.data.arquivo, descricaoComCategoria(doc)) }}
+      {{ linhaDocumento(doc.data.title, doc.data.tipo, doc.data.arquivo, doc.templateContent | semParagrafo) }}
       {%- endif %}
       {%- endfor %}
     </ul>
@@ -44,7 +39,7 @@ descricao: Documentos e materiais de apoio da COMAPE e do PPGMUS.
     <ul class="lista-documentos-compacta">
       {%- for doc in collections.documentos %}
       {%- if doc.data.grupo == "atual" %}
-      {{ linhaDocumento(doc.data.title, doc.data.tipo, doc.data.arquivo, descricaoComCategoria(doc)) }}
+      {{ linhaDocumento(doc.data.title, doc.data.tipo, doc.data.arquivo, doc.templateContent | semParagrafo) }}
       {%- endif %}
       {%- endfor %}
     </ul>
@@ -54,7 +49,7 @@ descricao: Documentos e materiais de apoio da COMAPE e do PPGMUS.
     <ul class="lista-documentos-compacta">
       {%- for doc in collections.documentos %}
       {%- if doc.data.grupo == "2021-2024" %}
-      {{ linhaDocumento(doc.data.title, doc.data.tipo, doc.data.arquivo, descricaoComCategoria(doc)) }}
+      {{ linhaDocumento(doc.data.title, doc.data.tipo, doc.data.arquivo, doc.templateContent | semParagrafo) }}
       {%- endif %}
       {%- endfor %}
     </ul>

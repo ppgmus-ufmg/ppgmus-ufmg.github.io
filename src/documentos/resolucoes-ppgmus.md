@@ -1,11 +1,11 @@
 ---
 title: "Resoluções do PPGMUS"
-categoria: "Normas"
+categoria: ""
 tipo: "Texto"
 grupo: ppgmus
-ordem: 6
+ordem: 3
 arquivo: "https://musica.ufmg.br/ppgmus/resolucoes/"
 permalink: false
 ---
 
-Página com as demais resoluções e normas complementares do Programa, mantida pela secretaria do PPGMUS.
+Demais resoluções do Programa, disponíveis na página do PPGMUS.
