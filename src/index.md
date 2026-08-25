@@ -170,6 +170,10 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
       </table>
     </div>
 
+    <p style="margin-top: var(--espaco-3);">
+      <small><strong>Onde fica o CAD2:</strong> o prédio do CAD2 (Centro de Atividades Didáticas 2) fica ao lado do prédio da Faculdade de Letras da UFMG. <a href="https://maps.app.goo.gl/xmkWLC4RGq7REMq4A" target="_blank" rel="noopener">Ver no mapa</a>.</small>
+    </p>
+
     <!-- <p style="margin-top: var(--espaco-3);">
       <strong>Ainda sem horário definido:</strong> lançamento do formulário
       de propostas de ações/aperfeiçoamentos (ação de engajamento contínua);
