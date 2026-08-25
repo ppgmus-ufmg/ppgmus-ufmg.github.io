@@ -9,6 +9,7 @@
   "url": "https://ppgmus-ufmg.github.io/",
   "nav": [
     { "titulo": "Início", "href": "/" },
+    { "titulo": "Programação (4º Fórum)", "href": "/#programacao" },
     { "titulo": "Formulários", "href": "/formularios/" },
     { "titulo": "Documentos", "href": "/documentos/" },
     { "titulo": "Estudos", "href": "/estudos/" },

@@ -74,12 +74,18 @@
         window.iniciarFaseFoto();
       }
 
-      // Duas frames para garantir que o estado "revelado" já foi pintado
-      // sem transição antes de voltar a permitir transições normais
-      // (ex.: o cabeçalho some/aparece ao rolar a página).
+      // O carregamento inicial via #hash nem sempre é rolado pelo próprio
+      // navegador até o alvo (o layout do herói — foto, texto — ainda está
+      // se acomodando nesse instante). Duas frames garantem que o estado
+      // "revelado" já foi pintado sem transição antes de rolar e de voltar
+      // a permitir transições normais (ex.: o cabeçalho some/aparece ao
+      // rolar a página) — uma só chamada de scroll, sem behavior:smooth,
+      // para não haver um salto visível entre uma rolagem parcial e outra.
+      var alvoAncora = document.querySelector(window.location.hash);
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
           elementosSemAnimacao.forEach(function (el) { el.classList.remove("sem-transicao"); });
+          if (alvoAncora) alvoAncora.scrollIntoView({ behavior: "instant", block: "start" });
         });
       });
     })();
