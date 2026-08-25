@@ -36,8 +36,8 @@ autoavaliação do Programa para a avaliação quadrienal da CAPES.
     <thead>
       <tr>
         <th>Horário</th>
-        <th>Quinta-feira 09/11</th>
-        <th>Sexta-feira 10/11</th>
+        <th>Quinta-feira 09/nov/2023</th>
+        <th>Sexta-feira 10/nov/2023</th>
       </tr>
     </thead>
     <tbody>

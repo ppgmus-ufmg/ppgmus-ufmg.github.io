@@ -1,6 +1,7 @@
 ---
 title: "Resolução PPGMUS - COMAPE"
 categoria: Normas
+tipo: "Texto"
 ordem: 1
 grupo: ppgmus
 arquivo: "/assets/documentos/Resolucao_01-2026_COMAPE.pdf"

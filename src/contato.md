@@ -7,7 +7,7 @@ descricao: Fale com a COMAPE — PPGMUS/UFMG.
 ---
 
 <section class="secao">
-  <div class="container prosa">
+  <div class="container">
     <h1>Contato</h1>
     <p>
       Para dúvidas, sugestões ou propostas relacionadas ao processo de

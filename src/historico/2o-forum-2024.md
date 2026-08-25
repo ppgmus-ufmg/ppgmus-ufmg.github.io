@@ -36,8 +36,8 @@ de pesquisa e a relação do PPGMUS com a Escola de Música.
     <thead>
       <tr>
         <th>Horário</th>
-        <th>Quinta-feira 07/11</th>
-        <th>Sexta-feira 08/11</th>
+        <th>Quinta-feira 07/nov/2024</th>
+        <th>Sexta-feira 08/nov/2024</th>
       </tr>
     </thead>
     <tbody>

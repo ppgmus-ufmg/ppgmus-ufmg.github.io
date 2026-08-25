@@ -7,7 +7,7 @@ descricao: Formulários do IV Fórum e da COMAPE — PPGMUS/UFMG.
 ---
 
 <section class="secao">
-  <div class="container prosa">
+  <div class="container">
     <h1>Formulários</h1>
     <p>Página em construção.</p>
   </div>

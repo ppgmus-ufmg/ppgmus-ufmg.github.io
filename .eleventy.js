@@ -22,6 +22,7 @@ module.exports = function (eleventyConfig) {
   }
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
+  eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
 
   eleventyConfig.addCollection("documentos", (api) =>
     api.getFilteredByGlob("src/documentos/*.md").sort((a, b) => {
@@ -65,6 +66,13 @@ module.exports = function (eleventyConfig) {
       .setLocale("pt-BR")
       .toFormat("dd 'de' LLLL 'de' yyyy");
   });
+
+  // Tira o <p>...</p> que o markdown-it envolve em torno de um corpo de
+  // texto curto (ex.: a descrição de um documento em src/documentos/*.md),
+  // para poder encaixar esse HTML dentro de um <span> inline.
+  eleventyConfig.addFilter("semParagrafo", (html) =>
+    (html || "").trim().replace(/^<p>([\s\S]*)<\/p>$/, "$1")
+  );
 
   return {
     dir: {

@@ -34,19 +34,6 @@ arquivos:
     descricao: >-
       Recorte específico das respostas dos egressos ao questionário de
       autoavaliação de 2025.
-  - titulo: "Reflexões sobre produção intelectual 2025–2028"
-    tipo: "Slides"
-    arquivo: "/assets/documentos/historico/3o-forum-2025/reflexoes-producao-intelectual-slides.pdf"
-    descricao: >-
-      Novos critérios de avaliação da CAPES para a área de Artes no
-      quadriênio 2025–2028 — aderência, impacto, inovação e qualidade da
-      formação.
-  - titulo: "Reflexões sobre produção intelectual 2025–2028"
-    tipo: "Texto"
-    arquivo: "/assets/documentos/historico/3o-forum-2025/reflexoes-producao-intelectual-texto.pdf"
-    descricao: >-
-      Versão em texto corrido da mesma discussão, com exemplos aplicados à
-      produção do Programa.
 ---
 
 Terceira edição do Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UFMG, realizada em 4 e 5 de dezembro de 2025, para examinar criticamente os resultados da avaliação do PPGMUS na quadrienal 2021–2024 e elaborar as proposições do Programa para o novo ciclo (2025–2028): apresentação das novas diretrizes de avaliação da CAPES,
@@ -55,30 +42,6 @@ consolidação dos resultados do questionário de autoavaliação por grupo
 comunidade sobre gestão, formação discente, pesquisa e impacto do
 Programa.
 
-### Palestra: "Pesquisa e pós-graduação em Música no contexto atual da Ciência, Tecnologia e Inovação no Brasil"
-
-No dia 5 de dezembro, o consultor externo da COMAPE, Prof. Dr. Luís
-Ricardo Queiroz (UFPB/CNPq), apresentou um panorama do financiamento e da
-avaliação da pesquisa em música no Brasil, seguido de reunião fechada com
-a COMAPE e o Colegiado do PPGMUS para reflexões finais.
-
-O palestrante situou o programa dentro da lógica de três agências com
-papéis distintos: o **CNPq**, principal financiador da área (cerca de 80%
-dos recursos), mas que avalia o pesquisador individualmente — música
-responde por apenas ~0,2–0,3% dos projetos e das bolsas de produtividade
-concedidos no país, com forte concentração regional no Sudeste e Sul; a
-**CAPES**, que avalia o programa como um todo a partir de três pilares —
-proposta do programa, corpo docente/discente e produção (o de maior peso
-na nota) e inovação/impacto; e a **FINEP**, que sustenta grandes
-investimentos em infraestrutura negociados diretamente com a instituição.
-
-Entre os diagnósticos apresentados para a área de música no país: pouca
-cultura de pesquisa já na graduação, baixa procura por editais de demanda
-induzida e forte assimetria regional na pós-graduação (apenas 12 dos 26
-programas de música do Brasil oferecem doutorado). O consultor defendeu
-que a estratégia do PPGMUS foque na consolidação de uma identidade e produção próprias,
-articuladas também às lógicas de financiamento de agências de fomento.
-
 ### Programação
 
 <div class="tabela-wrapper reveal-scroll">
@@ -86,8 +49,8 @@ articuladas também às lógicas de financiamento de agências de fomento.
     <thead>
       <tr>
         <th>Horário</th>
-        <th>Quinta-feira 04/12</th>
-        <th>Sexta-feira 05/12</th>
+        <th>Quinta-feira 04/dez/2025</th>
+        <th>Sexta-feira 05/dez/2025</th>
       </tr>
     </thead>
     <tbody>
@@ -127,3 +90,32 @@ articuladas também às lógicas de financiamento de agências de fomento.
     </tbody>
   </table>
 </div>
+<br/>
+
+### Breve resumo da palestra: 
+
+<h4><i>Pesquisa e pós-graduação em Música no contexto atual da Ciência, Tecnologia e Inovação no Brasil</i></h4>
+
+**Prof. Dr. Luís Ricardo Queiroz**
+
+No dia 5 de dezembro, o consultor externo da COMAPE, Prof. Dr. Luís
+Ricardo Queiroz (UFPB/CNPq), apresentou um panorama do financiamento e da
+avaliação da pesquisa em música no Brasil, seguido de reunião fechada com
+a COMAPE e o Colegiado do PPGMUS para reflexões finais.
+
+O palestrante situou o programa dentro da lógica de três agências com
+papéis distintos: o **CNPq**, principal financiador da área (cerca de 80%
+dos recursos), mas que avalia o pesquisador individualmente — música
+responde por apenas ~0,2–0,3% dos projetos e das bolsas de produtividade
+concedidos no país, com forte concentração regional no Sudeste e Sul; a
+**CAPES**, que avalia o programa como um todo a partir de três pilares —
+proposta do programa, corpo docente/discente e produção (o de maior peso
+na nota) e inovação/impacto; e a **FINEP**, que sustenta grandes
+investimentos em infraestrutura negociados diretamente com a instituição.
+
+Entre os diagnósticos apresentados para a área de música no país: pouca
+cultura de pesquisa já na graduação, baixa procura por editais de demanda
+induzida e forte assimetria regional na pós-graduação (apenas 12 dos 26
+programas de música do Brasil oferecem doutorado). O consultor defendeu
+que a estratégia do PPGMUS foque na consolidação de uma identidade e produção próprias,
+articuladas também às lógicas de financiamento de agências de fomento.

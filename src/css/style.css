@@ -66,10 +66,6 @@ p {
   padding: 0 var(--espaco-3);
 }
 
-.prosa {
-  max-width: var(--largura-leitura);
-}
-
 /* Cabeçalho e navegação */
 .cabecalho {
   background: var(--cor-superficie);
@@ -623,31 +619,7 @@ p {
   border-bottom: 1px solid var(--cor-borda);
 }
 
-.lista-documentos {
-  list-style: none;
-  margin: var(--espaco-2) 0 var(--espaco-4);
-  padding: 0;
-  border-top: 1px solid var(--cor-borda);
-}
-
-.lista-documentos li {
-  padding: var(--espaco-2) 0;
-  border-bottom: 1px solid var(--cor-borda);
-}
-
-.lista-documentos li>strong {
-  display: block;
-}
-
-.lista-documentos li>p {
-  margin: 0.35em 0 0;
-}
-
-.lista-documentos li>p.etiqueta {
-  margin: 0 0 var(--espaco-1);
-}
-
-/* Lista compacta de documentos (usada em /historico/): cada linha mostra
+/* Lista compacta de documentos (usada em /historico/ e /documentos/): cada linha mostra
    tipo + formato do arquivo à esquerda (com ícones) e uma descrição breve
    à direita, tudo como um único link clicável. */
 .lista-documentos-compacta {

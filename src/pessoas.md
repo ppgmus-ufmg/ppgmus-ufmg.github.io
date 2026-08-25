@@ -7,7 +7,7 @@ descricao: Membros da COMAPE — PPGMUS/UFMG.
 ---
 
 <section class="secao">
-  <div class="container prosa">
+  <div class="container">
     <h1>Pessoas</h1>
     <p><strong>Comissão de Autoavaliação e Planejamento Estratégico (COMAPE) - 2026-2028:</strong></p>
     <ul class="lista-pessoas">
