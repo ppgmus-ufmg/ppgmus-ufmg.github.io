@@ -868,6 +868,11 @@ p {
   background: var(--cor-primaria-900);
 }
 
+.tag-local--conservatorio {
+  background: var(--cor-primaria-300);
+  color: var(--cor-primaria-900);
+}
+
 /* Logos institucionais */
 .logos-institucionais {
   display: flex;

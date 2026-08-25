@@ -8,28 +8,6 @@ participantes: >-
   Aberto a docentes, discentes e egressos do PPGMUS. Palestrantes
   convidados: Prof. Dr. Aloysio Fagerlande (UFRJ/CAPES) e Prof. Dr. Luís
   Ricardo Queiroz (UFPB/CNPq — consultor externo da COMAPE).
-programacao:
-  - dia: "Quinta-feira, 04/12/2025"
-    local: "Auditório da Escola de Música"
-    atividades:
-      - horario: "09:00"
-        titulo: "O momento atual (2025–2028): as diretrizes de avaliação do novo ciclo e a Ficha de Avaliação da área de Artes"
-        responsavel: "Aloysio Fagerlande (UFRJ/CAPES)"
-      - horario: "11:00"
-        titulo: "Censo da Pós-Graduação"
-        responsavel: ""
-      - horario: "14:00–17:30"
-        titulo: "Roda de conversa: Avaliação e Planejamento Estratégico do PPGMUS (2025–2028)"
-        responsavel: "COMAPE"
-  - dia: "Sexta-feira, 05/12/2025"
-    local: "Conservatório de Música"
-    atividades:
-      - horario: "09:00"
-        titulo: "Pesquisa e pós-graduação em Música no contexto atual da Ciência, Tecnologia e Inovação no Brasil"
-        responsavel: "Luís Ricardo Queiroz (UFPB/CNPq)"
-      - horario: "14:00–17:30"
-        titulo: "Reflexões finais e encaminhamentos (reunião fechada)"
-        responsavel: "COMAPE, Colegiado do PPGMUS e consultor externo"
 permalink: false
 arquivos:
   - titulo: "Resumo consolidado"
@@ -71,7 +49,7 @@ arquivos:
       produção do Programa.
 ---
 
-Terceira edição do Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UFMG, ealizada em 4 e 5 de dezembro de 2025, para examinar criticamente os resultados da avaliação do PPGMUS na quadrienal 2021–2024 e elaborar as proposições do Programa para o novo ciclo (2025–2028): apresentação das novas diretrizes de avaliação da CAPES,
+Terceira edição do Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UFMG, realizada em 4 e 5 de dezembro de 2025, para examinar criticamente os resultados da avaliação do PPGMUS na quadrienal 2021–2024 e elaborar as proposições do Programa para o novo ciclo (2025–2028): apresentação das novas diretrizes de avaliação da CAPES,
 consolidação dos resultados do questionário de autoavaliação por grupo
 (docentes, discentes e egressos) e uma roda de conversa da COMAPE com a
 comunidade sobre gestão, formação discente, pesquisa e impacto do
@@ -97,6 +75,55 @@ investimentos em infraestrutura negociados diretamente com a instituição.
 Entre os diagnósticos apresentados para a área de música no país: pouca
 cultura de pesquisa já na graduação, baixa procura por editais de demanda
 induzida e forte assimetria regional na pós-graduação (apenas 12 dos 26
-programas de música do Brasil oferecem doutorado). O consultor defendeu 
+programas de música do Brasil oferecem doutorado). O consultor defendeu
 que a estratégia do PPGMUS foque na consolidação de uma identidade e produção próprias,
 articuladas também às lógicas de financiamento de agências de fomento.
+
+### Programação
+
+<div class="tabela-wrapper reveal-scroll">
+  <table class="tabela-programacao">
+    <thead>
+      <tr>
+        <th>Horário</th>
+        <th>Quinta-feira 04/12</th>
+        <th>Sexta-feira 05/12</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>09:00</td>
+        <td>
+          <span class="tag-local tag-local--auditorio">Auditório | Escola de Música da UFMG</span><br/>
+          <strong>O momento atual (2025–2028): as diretrizes de avaliação do novo ciclo e a Ficha de Avaliação da área de Artes</strong><br/>
+          <small><strong>Com:</strong> Aloysio Fagerlande (UFRJ/CAPES)</small>
+        </td>
+        <td rowspan="2">
+          <span class="tag-local tag-local--conservatorio">Conservatório de Música</span><br/>
+          <strong>Pesquisa e pós-graduação em Música no contexto atual da Ciência, Tecnologia e Inovação no Brasil</strong><br/>
+          <small><strong>Com:</strong> Luís Ricardo Queiroz (UFPB/CNPq) — consultor externo da COMAPE</small>
+        </td>
+      </tr>
+      <tr>
+        <td>11:00</td>
+        <td>
+          <span class="tag-local tag-local--auditorio">Auditório | Escola de Música da UFMG</span><br/>
+          <strong>Censo da Pós-Graduação</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>14:00–17:30</td>
+        <td>
+          <span class="tag-local tag-local--auditorio">Auditório | Escola de Música da UFMG</span><br/>
+          <strong>Roda de conversa: Avaliação e Planejamento Estratégico do PPGMUS (2025–2028)</strong><br/>
+          <small><strong>Mediação:</strong> COMAPE</small>
+        </td>
+        <td>
+          <span class="tag-local tag-local--conservatorio">Conservatório de Música</span><br/>
+          <strong>Reflexões finais e encaminhamentos</strong><br/>
+          <small><strong>Reunião fechada:</strong> COMAPE, Colegiado do PPGMUS e consultor externo</small>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -11,34 +11,6 @@ participantes: >-
   presença por lista. Palestrantes convidados: Prof. Dr. Eduardo Neves
   Silva (Pró-Reitor Adjunto de Pós-Graduação da UFMG) e Profª Drª Luciana
   Del-Ben (UFRGS — consultora externa).
-programacao:
-  - dia: "Quinta-feira, 09/11/2023"
-    local: "Auditório da Escola de Música"
-    atividades:
-      - horario: "09:30"
-        titulo: "Abertura: \"A Autoavaliação e Planejamento na UFMG\""
-        responsavel: "Eduardo Neves Silva (Pró-Reitor Adjunto PRPG/UFMG)"
-      - horario: "10:45"
-        titulo: "Panorama do PPGMUS no contexto da Autoavaliação"
-        responsavel: "Edite Rocha e Betânia Parisi (Coordenação do PPGMUS)"
-      - horario: "14:00"
-        titulo: "Grupos e Projetos de Pesquisa: busca por uma coerência"
-        responsavel: ""
-      - horario: "15:45"
-        titulo: "Produções de Destaque: estratégias, Qualis e planejamentos"
-        responsavel: ""
-  - dia: "Sexta-feira, 10/11/2023"
-    local: "Auditório da Escola de Música"
-    atividades:
-      - horario: "09:00"
-        titulo: "O processo de autoavaliação do PPGMUS e suas etapas"
-        responsavel: "Flávio Barbeitas (Presidente da Comissão de Autoavaliação do PPGMUS)"
-      - horario: "10:45"
-        titulo: "A autoavaliação dos PPGs de Música (encerramento do Fórum)"
-        responsavel: "Luciana Del-Ben (UFRGS, consultora externa)"
-      - horario: "14:00–17:30"
-        titulo: "Grupo de Trabalho para reflexão sobre a Autoavaliação e Planejamento Estratégico do PPGMUS, sala 1014"
-        responsavel: "Colegiado do PPGMUS, Comissão de Autoavaliação e consultora externa"
 permalink: false
 arquivos:
   - titulo: "Panorama do PPGMUS"
@@ -56,3 +28,64 @@ alteração da grade curricular então em análise na PRPG, do impacto dos
 novos critérios de credenciamento para docentes permanentes e da produção
 realizada e a realizar por docentes e discentes — tudo no contexto da
 autoavaliação do Programa para a avaliação quadrienal da CAPES.
+
+### Programação
+
+<div class="tabela-wrapper reveal-scroll">
+  <table class="tabela-programacao">
+    <thead>
+      <tr>
+        <th>Horário</th>
+        <th>Quinta-feira 09/11</th>
+        <th>Sexta-feira 10/11</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>09:00</td>
+        <td>
+          <span class="tag-local tag-local--auditorio">Auditório | Escola de Música da UFMG</span><br/>
+          <strong>Abertura (9:30): "A Autoavaliação e Planejamento na UFMG"</strong><br/>
+          <small><strong>Com:</strong> Eduardo Neves Silva (Pró-Reitor Adjunto PRPG/UFMG)</small>
+        </td>
+        <td>
+          <span class="tag-local tag-local--auditorio">Auditório | Escola de Música da UFMG</span><br/>
+          <strong>O processo de autoavaliação do PPGMUS e suas etapas</strong><br/>
+          <small><strong>Com:</strong> Flávio Barbeitas (Presidente da Comissão de Autoavaliação do PPGMUS)</small>
+        </td>
+      </tr>
+      <tr>
+        <td>10:45</td>
+        <td>
+          <span class="tag-local tag-local--auditorio">Auditório | Escola de Música da UFMG</span><br/>
+          <strong>Panorama do PPGMUS no contexto da Autoavaliação</strong><br/>
+          <small><strong>Com:</strong> Edite Rocha e Betânia Parisi (Coordenação do PPGMUS)</small>
+        </td>
+        <td>
+          <span class="tag-local tag-local--auditorio">Auditório | Escola de Música da UFMG</span><br/>
+          <strong>A autoavaliação dos PPGs de Música</strong> <small>(encerramento do Fórum)</small><br/>
+          <small><strong>Com:</strong> Luciana Del-Ben (UFRGS, consultora externa)</small>
+        </td>
+      </tr>
+      <tr>
+        <td>14:00</td>
+        <td>
+          <span class="tag-local tag-local--auditorio">Auditório | Escola de Música da UFMG</span><br/>
+          <strong>Grupos e Projetos de Pesquisa: busca por uma coerência</strong>
+        </td>
+        <td rowspan="2">
+          <span class="tag-local tag-local--sala1014">Sala 1014 | Escola de Música da UFMG</span><br/>
+          <strong>Grupo de Trabalho para reflexão sobre a Autoavaliação e Planejamento Estratégico do PPGMUS</strong><br/>
+          <small><strong>Participantes:</strong> Colegiado do PPGMUS, Comissão de Autoavaliação e consultora externa</small>
+        </td>
+      </tr>
+      <tr>
+        <td>15:45</td>
+        <td>
+          <span class="tag-local tag-local--auditorio">Auditório | Escola de Música da UFMG</span><br/>
+          <strong>Produções de Destaque: estratégias, Qualis e planejamentos</strong>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -40,21 +40,6 @@ descricao: Histórico dos Fóruns de Autoavaliação e Planejamento Estratégico
     <h3>Resumo</h3>
     {{ edicao.templateContent | safe }}
 
-    {%- if edicao.data.programacao %}
-    <h4>Programação</h4>
-    {%- for dia in edicao.data.programacao %}
-    <p style="margin-bottom: 0.35em;"><strong>{{ dia.dia }}</strong>{% if dia.local %} · {{ dia.local }}{% endif %}</p>
-    <ul style="margin-top: 0;">
-      {%- for atividade in dia.atividades %}
-      <li>
-        <strong>{{ atividade.horario }}</strong> — {{ atividade.titulo }}
-        {%- if atividade.responsavel %} — <em>{{ atividade.responsavel }}</em>{% endif -%}
-      </li>
-      {%- endfor %}
-    </ul>
-    {%- endfor %}
-    {%- endif %}
-
     {%- if edicao.data.participantes %}
     <h3>Participantes</h3>
     <p>{{ edicao.data.participantes }}</p>
