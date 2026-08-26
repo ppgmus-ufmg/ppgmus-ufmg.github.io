@@ -35,3 +35,7 @@ Thumbs.db
 /logo_ufmgblack.svg
 
 /cartaz/
+
+# Material de preparação que não é publicado no site — vai para um
+# repositório privado à parte.
+/preparacao/

@@ -27,8 +27,8 @@ descricao: Membros da COMAPE — PPGMUS/UFMG.
       <li><strong>Profa. Dra. Ana Cláudia Assis</strong></li>
       <li><strong>Profa. Dra. Luciana Monteiro</strong></li>
       <li><strong>Profa. Dra. Edite Rocha</strong></li>
-      <li><strong>Helena Lopes</strong> (a partir de 2024)</li>
-      <li><strong>Igor Rocha</strong> (a partir de 2024)</li>
+      <li><strong>Profa. Dra. Helena Lopes</strong> (a partir de 2024)</li>
+      <li><strong>Prof. Dr. Igor Maia</strong> (a partir de 2024)</li>
       <li><strong>Luigi Brandão</strong> — Representante discente</li>
     </ul>
   </div>

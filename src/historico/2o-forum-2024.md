@@ -3,7 +3,7 @@ title: "2º Fórum de Autoavaliação e Planejamento Estratégico"
 edicao: 2
 data: "7 e 8 de novembro de 2024"
 coordenacao_ppgmus: "Helena Lopes (coordenadora) e Igor Leão Maia (subcoordenador)"
-comape: "Flavio Barbeitas (presidente), Maurício Loureiro, Sérgio Freire, Ana Cláudia Assis, Luciana Monteiro, Edite Rocha, Helena Lopes, Igor Rocha, Luigi Brandão (representante discente)"
+comape: "Flavio Barbeitas (presidente), Maurício Loureiro, Sérgio Freire, Ana Cláudia Assis, Luciana Monteiro, Edite Rocha, Helena Lopes, Igor Maia, Luigi Brandão (representante discente)"
 participantes: >-
   Participação de docentes e discentes nos dois dias, considerada de suma
   importância para o processo de avaliação do PPGMUS. Convidadas: Profª
