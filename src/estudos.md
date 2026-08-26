@@ -46,7 +46,7 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
     </ul>
     <h5>- A avaliação do PPGMUS no contexto da CAPES:</h5>
     <ul class="lista-documentos-compacta">
-      {{ linhaDocumento("A avaliação do PPGMUS no contexto da CAPES — Helena Lopes", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-helena-lopes.pptx", "(slide 1).") }}
+      {{ linhaDocumento("A avaliação do PPGMUS no contexto da CAPES — Helena Lopes", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-helena-lopes.pdf", "(slide 1).") }}
       {{ linhaDocumento("A avaliação do PPGMUS no contexto da CAPES — José Henrique Padovani", "Slides", "/slides/", "(slide 2)") }}
       {{ linhaDocumento("A avaliação do PPGMUS no contexto da CAPES — José Henrique Padovani (PDF)", "Slides", "/assets/documentos/4o-forum-2026/avaliacao-ppgmus-contexto-capes-jose-henrique-padovani.pdf", "Versão em PDF para download (slide 2).") }}
     </ul>
