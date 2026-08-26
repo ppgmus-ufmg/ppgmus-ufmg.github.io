@@ -1,0 +1,162 @@
+<!doctype html>
+<!--
+  Índice dos materiais de OBS — não linkado na navegação do site (é uma
+  página utilitária, não conteúdo público), mas publicado normalmente em
+  /obs/ pra servir de ponto de partida rápido: abrir esta página e copiar
+  o link de cada material pra colar como Fonte de Navegador no OBS.
+-->
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materiais de OBS — COMAPE</title>
+  <style>
+    @font-face {
+      font-family: "Poppins";
+      src: url("../assets/fonts/poppins/Poppins-Regular.ttf") format("truetype");
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "Poppins";
+      src: url("../assets/fonts/poppins/Poppins-SemiBold.ttf") format("truetype");
+      font-weight: 600;
+    }
+
+    @font-face {
+      font-family: "Poppins";
+      src: url("../assets/fonts/poppins/Poppins-Bold.ttf") format("truetype");
+      font-weight: 700;
+    }
+
+    :root {
+      --cor-primaria-900: #12477a;
+      --cor-primaria-700: #1a5f9e;
+      --cor-destaque-700: #f17807;
+      --cor-texto: #1a1a1a;
+      --cor-texto-suave: #4a4a4a;
+      --cor-fundo-alt: #eaf2fa;
+      --cor-borda: #d7e6f5;
+      --fonte-base: "Poppins", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--fonte-base);
+      color: var(--cor-texto);
+      background: #ffffff;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .container {
+      max-width: 44rem;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: var(--cor-primaria-900);
+      margin: 0 0 0.25rem;
+    }
+
+    .lead {
+      color: var(--cor-texto-suave);
+      margin: 0 0 2rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .card {
+      border: 1px solid var(--cor-borda);
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1rem;
+      background: var(--cor-fundo-alt);
+    }
+
+    .card h2 {
+      font-size: 1.05rem;
+      margin: 0 0 0.35rem;
+      color: var(--cor-primaria-900);
+    }
+
+    .card p {
+      margin: 0 0 0.6rem;
+      font-size: 0.9rem;
+      color: var(--cor-texto-suave);
+      line-height: 1.45;
+    }
+
+    .card a.link {
+      display: inline-block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--cor-primaria-700);
+      text-decoration: none;
+      margin-right: 1.2rem;
+    }
+
+    .card a.link:hover {
+      text-decoration: underline;
+    }
+
+    .selo {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--cor-destaque-700);
+      margin-left: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Materiais de OBS</h1>
+    <p class="lead">
+      Cenas/overlays HTML autocontidos, pra usar como Fonte de Navegador no
+      OBS Studio — apontando pra esta URL (local, via <code>npm start</code>,
+      ou já publicado) em vez de arquivo local.
+    </p>
+
+    <div class="card">
+      <h2>Tela inicial animada <span class="selo">animado · tela cheia</span></h2>
+      <p>
+        A mesma animação do logo da página inicial (símbolo abrindo + título
+        revelado), isolada e centralizada sobre o fundo azul da marca. Roda
+        uma vez e fica parada.
+      </p>
+      <a class="link" href="tela-inicial-animada/">Abrir</a>
+    </div>
+
+    <div class="card">
+      <h2>Logo flutuante <span class="selo">animado · overlay pequeno</span></h2>
+      <p>
+        Selo de marca compacto (símbolo abrindo + "COMAPE") pra deixar fixo
+        num canto da tela durante a gravação. Fundo transparente — sugestão
+        de tamanho no OBS: ~420×110.
+      </p>
+      <a class="link" href="logo-flutuante/">Abrir</a>
+    </div>
+
+    <div class="card">
+      <h2>Moldura de apresentação + câmera PIP <span class="selo">overlay tela cheia</span></h2>
+      <p>
+        Moldura sólida em volta de uma janela de apresentação menor que a
+        tela toda, com a câmera cobrindo uma fatia pequena dela, no canto
+        inferior esquerdo ou direito. Fundo transparente, 1920×1080.
+      </p>
+      <a class="link" href="camera-pip/?lado=esquerda">Abrir (câmera à esquerda)</a>
+      <a class="link" href="camera-pip/?lado=direita">Abrir (câmera à direita)</a>
+    </div>
+  </div>
+</body>
+
+</html>

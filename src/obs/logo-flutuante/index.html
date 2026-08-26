@@ -1,0 +1,204 @@
+<!doctype html>
+<!--
+  Logotipo flutuante animado (OBS) — selo de marca pra deixar fixo num
+  canto da tela durante toda a gravação. Reaproveita a mesma animação do
+  símbolo da home (sketch-forum.js: janelas abrindo) numa escala pequena,
+  revelando "COMAPE" (em vez do título completo do Fórum, que não cabe
+  compacto) quando termina.
+
+  Fundo transparente — pensado pra Fonte de Navegador (Browser Source) do
+  OBS, tamanho pequeno (sugestão: ~420x110 no Transform da fonte, canto que
+  preferir). Roda uma vez e fica parada (noLoop() em sketch-forum.js), sem
+  gastar CPU à toa durante o resto da gravação.
+
+  Uso: http://localhost:8080/obs/logo-flutuante/ (local, `npm start`) ou
+  https://<site>/obs/logo-flutuante/ uma vez publicado.
+-->
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OBS · Logo flutuante animado</title>
+  <style>
+    @font-face {
+      font-family: "Poppins";
+      src: url("../../assets/fonts/poppins/Poppins-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: "Poppins";
+      src: url("../../assets/fonts/poppins/Poppins-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+    }
+
+    :root {
+      --cor-primaria-100: #dce9f6;
+      --fonte-base: "Poppins", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cena {
+      width: 100%;
+    }
+
+    /* Mesma réplica de .logo-forum-escala/.logo-forum/#wrapper/#logo-text
+       de tela-inicial-animada/index.html, sem tela cheia — aqui o próprio
+       tamanho da fonte de navegador no OBS define a escala. */
+    .logo-forum {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 800 / 160;
+      margin: 0 auto;
+      overflow: hidden;
+      transform: translateX(26%);
+      transition: transform 1s cubic-bezier(.65, 0, .35, 1);
+    }
+
+    .logo-forum.mover-esquerda {
+      transform: translateX(0);
+    }
+
+    .logo-forum #wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 800px;
+      height: 160px;
+      transform-origin: top left;
+      opacity: 0;
+      animation: entradaLogoSimbolo .3s ease forwards;
+    }
+
+    @keyframes entradaLogoSimbolo {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .logo-forum canvas {
+      display: block;
+    }
+
+    .logo-forum #logo-text {
+      position: absolute;
+      left: 190px;
+      top: 60px;
+      transform: translateY(-50%);
+      font-family: var(--fonte-base);
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, .55), 0 1px 3px rgba(0, 0, 0, .65);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .logo-forum #logo-text p {
+      margin: 0;
+      padding: 0;
+      clip-path: inset(0 0 0 100%);
+    }
+
+    .logo-forum #logo-text p:nth-child(1) {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 1.1;
+    }
+
+    .logo-forum #logo-text p:nth-child(2) {
+      font-weight: 400;
+      font-size: 19px;
+      letter-spacing: 0.02em;
+      color: var(--cor-primaria-100);
+      margin-top: 2px;
+    }
+
+    .logo-forum #logo-text.mostrar p {
+      animation: revelarTextoLogoWipe .7s cubic-bezier(.22, .61, .36, 1) forwards;
+    }
+
+    .logo-forum #logo-text.mostrar p:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .logo-forum #logo-text.mostrar p:nth-child(2) {
+      animation-delay: .2s;
+    }
+
+    @keyframes revelarTextoLogoWipe {
+      from {
+        clip-path: inset(0 0 0 100%);
+      }
+
+      to {
+        clip-path: inset(0 0 0 0%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cena">
+    <div class="logo-forum" id="logo-forum-outer" aria-hidden="true">
+      <div id="wrapper">
+        <div id="logo-text">
+          <p>COMAPE</p>
+          <p>PPGMUS &middot; UFMG</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function mostrarTextoForum() {
+      const outer = document.getElementById("logo-forum-outer");
+      const texto = document.getElementById("logo-text");
+      if (outer) outer.classList.add("mover-esquerda");
+      if (texto) texto.classList.add("mostrar");
+    }
+
+    function scaleLogoForum() {
+      const outer = document.getElementById("logo-forum-outer");
+      const inner = document.getElementById("wrapper");
+      if (!outer || !inner) return;
+      const scale = outer.clientWidth / 800;
+      const DESLOCAMENTO_CENTRALIZACAO = 85;
+      inner.style.transform = "scale(" + scale + ") translateX(" + DESLOCAMENTO_CENTRALIZACAO + "px)";
+    }
+    window.addEventListener("resize", scaleLogoForum);
+    document.addEventListener("DOMContentLoaded", scaleLogoForum);
+    scaleLogoForum();
+  </script>
+  <script src="../../assets/logo-forum/p5.min.js"></script>
+  <script src="../../assets/logo-forum/logo-classes.js"></script>
+  <script src="../../assets/logo-forum/sketch-forum.js"></script>
+</body>
+
+</html>
