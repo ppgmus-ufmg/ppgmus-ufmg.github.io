@@ -1,0 +1,535 @@
+<!doctype html>
+<!--
+  Quadriênio 2025-2028 — o que muda para a Música (4º Fórum COMAPE)
+
+  Como apresentar: abra este arquivo no Chrome e use as setas/espaço para
+  navegar (ESC = visão geral, 's' = modo apresentador).
+
+  Como exportar em PDF: abra com "?print-pdf" no final da URL
+  (index.html?print-pdf), espere o Sankey desenhar, e use Cmd/Ctrl+P →
+  "Salvar como PDF", com "Gráficos de plano de fundo" ativado e margens
+  "Nenhuma". O reveal.js já cuida de colocar 1 slide por página.
+-->
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quadriênio 2025-2028 — 4º Fórum COMAPE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="tema-comape.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides" id="slides-root"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="dados.js"></script>
+  <script src="figuras.js"></script>
+  <script src="sankey.js"></script>
+  <script>
+    // 30 variantes estáticas do símbolo do fórum (mesma técnica determinística
+    // de convites/ferramentas/logo-estatico.html, geradas via
+    // assets/_gerar/logo-variante.html?v=0..29 +
+    // assets/_gerar/capturar-variantes.mjs). Cada slide sorteia a sua, em
+    // vez de repetir sempre a mesma imagem.
+    const LOGO_VARIANTES_N = 30;
+    const LOGO_VARIANTES = Array.from(
+      { length: LOGO_VARIANTES_N },
+      (_, v) => `assets/logo-variantes/logo-variante-${v}.png`
+    );
+    function logoAleatorio() {
+      return LOGO_VARIANTES[Math.floor(Math.random() * LOGO_VARIANTES.length)];
+    }
+    const EVENTO_LABEL =
+      "4º Fórum de Autoavaliação e Planejamento Estratégico - PPGMUS/UFMG";
+    const SITE_URL = "https://ppgmus-ufmg.github.io";
+
+    // Documento/instituição de cada fonte citada nos slides, com link direto
+    // para o PDF publicado em /documentos/ quando existe. Os pareceres da
+    // própria avaliação do PPGMUS (ficha_recomendacao_...) não são públicos
+    // (documento interno), por isso não recebem link.
+    const FONTE_INFO = {
+      "Diretrizes Comuns 2025-2028 — Processos avaliativos; Unidade de análise":
+      {
+        nome: "Diretrizes Comuns da Avaliação de Permanência",
+        instituicao: "CAPES",
+        url: SITE_URL + "/assets/documentos/2025_CAPES_25-28/25-28-CAPES-diretrizes_comuns.pdf",
+      },
+      "Diretrizes Comuns 2025-2028 — Metodologia de avaliação; Aplicação das diretrizes específicas durante a Avaliação Quadrienal":
+      {
+        nome: "Diretrizes Comuns da Avaliação de Permanência",
+        instituicao: "CAPES",
+        url: SITE_URL + "/assets/documentos/2025_CAPES_25-28/25-28-CAPES-diretrizes_comuns.pdf",
+      },
+      "Diretrizes Comuns 2025-2028 — A Avaliação da Pós-Graduação; Objetivos da avaliação":
+      {
+        nome: "Diretrizes Comuns da Avaliação de Permanência",
+        instituicao: "CAPES",
+        url: SITE_URL + "/assets/documentos/2025_CAPES_25-28/25-28-CAPES-diretrizes_comuns.pdf",
+      },
+      "Diretrizes Comuns 2025-2028 — A Avaliação da Pós-Graduação; Objetivos da avaliação + Panorama da Pesquisa em Música no Brasil": {
+        nome: "Diretrizes Comuns da Avaliação de Permanência + Panorama da Pesquisa em Música no Brasil",
+        instituicao: "CAPES",
+        url: "https://panoramapqmus.ecris.cc/",
+      },
+      "Plataforma Sucupira — Avaliação Quadrienal 2025": {
+        nome: "Plataforma Sucupira — Avaliação Quadrienal 2025",
+        instituicao: "CAPES",
+        url: null,
+      },
+      "ArtesFicha.md — Resumo Geral, coluna Acadêmico": {
+        nome: "Ficha de Avaliação — Artes (2021–2024)",
+        instituicao: "CAPES",
+        url: SITE_URL + "/assets/documentos/2025_CAPES_25-28/docs_21-24/ArtesFicha2025.pdf",
+      },
+      "ficha_recomendacao_32001010058P9.md — Quesito 1, publicado 12/01/2026": {
+        nome: "Parecer da Avaliação Quadrienal",
+        instituicao: "PPGMUS-UFMG",
+        url: null,
+      },
+      "ficha_recomendacao_32001010058P9.md — Quesito 2, publicado 12/01/2026": {
+        nome: "Parecer da Avaliação Quadrienal",
+        instituicao: "PPGMUS-UFMG",
+        url: null,
+      },
+      "ficha_recomendacao_32001010058P9.md — Quesito 3, publicado 12/01/2026": {
+        nome: "Parecer da Avaliação Quadrienal",
+        instituicao: "PPGMUS-UFMG",
+        url: null,
+      },
+      "ficha_recomendacao_32001010058P9.md — Quesitos 1–3, publicado 12/01/2026": {
+        nome: "Parecer da Avaliação Quadrienal",
+        instituicao: "PPGMUS-UFMG",
+        url: null,
+      },
+      "ArtesFicha.md + 25-28_CAPES_ficha_avaliação.md — comparação de pesos": {
+        nome: "Fichas de Avaliação — Artes (2021–2024 e 2025–2028)",
+        instituicao: "CAPES",
+        url: null,
+      },
+      "ficha_recomendacao_32001010058P9.md — Parecer do CTC sobre o mérito da proposta":
+      {
+        nome: "Parecer da Avaliação Quadrienal",
+        instituicao: "PPGMUS-UFMG",
+        url: null,
+      },
+      "GoPG — Novo Coleta e Portal Individual, lançamento 06/05/2025": {
+        nome: "Novo Coleta e Portal Individual",
+        instituicao: "CAPES/GoPG",
+        url: null,
+      },
+    };
+
+    // Cabeçalho de cada slide de conteúdo: ícone + nome do evento à
+    // esquerda (fluxo normal, sem posicionamento absoluto). À direita, em
+    // duas linhas: a seção corrente (laranja, demarca onde estamos no
+    // deck) e, abaixo, a fonte do dado — com link para o documento
+    // publicado no site quando existe.
+    function elHeader(secaoTitulo, source) {
+      const info = source ? FONTE_INFO[source] : null;
+      const texto = info
+        ? `Fonte: ${info.nome}${info.instituicao ? " / " + info.instituicao : ""}`
+        : "";
+      const fonteHtml = !info
+        ? ""
+        : info.url
+          ? `<a class="slide-fonte-texto" href="${info.url}" target="_blank" rel="noopener">${texto}</a>`
+          : `<span class="slide-fonte-texto">${texto}</span>`;
+      // "Elaboração" só aparece junto de uma Fonte real (slide com dado
+      // processado de terceiros) — não em slides sem "source" (concept,
+      // legend), onde não há nada de terceiro sendo elaborado.
+      const elaboracaoHtml = info
+        ? `<span class="slide-elaboracao-texto">Elaboração: ${DECK.deck.autores}, ${DECK.deck.ano}</span>`
+        : "";
+      return `
+        <div class="slide-header">
+          <div class="slide-header-evento">
+            <img class="slide-header-logo" src="${logoAleatorio()}" alt="">
+            <span class="evento-titulo">${EVENTO_LABEL}</span>
+          </div>
+          <div class="slide-header-meta">
+            <div class="slide-secao-marca">${secaoTitulo}</div>
+            ${fonteHtml}
+            ${elaboracaoHtml}
+          </div>
+        </div>`;
+    }
+
+    function fragUl(itens, classe) {
+      const itemHtml = (it) =>
+        typeof it === "string"
+          ? `<li>${it}</li>`
+          : `<li>${it.text}<ul>${it.sub.map(itemHtml).join("")}</ul></li>`;
+      return `<ul${classe ? ` class="${classe}"` : ""}>${itens
+        .map(itemHtml)
+        .join("")}</ul>`;
+    }
+
+    function seloConceito(conceito) {
+      const cls = conceito === "MB" ? " selo-conceito--mb" : "";
+      return `<span class="selo-conceito${cls}">${conceito}</span>`;
+    }
+
+    // Nome sintetizado do item (título) + texto oficial completo da ficha
+    // (descrição, entre aspas, se disponível) — usado nas células de item
+    // das tabelas de peso/avaliação e no detalhamento abaixo dos Sankey.
+    function itemTituloDescricao(titulo, descricao) {
+      const desc = descricao
+        ? `<span class="item-descricao">&#8220;${descricao}&#8221;</span>`
+        : "";
+      return `<span class="item-titulo">${titulo}</span>${desc}`;
+    }
+
+    // ---------------------------------------------------------------------
+    // Slide de título / divisor de seção
+    // ---------------------------------------------------------------------
+
+    function buildTitleSlide() {
+      return `
+        <section class="slide-titulo">
+          <img class="logo-forum-canto" src="${logoAleatorio()}" alt="">
+          <h1>${DECK.deck.title}</h1>
+          <p class="subtitulo">${DECK.deck.subtitle}</p>
+          <p class="autoria">${DECK.deck.autores}</p>
+          <p class="autoria-meta">${DECK.deck.local} · ${DECK.deck.data}</p>
+        </section>`;
+    }
+
+    function buildSectionDividerSlide(secao, indice, total) {
+      return `
+        <section class="slide-secao">
+          <h1>${secao.title}</h1>
+        </section>`;
+    }
+
+    // Slide de encerramento: mesma tela azul do divisor de seção, com
+    // "Obrigado" centralizado e o QR code do formulário ancorado no canto
+    // inferior direito. Fica fora de qualquer seção (é o último do deck),
+    // por isso é montado à parte em montarDeck().
+    function buildObrigadoSlide() {
+      return `
+        <section class="slide-obrigado">
+          <h1>Obrigado!</h1>
+          <div class="slide-obrigado-qr">
+            <img class="slide-obrigado-qrcode" src="assets/qrcode-formulario.png" alt="QR code do formulário de contribuições">
+            <span class="slide-obrigado-chamada">Contribua pelo formulário</span>
+          </div>
+        </section>`;
+    }
+
+    // ---------------------------------------------------------------------
+    // Um <section> por "kind" de slide
+    // ---------------------------------------------------------------------
+
+    function buildConceptSlide(slide, secaoTitulo) {
+      return `
+        <section>
+          ${elHeader(secaoTitulo, slide.source)}
+          <h2>${slide.title}</h2>
+          ${fragUl(slide.body)}
+        </section>`;
+    }
+
+    // A ficha 2021-2024 (seção 2) vem como 1 slide com 3 quesitos no JSON —
+    // aqui é dividida em 1 slide por quesito (ritmo mais lento, mesma opção
+    // já sugerida no README/markdown de origem), para ficar no mesmo padrão
+    // dos slides de avaliação da seção 3 e não lotar uma única tela.
+    function buildWeightTableSlides(slide, secaoTitulo) {
+      return slide.data.quesitos
+        .map(
+          (q) => `
+        <section>
+          ${elHeader(secaoTitulo, slide.source)}
+          <h2>Quesito ${q.cod} · ${q.nome}</h2>
+          <table class="tabela-pesos">
+            <thead><tr><th>Item</th><th class="peso">Peso</th></tr></thead>
+            <tbody>
+              ${q.itens
+              .map(
+                (it) =>
+                  `<tr><td>${itemTituloDescricao(`${it.cod} ${it.label}`, it.descricao)}</td><td class="peso">${it.peso}%</td></tr>`
+              )
+              .join("")}
+            </tbody>
+          </table>
+        </section>`
+        )
+        .join("");
+    }
+
+    function buildEvaluationTableSlide(slide, secaoTitulo) {
+      return `
+        <section>
+          ${elHeader(secaoTitulo, slide.source)}
+          <h2>${slide.title} ${seloConceito(slide.conceito_quesito)}</h2>
+          <table class="tabela-pesos tabela-pesos--avaliacao">
+            <thead><tr><th>Item</th><th class="peso">Peso</th><th>Conceito</th></tr></thead>
+            <tbody>
+              ${slide.itens
+          .map(
+            (it) => `
+                <tr>
+                  <td>${itemTituloDescricao(`${it.cod} ${it.label}`, it.descricao)}</td>
+                  <td class="peso">${it.peso}%</td>
+                  <td class="conceito">${seloConceito(it.conceito)}</td>
+                </tr>`
+          )
+          .join("")}
+            </tbody>
+          </table>
+          <div class="destaques-quesito">
+            <strong>Destaques do parecer</strong>
+            ${fragUl(slide.destaques)}
+          </div>
+        </section>`;
+    }
+
+    function buildSummarySlide(slide, secaoTitulo) {
+      return `
+        <section>
+          ${elHeader(secaoTitulo, slide.source)}
+          <h2>${slide.title}</h2>
+          <div class="sintese-layout">
+            <div class="sintese-nota">${slide.nota}</div>
+            <table class="tabela-pesos sintese-tabela">
+              <tbody>
+                ${slide.quesitos
+          .map(
+            (q) => `
+                  <tr><td>${q.cod} · ${q.nome}</td><td class="conceito">${seloConceito(
+              q.conceito
+            )}</td></tr>`
+          )
+          .join("")}
+              </tbody>
+            </table>
+          </div>
+          ${fragUl(slide.body)}
+        </section>`;
+    }
+
+    function buildLegendSlide(slide, secaoTitulo) {
+      return `
+        <section class="slide-legenda-layout">
+          ${elHeader(secaoTitulo, slide.source)}
+          <h2>${slide.title}</h2>
+          <div class="legenda-sankey-guia">
+            <div class="legenda-guia-visual">
+              <div class="legenda-bloco-amostra">
+                <div class="amostra-barra amostra-barra--antiga">Peso %</div>
+                <div class="amostra-rotulo"><strong>Ficha 2021–2024 (Antiga)</strong><span>Barra cinza · Itens e pesos de origem</span></div>
+              </div>
+              <div class="amostra-fita-fluxo">
+                <span class="fita-fluxo-icone">➔</span>
+                <span class="fita-fluxo-texto">Fita proporcional (afunila = enxugamento / alarga = expansão)</span>
+              </div>
+              <div class="legenda-bloco-amostra">
+                <div class="amostra-barra amostra-barra--nova">Peso %</div>
+                <div class="amostra-rotulo"><strong>Ficha 2025–2028 (Nova)</strong><span>Barra laranja · Novo item e peso fixado</span></div>
+              </div>
+            </div>
+            <div class="legenda-regras-lista">
+              ${slide.body
+          .map(
+            (b, i) => `
+                <div class="legenda-item">
+                  <div class="legenda-icone">${i + 1}</div>
+                  <div>${b}</div>
+                </div>`
+          )
+          .join("")}
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function idSankey(slide) {
+      return "sankey-" + slide.id.replace(".", "-");
+    }
+
+    function buildSankeySlide(slide, secaoTitulo) {
+      return `
+        <section class="slide-sankey-layout">
+          ${elHeader(secaoTitulo, slide.source)}
+          <h2>${slide.title}</h2>
+          <div class="sankey-container" id="${idSankey(slide)}"></div>
+        </section>`;
+    }
+
+    // Visão geral, 1 slide só: leitura qualitativa das mudanças entre as
+    // fichas, considerando os pesos novos (não é mais um item-a-item — esse
+    // detalhe mecânico já apareceu no Sankey de cada quesito, logo antes
+    // deste slide). Cada consideração é uma frase de análise, numerada.
+    function buildChangesSlide(slide, secaoTitulo) {
+      return `
+        <section class="slide-mudancas-layout">
+          ${elHeader(secaoTitulo, slide.source)}
+          <h2>${slide.title}</h2>
+          <div class="consideracoes-lista">
+            ${slide.consideracoes
+          .map(
+            (c, i) => `
+              <div class="consideracao-item">
+                <div class="consideracao-numero">${i + 1}</div>
+                <div class="consideracao-texto">${c}</div>
+              </div>`
+          )
+          .join("")}
+          </div>
+        </section>`;
+    }
+
+    // Slide de gráfico nativo (HTML/SVG reconstruído no deck, sem captura de
+    // tela). A marcação vem de FIGURAS (figuras.js), referenciada pelo campo
+    // "figura" do slide em dados.js.
+    function buildChartSlide(slide, secaoTitulo) {
+      const figura = FIGURAS[slide.figura] || "";
+      return `
+        <section class="slide-grafico">
+          ${elHeader(secaoTitulo, slide.source)}
+          <h2>${slide.title}</h2>
+          <div class="slide-grafico-corpo">${figura}</div>
+        </section>`;
+    }
+
+    function buildAdditionsListSlide(slide, secaoTitulo) {
+      return `
+        <section>
+          ${elHeader(secaoTitulo, slide.source)}
+          <h2>${slide.title}</h2>
+          ${fragUl(slide.items, "lista-adicoes")}
+        </section>`;
+    }
+
+    // Tabela genérica de dados (cabeçalho + linhas), com uma nota opcional
+    // abaixo. Usada na seção "Nossa produção" (ex.: evolução ano a ano).
+    function buildDataTableSlide(slide, secaoTitulo) {
+      const headers = slide.table.headers
+        .map((h) => `<th>${h}</th>`)
+        .join("");
+      const rows = slide.table.rows
+        .map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`)
+        .join("");
+      const nota = slide.nota
+        ? `<p class="tabela-dados-nota">${slide.nota}</p>`
+        : "";
+      return `
+        <section>
+          ${elHeader(secaoTitulo, slide.source)}
+          <h2>${slide.title}</h2>
+          <table class="tabela-pesos tabela-dados">
+            <thead><tr>${headers}</tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+          ${nota}
+        </section>`;
+    }
+
+    function buildSlide(slide, secaoTitulo) {
+      switch (slide.kind) {
+        case "concept":
+          return buildConceptSlide(slide, secaoTitulo);
+        case "weight-table":
+          return buildWeightTableSlides(slide, secaoTitulo);
+        case "evaluation-table":
+          return buildEvaluationTableSlide(slide, secaoTitulo);
+        case "summary":
+          return buildSummarySlide(slide, secaoTitulo);
+        case "legend":
+          return buildLegendSlide(slide, secaoTitulo);
+        case "sankey":
+          return buildSankeySlide(slide, secaoTitulo);
+        case "changes":
+          return buildChangesSlide(slide, secaoTitulo);
+        case "chart":
+          return buildChartSlide(slide, secaoTitulo);
+        case "additions-list":
+          return buildAdditionsListSlide(slide, secaoTitulo);
+        case "data-table":
+          return buildDataTableSlide(slide, secaoTitulo);
+        default:
+          console.warn("kind desconhecido:", slide.kind);
+          return "";
+      }
+    }
+
+    // ---------------------------------------------------------------------
+    // Monta o deck inteiro e inicializa o reveal.js
+    // ---------------------------------------------------------------------
+
+    function montarDeck() {
+      const secoes = DECK.deck.sections;
+      let html = buildTitleSlide();
+
+      secoes.forEach((secao, i) => {
+        html += buildSectionDividerSlide(secao, i, secoes.length);
+        secao.slides.forEach((slide) => {
+          html += buildSlide(slide, secao.title);
+        });
+      });
+
+      html += buildObrigadoSlide();
+
+      document.getElementById("slides-root").innerHTML = html;
+
+      // Os diagramas Sankey são desenhados à parte, depois que o HTML dos
+      // slides já existe no DOM (precisam do <div class="sankey-container">
+      // de destino).
+      secoes.forEach((secao) => {
+        secao.slides.forEach((slide) => {
+          if (slide.kind === "sankey") {
+            const container = document.getElementById(idSankey(slide));
+            if (container) renderSankey(container, slide);
+          }
+        });
+      });
+    }
+
+    // Metadados do documento (título da aba + <meta name="author">) — o
+    // Chrome usa os dois ao gerar PDF (Cmd/Ctrl+P → Salvar como PDF): o
+    // título da aba vira o metadado /Title do PDF, e <meta name="author">
+    // vira o /Author. Lido de DECK.deck (dados.js) — fonte única, mesmo
+    // texto do "Elaboração:" no rodapé e do "Como citar" no slide de
+    // título.
+    function definirMetadadosDocumento() {
+      document.title = `${DECK.deck.title} — ${DECK.deck.autores}, ${DECK.deck.ano}`;
+      const metaAutor = document.createElement("meta");
+      metaAutor.name = "author";
+      metaAutor.content = DECK.deck.autores;
+      document.head.appendChild(metaAutor);
+    }
+
+    definirMetadadosDocumento();
+    montarDeck();
+
+    // Sinal pra automação externa (ex.: exportação de PDF via CDP) saber
+    // que o deck — incluindo os diagramas Sankey, desenhados de forma
+    // síncrona dentro de montarDeck() — já terminou de montar. Mesma
+    // técnica de polling determinístico já usada noutros scripts do
+    // projeto (nunca screencast/timers fixos).
+    window.DECK_PRONTO = true;
+
+    Reveal.initialize({
+      hash: true,
+      width: 1280,
+      height: 720,
+      margin: 0.06,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: "slide",
+    });
+  </script>
+</body>
+
+</html>

@@ -1,14 +1,56 @@
 ---
 layout: layouts/base.njk
 templateEngineOverride: njk
-title: Dados/Estudos
+title: Estudos/Slides
 permalink: /estudos/
-descricao: Dados e estudos da COMAPE — PPGMUS/UFMG.
+descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da COMAPE — PPGMUS/UFMG.
 ---
+
+{%- from "partials/lista-documentos.njk" import linhaDocumento with context %}
 
 <section class="secao">
   <div class="container">
-    <h1>Dados/Estudos</h1>
+    <h1>Estudos, slides e materiais de apoio</h1>
+   
+    <br/>
+    
+    <br/>
+    <h2>Estudos e dados</h2>
     <p>Página em construção.</p>
+  
+  <br/>
+<h2>Template - Documento GTs</h2>
+    <p>Página em construção.</p>
+
+
+    <br/>
+    <h2>Slides <small>[4º Fórum]</small></h2>
+    <p style="color: var(--cor-texto-suave); font-size: var(--texto-sm);">
+      Organizados pela mesma ordem da <a href="{{ '/#programacao' | rel }}">programação</a>.
+      Os slides e documentos de cada sessão são adicionados aqui ao longo
+      do Fórum.
+    </p>
+    <br/>
+    <h3>Quarta-feira, 26/08</h3>
+    <br/>
+    <h5>- Abertura institucional e Mesa "PPGMUS ontem, hoje, amanhã":</h5>
+    <ul class="lista-documentos-compacta">
+      {{ linhaDocumento("IV Seminário de Autoavaliação e Planejamento Estratégico — Helena Lopes", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-helena-lopes.pptx", "Apresentação de Helena Lopes para a Mesa de Abertura.") }}
+      {{ linhaDocumento("A avaliação do PPGMUS no contexto da CAPES — José Henrique Padovani", "Slides", "/slides/", "Apresentação da coordenação sobre as conquistas do PPGMUS na avaliação de 2021-2024 e os desafios que se apresentam no quadriênio 2025-2028.") }}
+    </ul>
+    <h5>- Diálogo e Construção Coletiva I (GTs):</h5>
+
+    <h3>Quinta-feira, 27/08</h3>
+    <h5>- Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS</h5>
+    <h5>- Diálogo e Construção Coletiva II</h5>
+    <h5>- Recepção de ingressantes</h5>
+    <h5>- Mesa com egressos — "Após a pós"</h5>
+
+    <h3>Sexta-feira, 28/08</h3>
+    <h5>- Palestra — "Construção democrática do planejamento estratégico"</h5>
+    <h5>- Diálogo e Construção Coletiva III (com o consultor externo)</h5>
+    <h5>- Reunião interna com Consultor Externo</h5>
+
+
   </div>
 </section>

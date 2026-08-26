@@ -172,8 +172,8 @@ descricao: IV Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UF
 
     <p style="margin-top: var(--espaco-3); color: var(--cor-texto-suave); font-size: 0.95em;">
       * O CAD2 (Centro de Atividades Didáticas 2) fica ao lado da Faculdade
-      de Letras da UFMG, e não na Escola de Música.
-      <a href="https://www.google.com/maps/dir/Escola+de+M%C3%BAsica+da+UFMG+-+Av.+Ant%C3%B4nio+Carlos,+6627+-+Pampulha,+Belo+Horizonte+-+MG,+31270-010,+Brasil/Centro+de+Atividades+Did%C3%A1ticas+2+-+CAD+2,+Av.+Pres.+Ant%C3%B4nio+Carlos,+6627+-+Pampulha,+Belo+Horizonte+-+MG,+31270-901/@-19.8648662,-43.9612881,17.91z/data=!4m14!4m13!1m5!1m1!1s0xa690f4199ac16b:0xb4f6e5e0c33d98af!2m2!1d-43.9628313!2d-19.8632927!1m5!1m1!1s0xa69061d07dd2d3:0xe557ffec4b8aeefc!2m2!1d-43.9597186!2d-19.8660527!3e3!5m1!1e4?entry=ttu&amp;g_ep=EgoyMDI2MDgyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Ver rota no mapa</a>.
+      de Letras da UFMG.
+      <a href="https://www.google.com/maps/dir/Escola+de+M%C3%BAsica+da+UFMG+-+Av.+Ant%C3%B4nio+Carlos,+6627+-+Pampulha,+Belo+Horizonte+-+MG,+31270-010,+Brasil/Centro+de+Atividades+Did%C3%A1ticas+2+-+CAD+2,+Av.+Pres.+Ant%C3%B4nio+Carlos,+6627+-+Pampulha,+Belo+Horizonte+-+MG,+31270-901/@-19.8648662,-43.9612881,17.91z/data=!4m14!4m13!1m5!1m1!1s0xa690f4199ac16b:0xb4f6e5e0c33d98af!2m2!1d-43.9628313!2d-19.8632927!1m5!1m1!1s0xa69061d07dd2d3:0xe557ffec4b8aeefc!2m2!1d-43.9597186!2d-19.8660527!3e3!5m1!1e4?entry=ttu&amp;g_ep=EgoyMDI2MDgyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Veja como chegar</a>.
     </p>
 
     <!-- <p style="margin-top: var(--espaco-3);">

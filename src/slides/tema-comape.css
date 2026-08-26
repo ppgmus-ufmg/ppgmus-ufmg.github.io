@@ -1,0 +1,1226 @@
+/* tema-comape.css — tema reveal.js com os design tokens do site da COMAPE
+   (src/css/tokens.css). Reutilizável por qualquer deck em preparacao/slides/.
+   Carregar DEPOIS do reveal.css/theme padrão do reveal.js. */
+
+:root {
+  --cor-primaria-900: #12477a;
+  --cor-primaria-700: #1a5f9e;
+  --cor-primaria-500: #2f7dc4;
+  --cor-primaria-300: #7bafdd;
+  --cor-primaria-100: #dce9f6;
+
+  --cor-destaque-700: #f17807;
+  --cor-destaque-500: #df7f19;
+  --cor-destaque-100: #fadec5;
+
+  --cor-texto: #1a1a1a;
+  --cor-texto-suave: #4a4a4a;
+  --cor-fundo: #ffffff;
+  --cor-fundo-alt: #eaf2fa;
+  --cor-borda: #d7e6f5;
+
+  --cor-cinza-muito-suave: #f2f2f2;
+  --cor-cinza-suave: #e0e0e0;
+  --cor-cinza-medio-claro: #d7d7d7;
+  --cor-cinza-medio: #b7b7b7;
+  --cor-cinza-escuro-suave: #616161;
+  --cor-cinza-escuro: #4a4a4a;
+
+  /* Paleta de cores nomeadas pra marcar/destacar palavras específicas —
+     usada tanto em CSS comum (`mark[data-color="..."]` abaixo) quanto no
+     parser do Sankey (`analisarRico()`/`renderizarTokens()` em sankey.js,
+     que não pode usar `<mark>` HTML de verdade porque o diagrama é SVG
+     desenhado à mão). Fonte única: qualquer classe/tag--tipo que já usava
+     uma dessas cores hardcoded foi trocada pra referenciar o token aqui —
+     mudar a cor nesta lista muda em todo lugar.
+
+     Duas famílias, sem sobreposição: vermelho/verde/laranja/roxo são
+     EXCLUSIVAS das tags estruturais do Sankey (tagTipo fusão/piso/destaque/
+     migração — ver .sankey-node text.sankey-tag--* mais abaixo), nunca usar
+     em <mark> de conteúdo. Amarelo/azul/rosa/marrom/índigo/ciano/lima/
+     grafite são pra marcar TEMAS de conteúdo (ver dados.js, itens novos
+     dos sankeys e slide "Mudanças e Análise"): articulação/aderência
+     interna → marrom, autoavaliação/planejamento → índigo, equidade/
+     políticas afirmativas → rosa, produção intelectual → azul, egressos →
+     amarelo, impacto/visibilidade/internacionalização → ciano, inovação →
+     lima, impacto na sociedade → grafite. Todas calibradas pra contraste
+     de texto legível em fundo branco.
+     Nomes válidos (mantidos em sincronia com CORES_MARCA_VALIDAS em
+     sankey.js): vermelho, laranja, amarelo, verde, azul, roxo, rosa,
+     marrom, indigo, ciano, lima, grafite. */
+  --cor-marca-vermelho: #c0392b;
+  --cor-marca-laranja: var(--cor-destaque-700);
+  --cor-marca-amarelo: #96700a;
+  --cor-marca-verde: #1b5e20;
+  --cor-marca-azul: #0f6e8c;
+  --cor-marca-roxo: #6a1b9a;
+  --cor-marca-rosa: #ad1457;
+  --cor-marca-marrom: #7a3b12;
+  --cor-marca-indigo: #2c3e91;
+  --cor-marca-ciano: #0a7ea8;
+  --cor-marca-lima: #5c7a0a;
+  --cor-marca-grafite: #37474f;
+
+  --fonte-base: 'Poppins', 'Segoe UI', Arial, sans-serif;
+
+  /* Cores fixas do símbolo do logo (sketch-forum.js) — não mudam com o tema. */
+  --logo-brand-a: #d88644;
+  --logo-brand-b: #9f4e20;
+}
+
+.reveal {
+  font-family: var(--fonte-base);
+  color: var(--cor-texto);
+}
+
+.reveal .slides section {
+  box-sizing: border-box;
+  text-align: left;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  height: 100%;
+  /* !important: o reveal.js seta `style="display:block"` inline no slide
+     ativo (.present) — sem isso, o inline vence a regra externa e os
+     filhos com flex:1 1 auto (.sankey-container, .consideracoes-lista)
+     nunca crescem pra preencher o espaço vertical sobrando, caem pro
+     tamanho do próprio conteúdo. */
+  display: flex !important;
+  flex-direction: column;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: var(--fonte-base);
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--cor-primaria-900);
+}
+
+.reveal h2 {
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-bottom: 0.25em;
+  border-bottom: 3px solid var(--cor-destaque-500);
+  padding-bottom: 0.15em;
+  display: inline-block;
+}
+
+.reveal h3 {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--cor-primaria-700);
+  margin: 0.8em 0 0.4em;
+}
+
+.reveal p,
+.reveal li {
+  font-size: 0.5em;
+  line-height: 1.4;
+  color: var(--cor-texto);
+}
+
+.reveal ul {
+  display: block;
+  margin-left: 0.6em;
+}
+
+.reveal ul li {
+  margin-bottom: 0.35em;
+}
+
+.reveal ul li::marker {
+  color: var(--cor-destaque-500);
+}
+
+/* Sublistas (items com {text, sub} no fragUl): recuadas, sem encolher a
+   fonte. O `.reveal li { font-size: 0.5em }` reaplicaria 0.5em a cada nível
+   (encolhendo em cascata até ficar ilegível), então o `li` aninhado herda
+   1em do nível de cima. */
+.reveal ul ul {
+  display: block;
+  margin: 0.1em 0 0.15em 0.7em;
+}
+
+.reveal ul ul li {
+  margin-bottom: 0.08em;
+  font-size: 1em;
+  line-height: 1.3;
+}
+
+.reveal ul ul li::marker {
+  color: var(--cor-primaria-500);
+}
+
+/* Marcação de destaque colorido em texto comum (tabelas, bullets, listas
+   de considerações etc.) — `<mark data-color="verde">palavra</mark>` no
+   dado de origem (dados.js), sem precisar de nenhuma classe: o atributo
+   já basta porque esse texto vira innerHTML de verdade (não é o caso do
+   Sankey, que é SVG desenhado à mão — lá o MESMO atributo é interpretado
+   por analisarRico()/renderizarTokens() em sankey.js, gerando <tspan> com
+   a classe .sankey-tspan-cor-*; ver CORES_MARCA_VALIDAS lá e a paleta
+   --cor-marca-* no :root acima — trocar a cor num lugar troca nos dois).
+   Sem data-color, cai na cor padrão (laranja, igual ao <mark> genérico
+   de antes). */
+mark {
+  background: none;
+  font-weight: 700;
+  color: var(--cor-marca-laranja);
+}
+
+mark[data-color="vermelho"] {
+  color: var(--cor-marca-vermelho);
+}
+
+mark[data-color="laranja"] {
+  color: var(--cor-marca-laranja);
+}
+
+mark[data-color="amarelo"] {
+  color: var(--cor-marca-amarelo);
+}
+
+mark[data-color="verde"] {
+  color: var(--cor-marca-verde);
+}
+
+mark[data-color="azul"] {
+  color: var(--cor-marca-azul);
+}
+
+mark[data-color="roxo"] {
+  color: var(--cor-marca-roxo);
+}
+
+mark[data-color="rosa"] {
+  color: var(--cor-marca-rosa);
+}
+
+mark[data-color="marrom"] {
+  color: var(--cor-marca-marrom);
+}
+
+mark[data-color="indigo"] {
+  color: var(--cor-marca-indigo);
+}
+
+mark[data-color="ciano"] {
+  color: var(--cor-marca-ciano);
+}
+
+mark[data-color="lima"] {
+  color: var(--cor-marca-lima);
+}
+
+mark[data-color="grafite"] {
+  color: var(--cor-marca-grafite);
+}
+
+/* Logo do fórum usado sozinho e centralizado no slide de título / divisor
+   de seção (ver .slide-titulo e .slide-secao abaixo). Nos slides de
+   conteúdo, o logo entra em fluxo normal dentro de .slide-header-evento
+   (ver mais abaixo), sem posicionamento absoluto. */
+.logo-forum-canto {
+  position: absolute;
+  top: 0.5em;
+  left: 0.7em;
+  height: 1.15em;
+  width: auto;
+  z-index: 20;
+}
+
+/* Cabeçalho dos slides de conteúdo: ícone + nome do evento (texto preto,
+   pode quebrar em duas linhas) à esquerda; seção corrente (laranja) e
+   fonte do dado (uma linha simples abaixo, vira link quando o documento
+   está publicado no site) à direita. Em fluxo normal (não mais rodapé
+   fixo) — o conteúdo do slide termina onde termina, sem precisar
+   esticar até a base. */
+.slide-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1em;
+  margin-bottom: 0.4em;
+}
+
+.slide-header-evento {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+
+.slide-header-evento .slide-header-logo {
+  height: 1.05em;
+  width: auto;
+  display: block;
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.evento-titulo {
+  font-size: 0.34em;
+  font-weight: 600;
+  color: var(--cor-texto);
+  line-height: 1.3;
+  max-width: 24em;
+}
+
+.slide-header-meta {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.slide-secao-marca {
+  font-size: 0.36em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--cor-destaque-700);
+  white-space: nowrap;
+}
+
+.slide-fonte-texto {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 0.3em;
+  font-weight: 400;
+  color: var(--cor-texto-suave);
+  white-space: nowrap;
+}
+
+a.slide-fonte-texto {
+  color: var(--cor-primaria-700);
+  text-decoration: underline;
+}
+
+.slide-elaboracao-texto {
+  display: block;
+  margin-top: 0.1em;
+  font-size: 0.3em;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cor-texto-suave);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Slide de título do deck e de divisor de seção                          */
+/* ---------------------------------------------------------------------- */
+
+.slide-titulo {
+  text-align: center !important;
+  height: 100%;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-titulo .logo-forum-canto {
+  position: static;
+  height: 2.6em;
+  margin: 0 auto 0.6em;
+  display: block;
+}
+
+.slide-titulo h1 {
+  font-size: 1.7em;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+}
+
+.slide-titulo .subtitulo {
+  font-size: 0.8em;
+  color: var(--cor-texto-suave);
+  font-weight: 500;
+}
+
+.slide-titulo .autoria {
+  font-size: 0.65em;
+  color: var(--cor-primaria-900);
+  font-weight: 600;
+  margin-top: 1.2em;
+}
+
+.slide-titulo .autoria-meta {
+  font-size: 0.55em;
+  color: var(--cor-texto-suave);
+  font-weight: 400;
+  margin-top: 0.2em;
+}
+
+.slide-titulo .como-citar {
+  font-size: 0.32em;
+  color: var(--cor-texto-suave);
+  font-weight: 400;
+  line-height: 1.4;
+  margin-top: 1.6em;
+  max-width: 26em;
+}
+
+.slide-secao {
+  text-align: center !important;
+  background: var(--cor-primaria-900);
+  height: 100%;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-secao h1 {
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+/* O slide de seção deve ocupar a tela inteira, sem o letterbox branco que o
+   reveal.js deixa ao redor do slide escalado (config width/height + margin).
+   O ::before estica o fundo azul para bem além da caixa de 1280x720; como o
+   .slide-secao não é um stacking context, ele fica atrás do fundo do próprio
+   slide (mesma cor) e cobre o branco das bordas. */
+.slide-secao::before {
+  content: "";
+  position: absolute;
+  top: -25vh;
+  bottom: -25vh;
+  left: -50vw;
+  right: -50vw;
+  background: var(--cor-primaria-900);
+  z-index: -1;
+}
+
+/* No PDF exportado (?print-pdf), o reveal.js força `display: block !important`
+   nas seções (html.reveal-print .reveal .slides section), o que derruba o
+   flex e joga o título pro topo da página. Este override tem especificidade
+   maior e restaura o centramento também na impressão. */
+html.reveal-print .reveal .slides section.slide-secao {
+  display: flex !important;
+  height: 100% !important;
+}
+
+/* Slide de encerramento: mesma tela azul do divisor de seção, com
+   "Obrigado" centralizado e o QR code do formulário ancorado no canto
+   inferior direito (proporção da figura preservada). */
+.slide-obrigado {
+  text-align: center !important;
+  background: var(--cor-primaria-900);
+  height: 100%;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-obrigado::before {
+  content: "";
+  position: absolute;
+  top: -25vh;
+  bottom: -25vh;
+  left: -50vw;
+  right: -50vw;
+  background: var(--cor-primaria-900);
+  z-index: -1;
+}
+
+.slide-obrigado h1 {
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.slide-obrigado-qr {
+  position: absolute;
+  right: 0.7em;
+  bottom: 0.7em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.slide-obrigado-qrcode {
+  width: 5.5em;
+  height: auto;
+  margin: 0;
+  background: #ffffff;
+  padding: 0.3em;
+  border-radius: 0.3em;
+  box-shadow: 0 0.1em 0.4em rgba(0, 0, 0, 0.25);
+}
+
+.slide-obrigado-chamada {
+  color: #ffffff;
+  font-size: 0.34em;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+}
+
+html.reveal-print .reveal .slides section.slide-obrigado {
+  display: flex !important;
+  height: 100% !important;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Slide de gráfico nativo (HTML/SVG reconstruído, sem captura de tela)   */
+/* ---------------------------------------------------------------------- */
+
+.slide-grafico-corpo {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Variação de nota (dumbbell SVG) --- */
+.pg-variacao {
+  width: 100%;
+  max-width: 520px;
+}
+
+.pg-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.slide-grafico .pg-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 0.2em;
+  font-size: 0.3em;
+  color: var(--cor-texto);
+}
+
+.pg-legenda i {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  border-radius: 2px;
+  margin-right: 0.4em;
+  vertical-align: -1px;
+}
+
+.slide-grafico .pg-nota {
+  font-size: 0.3em;
+  color: var(--cor-texto-suave);
+  line-height: 1.35;
+  max-width: 68ch;
+  margin-top: 0.15em;
+  text-align: left;
+}
+
+/* --- Distribuição por estrato/conceito (barras horizontais) --- */
+.pg-estratos {
+  width: 100%;
+  max-width: 840px;
+}
+
+.pg-estrato-linha {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr) 7rem;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.08em 0;
+}
+
+.pg-estrato-rotulo {
+  font-size: 0.38em;
+  font-weight: 600;
+  color: var(--cor-texto);
+  white-space: nowrap;
+}
+
+.pg-estrato-trilho {
+  display: flex;
+  height: 0.7rem;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fafaf8;
+}
+
+.pg-estrato-trilho span {
+  display: block;
+  height: 100%;
+}
+
+.pg-estrato-num {
+  font-size: 0.38em;
+  color: var(--cor-texto-suave);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* --- Onde cada programa está no país (barras) --- */
+.pg-barras {
+  width: 100%;
+  max-width: 900px;
+}
+
+.pg-barras-titulo {
+  font-size: 0.34em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+  margin-bottom: 0.2em;
+}
+
+.pg-barras-head,
+.pg-linha {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) 9rem;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pg-barras-head {
+  padding: 0 4px 0.2rem;
+  border-bottom: 1px solid var(--cor-borda);
+  font-size: 0.3em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cor-texto-suave);
+}
+
+.pg-barras-head-nums {
+  display: grid;
+  grid-template-columns: 2.4rem 3.2rem 3.2rem;
+  gap: 0.35rem;
+  text-align: right;
+}
+
+.pg-linha {
+  padding: 0 4px;
+}
+
+.pg-linha-rotulo {
+  font-size: 0.4em;
+  font-weight: 600;
+  color: var(--cor-texto);
+}
+
+.pg-linha-trilho {
+  display: flex;
+  height: 0.62rem;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fafaf8;
+}
+
+.pg-linha-trilho span {
+  display: block;
+  height: 100%;
+}
+
+.pg-linha-nums {
+  display: grid;
+  grid-template-columns: 2.4rem 3.2rem 3.2rem;
+  gap: 0.35rem;
+  font-size: 0.4em;
+  color: var(--cor-texto-suave);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.pg-linha-nums b {
+  color: var(--cor-texto);
+}
+
+/* --- Distribuição de notas (tabela com barras) --- */
+table.pg-dist {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: collapse;
+  font-size: 0.42em;
+}
+
+table.pg-dist th {
+  text-align: left;
+  padding: 0.3em 0.6em;
+  border-bottom: 2px solid var(--cor-borda);
+  color: var(--cor-primaria-900);
+  font-weight: 700;
+}
+
+table.pg-dist td {
+  padding: 0.18em 0.6em;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.pg-dist-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #fff;
+}
+
+.pg-dist-barra {
+  display: inline-flex;
+  align-items: center;
+  height: 0.9em;
+  width: 9em;
+  max-width: 9em;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fafaf8;
+  vertical-align: middle;
+}
+
+.pg-dist-barra span {
+  display: block;
+  height: 100%;
+}
+
+.pg-dist-num {
+  font-size: 0.85em;
+  color: var(--cor-texto-suave);
+  margin-left: 0.5em;
+}
+
+td.pg-dist-br {
+  text-align: right;
+  color: var(--cor-texto-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Tabelas de peso / avaliação                                            */
+/* ---------------------------------------------------------------------- */
+
+.tabela-quesito {
+  margin-bottom: 0.6em;
+}
+
+.tabela-quesito h3 {
+  margin-bottom: 0.3em;
+}
+
+table.tabela-pesos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.58em;
+  margin-bottom: 0.3em;
+}
+
+/* Tabelas de avaliação (3.1-3.3): item+peso+conceito+destaques, tudo no
+   mesmo slide — fonte menor que o padrão pra caber sem cortar os
+   destaques do parecer (a maior, Quesito 2, tem 5 itens com descrição). */
+table.tabela-pesos--avaliacao {
+  font-size: 0.46em;
+}
+
+table.tabela-pesos--avaliacao th,
+table.tabela-pesos--avaliacao td {
+  padding: 0.26em 0.5em;
+}
+
+table.tabela-pesos th,
+table.tabela-pesos td {
+  text-align: left;
+  padding: 0.32em 0.6em;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+table.tabela-pesos th {
+  background: var(--cor-fundo-alt);
+  color: var(--cor-primaria-900);
+  font-weight: 700;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+table.tabela-pesos td.peso,
+table.tabela-pesos th.peso {
+  text-align: right;
+  white-space: nowrap;
+  font-weight: 700;
+  color: var(--cor-primaria-700);
+}
+
+table.tabela-pesos td.conceito {
+  text-align: center;
+}
+
+/* Tabela genérica de dados (kind "data-table" em dados.js): cabeçalho e
+   células centralizados, primeira coluna (rótulo, ex.: ano) à esquerda e
+   última coluna (total) em destaque. */
+table.tabela-dados {
+  font-size: 0.5em;
+}
+
+table.tabela-dados th,
+table.tabela-dados td {
+  text-align: center;
+}
+
+table.tabela-dados th:first-child,
+table.tabela-dados td:first-child {
+  text-align: left;
+}
+
+table.tabela-dados th:last-child,
+table.tabela-dados td:last-child {
+  font-weight: 700;
+  color: var(--cor-primaria-700);
+}
+
+.tabela-dados-nota {
+  font-size: 0.4em;
+  color: var(--cor-texto-suave);
+  line-height: 1.4;
+  margin-top: 0.35em;
+  max-width: 72ch;
+}
+
+/* Nome sintetizado do item (título) + texto oficial completo da ficha
+   (descrição) — usado nas células de item das tabelas de peso/avaliação.
+   O nome curto continua sendo o que orienta a leitura rápida; a descrição
+   existe pra quem quiser o dado completo da ficha, sem precisar abrir o
+   PDF fonte. No Sankey a mesma ideia é resolvida direto em SVG (ver
+   sankey.js), não reaproveita essas classes. */
+.item-titulo {
+  font-weight: 700;
+}
+
+.item-descricao {
+  display: block;
+  margin-top: 0.15em;
+  font-size: 0.82em;
+  font-weight: 400;
+  color: var(--cor-texto-suave);
+  line-height: 1.25;
+}
+
+.selo-conceito {
+  display: inline-block;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  background: var(--cor-primaria-100);
+  color: var(--cor-primaria-900);
+  font-weight: 700;
+  font-size: 0.85em;
+}
+
+.selo-conceito--mb {
+  background: var(--cor-destaque-100);
+  color: var(--cor-destaque-700);
+}
+
+.destaques-quesito {
+  margin-top: 0.3em;
+}
+
+.destaques-quesito>strong {
+  display: block;
+  font-size: 0.55em;
+  color: var(--cor-primaria-700);
+  margin-bottom: 0.2em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.destaques-quesito ul {
+  font-size: 0.75em;
+  line-height: 1.25;
+}
+
+.destaques-quesito ul li {
+  margin-bottom: 0.22em;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Slide de síntese (nota final)                                          */
+/* ---------------------------------------------------------------------- */
+
+.sintese-layout {
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+  margin-top: 0.4em;
+}
+
+.sintese-nota {
+  flex: 0 0 auto;
+  width: 2.6em;
+  height: 2.6em;
+  border-radius: 50%;
+  background: #2980b9;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+  font-weight: 700;
+  box-shadow: 0 0.15em 0.5em rgba(16, 64, 141, 0.177);
+}
+
+.sintese-tabela {
+  flex: 1 1 auto;
+}
+
+/* ---------------------------------------------------------------------- */
+.legenda-sankey-guia {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  margin-top: 0.3em;
+}
+
+.legenda-guia-visual {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--cor-fundo-alt);
+  border: 1px solid var(--cor-borda);
+  border-radius: 0.4em;
+  padding: 0.45em 0.8em;
+  gap: 0.8em;
+}
+
+.legenda-bloco-amostra {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.amostra-barra {
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.44em;
+}
+
+.amostra-barra--antiga {
+  background: #9e9e9e;
+}
+
+.amostra-barra--nova {
+  background: var(--cor-destaque-500);
+}
+
+.amostra-rotulo {
+  font-size: 0.4em;
+  line-height: 1.25;
+  color: var(--cor-texto);
+}
+
+.amostra-rotulo strong {
+  display: block;
+  color: var(--cor-primaria-900);
+}
+
+.amostra-rotulo span {
+  color: var(--cor-texto-suave);
+  font-size: 0.9em;
+}
+
+.amostra-fita-fluxo {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  font-size: 0.38em;
+  color: var(--cor-primaria-700);
+  font-weight: 500;
+  background: rgba(123, 175, 221, 0.18);
+  padding: 0.25em 0.6em;
+  border-radius: 0.3em;
+}
+
+.fita-fluxo-icone {
+  font-size: 1.2em;
+  color: var(--cor-primaria-500);
+}
+
+.legenda-regras-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.legenda-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
+  margin-bottom: 0.25em;
+}
+
+.legenda-item>div:not(.legenda-icone) {
+  font-size: 0.48em;
+  line-height: 1.35;
+}
+
+.legenda-icone {
+  flex: 0 0 auto;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 0.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.5em;
+  background: var(--cor-primaria-700);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Diagrama Sankey                                                        */
+/* ---------------------------------------------------------------------- */
+
+.slide-sankey-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden !important;
+}
+
+/* Título do slide Sankey um pouco menor que o padrão (1.1em): sobra mais
+   altura pro container do diagrama, que hoje é o fator limitante da escala
+   (preserveAspectRatio "meet" por altura, deixando espaço horizontal
+   sobrando dos dois lados do SVG). */
+.slide-sankey-layout h2 {
+  font-size: 0.85em;
+  margin-bottom: 0.15em;
+}
+
+.sankey-container {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* sem barras de rolagem */
+}
+
+.sankey-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.sankey-node rect {
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+/* font-size em px (= unidades do viewBox do SVG, escala perfeitamente com viewBox) */
+.sankey-node text {
+  font-family: var(--fonte-base);
+  font-size: 11.5px;
+  fill: var(--cor-texto);
+}
+
+.sankey-node text.sankey-titulo {
+  font-weight: 600;
+  fill: var(--cor-primaria-900);
+}
+
+.sankey-node text.peso {
+  font-weight: 700;
+  font-size: 11.5px;
+  fill: var(--cor-primaria-700);
+}
+
+.sankey-node text.sankey-tag {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.sankey-node text.sankey-tag--fusao {
+  fill: var(--cor-marca-vermelho);
+}
+
+.sankey-node text.sankey-tag--piso {
+  fill: var(--cor-marca-verde);
+}
+
+.sankey-node text.sankey-tag--destaque {
+  fill: var(--cor-marca-laranja);
+}
+
+.sankey-node text.sankey-tag--migracao {
+  fill: var(--cor-marca-roxo);
+}
+
+/* Descrição oficial compacta ao lado do nó */
+.sankey-node text.descricao {
+  font-size: 8px;
+  font-weight: 400;
+  fill: var(--cor-texto-suave);
+}
+
+/* Marcação leve dentro de título/descrição do nó — ver analisarRico()/
+   CORES_MARCA_VALIDAS em sankey.js. <b>/<strong> no dado de origem
+   (dados.js) vira negrito puro; <mark data-color="..."> vira negrito +
+   uma das cores nomeadas (mesma paleta --cor-marca-* usada pelo
+   `mark[data-color]` de texto comum, no topo do arquivo — trocar a cor lá
+   troca aqui também). Sem data-color, cai em laranja. */
+.sankey-node tspan.sankey-tspan-negrito {
+  font-weight: 700;
+}
+
+.sankey-node tspan.sankey-tspan-cor-vermelho {
+  font-weight: 700;
+  fill: var(--cor-marca-vermelho);
+}
+
+.sankey-node tspan.sankey-tspan-cor-laranja {
+  font-weight: 700;
+  fill: var(--cor-marca-laranja);
+}
+
+.sankey-node tspan.sankey-tspan-cor-amarelo {
+  font-weight: 700;
+  fill: var(--cor-marca-amarelo);
+}
+
+.sankey-node tspan.sankey-tspan-cor-verde {
+  font-weight: 700;
+  fill: var(--cor-marca-verde);
+}
+
+.sankey-node tspan.sankey-tspan-cor-azul {
+  font-weight: 700;
+  fill: var(--cor-marca-azul);
+}
+
+.sankey-node tspan.sankey-tspan-cor-roxo {
+  font-weight: 700;
+  fill: var(--cor-marca-roxo);
+}
+
+.sankey-node tspan.sankey-tspan-cor-rosa {
+  font-weight: 700;
+  fill: var(--cor-marca-rosa);
+}
+
+.sankey-node tspan.sankey-tspan-cor-marrom {
+  font-weight: 700;
+  fill: var(--cor-marca-marrom);
+}
+
+.sankey-node tspan.sankey-tspan-cor-indigo {
+  font-weight: 700;
+  fill: var(--cor-marca-indigo);
+}
+
+.sankey-node tspan.sankey-tspan-cor-ciano {
+  font-weight: 700;
+  fill: var(--cor-marca-ciano);
+}
+
+.sankey-node tspan.sankey-tspan-cor-lima {
+  font-weight: 700;
+  fill: var(--cor-marca-lima);
+}
+
+.sankey-node tspan.sankey-tspan-cor-grafite {
+  font-weight: 700;
+  fill: var(--cor-marca-grafite);
+}
+
+/* Nota de migração de um nó fantasma */
+.sankey-node text.nota-migracao {
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 500;
+  fill: var(--cor-marca-roxo);
+}
+
+.sankey-link {
+  fill-opacity: 0.55;
+  stroke: none;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Slide de Mudanças / Transição (após o Sankey)                          */
+/* ---------------------------------------------------------------------- */
+
+.slide-mudancas-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Visão qualitativa: leitura em prosa das mudanças considerando os pesos
+   novos, numerada (não é mais item-a-item — esse detalhe mecânico já
+   apareceu no Sankey de cada quesito, logo antes deste slide). */
+.consideracoes-lista {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.3em;
+  margin-top: 0.25em;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.consideracao-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
+}
+
+.consideracao-numero {
+  flex: 0 0 auto;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cor-primaria-700);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.5em;
+}
+
+.consideracao-texto {
+  font-size: 0.46em;
+  line-height: 1.4;
+  color: var(--cor-texto);
+}
+
+.consideracao-texto strong {
+  color: var(--cor-primaria-900);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Lista de adições (sem equivalente na ficha antiga)                     */
+/* ---------------------------------------------------------------------- */
+
+.lista-adicoes li {
+  padding-left: 0.2em;
+}
+
+.lista-adicoes li::marker {
+  content: "+ ";
+  color: var(--cor-destaque-700);
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Impressão em PDF (Chrome print-pdf do reveal.js)                       */
+/* ---------------------------------------------------------------------- */
+
+@media print {
+  .reveal .slides section {
+    page-break-inside: avoid;
+  }
+}

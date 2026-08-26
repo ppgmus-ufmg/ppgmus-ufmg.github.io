@@ -23,6 +23,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
+  // Decks reveal.js autocontidos (HTML/CSS/JS próprios) — ver .eleventyignore.
+  eleventyConfig.addPassthroughCopy({ "src/slides": "slides" });
 
   eleventyConfig.addCollection("documentos", (api) =>
     api.getFilteredByGlob("src/documentos/*.md").sort((a, b) => {

@@ -1,0 +1,5 @@
+# src/slides/ é publicado como arquivo estático puro (deck reveal.js
+# autocontido, com <html>/<head>/<body> próprios) — não deve passar pelo
+# motor de template do Eleventy (Nunjucks). A cópia para _site/slides/ é
+# feita via addPassthroughCopy em .eleventy.js.
+src/slides
