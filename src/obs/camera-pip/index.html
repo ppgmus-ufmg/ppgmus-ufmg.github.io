@@ -22,6 +22,7 @@
   <style>
     :root {
       --cor-primaria-900: #12477a;
+      --cor-primaria-700: #1a5f9e;
       --cor-destaque-500: #df7f19;
     }
 
@@ -46,10 +47,20 @@
     /* Moldura sólida: preenche a tela inteira; a "janela" da apresentação
        (menor que a tela) é o único recorte transparente, feito com 4
        tiras opacas em vez de um furo de verdade — mais simples e robusto
-       que clip-path/mask pra um retângulo reto. */
+       que clip-path/mask pra um retângulo reto.
+
+       O degradê é UM SÓ, definido no tamanho da tela inteira (1920x1080)
+       e "janelado" em cada tira via background-position deslocado pela
+       posição da própria tira — assim as 4 tiras formam um fundo contínuo,
+       como se fosse uma moldura única com um vão recortado no meio, em vez
+       de 4 pedaços de cor lisa desalinhados entre si. */
     .tira {
       position: absolute;
-      background: var(--cor-primaria-900);
+      background-image:
+        radial-gradient(1400px 1000px at 960px 540px, rgba(123, 175, 221, 0.32) 0%, rgba(0, 0, 0, 0) 60%),
+        linear-gradient(135deg, #0c3358 0%, #12477a 40%, #1a5f9e 70%, #103a63 100%);
+      background-size: 1920px 1080px;
+      background-repeat: no-repeat;
     }
 
     .tira.topo {
@@ -57,6 +68,7 @@
       left: 0;
       right: 0;
       height: 90px;
+      background-position: 0 0;
     }
 
     .tira.base {
@@ -64,6 +76,7 @@
       left: 0;
       right: 0;
       height: 90px;
+      background-position: 0 -990px;
       /* 1080 - 90 (topo) - 900 (conteúdo) = 90: cobre a partir de onde a
          apresentação termina (y=990) até o fim da tela. A câmera fica
          POR CIMA da apresentação (dentro dos 900px de altura dela, ver
@@ -75,6 +88,7 @@
       left: 0;
       width: 160px;
       height: 900px;
+      background-position: 0 -90px;
     }
 
     .tira.direita {
@@ -82,9 +96,12 @@
       right: 0;
       width: 160px;
       height: 900px;
+      background-position: -1760px -90px;
     }
 
-    /* Contorno fino de destaque em volta da janela de apresentação. */
+    /* Contorno fino de destaque em volta da janela de apresentação, com um
+       leve brilho laranja pra dar profundidade (em vez de só uma linha
+       fina chapada). */
     .moldura-conteudo {
       position: absolute;
       left: 160px;
@@ -92,6 +109,7 @@
       width: 1600px;
       height: 900px;
       border: 3px solid var(--cor-destaque-500);
+      box-shadow: 0 0 26px rgba(223, 127, 25, 0.28);
       box-sizing: border-box;
       pointer-events: none;
     }
@@ -108,9 +126,9 @@
       height: 270px;
       top: 690px;
       /* 696 - 6 */
-      border: 6px solid var(--cor-primaria-900);
+      border: 6px solid var(--cor-primaria-700);
       border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
     }
 
     body.esquerda .quadro {
