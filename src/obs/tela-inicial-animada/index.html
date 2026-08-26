@@ -89,10 +89,13 @@
       position: absolute;
       inset: 0;
       /* Vinheta (escurece os cantos) por cima de um degradê diagonal nos
-         tons da marca — a camada listada primeiro fica por cima. */
+         tons da marca — a camada listada primeiro fica por cima. Cor do
+         meio em --cor-primaria-500 (mais vívido que o 700 original) +
+         saturate() no filter abaixo pra ficar mais saturado. */
       background:
         radial-gradient(140% 120% at 50% 50%, rgba(4, 16, 28, 0) 42%, rgba(4, 16, 28, 0.6) 100%),
-        linear-gradient(160deg, rgba(18, 71, 122, 0.82) 0%, rgba(26, 95, 158, 0.6) 45%, rgba(13, 48, 84, 0.86) 100%);
+        linear-gradient(160deg, rgba(18, 71, 122, 0.85) 0%, rgba(47, 125, 196, 0.68) 45%, rgba(13, 48, 84, 0.88) 100%);
+      filter: saturate(1.35);
     }
 
     .cena {
