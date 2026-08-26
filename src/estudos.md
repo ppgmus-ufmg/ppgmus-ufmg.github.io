@@ -28,11 +28,7 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
 
     <br/>
     <h2>Slides <small>[4º Fórum]</small></h2>
-    <p style="color: var(--cor-texto-suave); font-size: var(--texto-sm);">
-      Organizados pela mesma ordem da <a href="{{ '/#programacao' | rel }}">programação</a>.
-      Os slides e documentos de cada sessão são adicionados aqui ao longo
-      do Fórum.
-    </p>
+
     <br/>
     <h3>Quarta-feira, 26/08</h3>
     <br/>
