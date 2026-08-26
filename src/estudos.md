@@ -16,7 +16,10 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
     
     <br/>
     <h2>Estudos e dados</h2>
-    <p>Página em construção.</p>
+    <ul class="lista-documentos-compacta">
+      {{ linhaDocumento("Estudo comparativo de modelos de Processo Seletivo em PPGs de Música (2025-26)", "Site", "https://pdvn.cc/2026_modelos_selecao_pos/", "Estudo comparativo de modelos de Processo Seletivo de PPGs da área de Música entre os anos de 2025 e 2026 (estudo realizado em mar/2026; alguns editais podem ter mudado depois disso).") }}
+      {{ linhaDocumento("Relatório de Oferta de Vagas 2027", "Texto", "/assets/documentos/estudos/relatorio-oferta-vagas-2027.pdf", "Relatório elaborado pela Coordenação do PPGMUS para projeção de vagas para 2027. Inclui identificação de demandas, alocação de orientandos e planejamento estratégico (vagas, credenciamento, colaboração em orientações).") }}
+    </ul>
   
   <br/>
 <h2>Template - Documento GTs</h2>
