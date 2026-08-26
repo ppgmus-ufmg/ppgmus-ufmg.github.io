@@ -44,7 +44,7 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
     </ul>
     <h5>- Diálogo e Construção Coletiva I (GTs):</h5>
     <ul class="lista-documentos-compacta">
-      {{ linhaDocumento("Apresentação de desafios e estudos/propostas preliminares — COMAPE", "Slides", "/slides/02-questoes-gts/", "Questões do PPGMUS que merecem atenção e trabalho conjunto dos GTs: pesquisa e grupos de pesquisa, processo seletivo, gestão de processos, visibilidade e divulgação científica, identidade/objetivos, integração com a graduação e a extensão.") }}
+      {{ linhaDocumento("Apresentação de desafios e estudos/propostas preliminares — José Henrique Padovani", "Slides", "/slides/02-questoes-gts/", "Questões do PPGMUS que merecem atenção e trabalho conjunto dos GTs: pesquisa e grupos de pesquisa, processo seletivo, gestão de processos, visibilidade e divulgação científica, identidade/objetivos, integração com a graduação e a extensão.") }}
       {{ linhaDocumento("Proposta preliminar da Coordenação do PPGMUS de novo modelo de Processo Seletivo", "Slides", "/slides/03-proposta-processo-seletivo/", "Diretrizes gerais e síntese da proposta da Coordenação do PPGMUS.") }}
     </ul>
 

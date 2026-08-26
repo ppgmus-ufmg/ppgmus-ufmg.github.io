@@ -1215,6 +1215,75 @@ table.tabela-dados td:last-child {
 }
 
 /* ---------------------------------------------------------------------- */
+/* Índice / percurso da apresentação (logo após a capa)                   */
+/* ---------------------------------------------------------------------- */
+
+.slide-indice-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Div genérica, não <ol> — um <ol>/<li> real perde a guerra de
+   especificidade contra as regras de lista do tema padrão do reveal.js
+   (".reveal ol" etc., que fixam display:block), do mesmo jeito que
+   table.tabela-pesos perdia margin-top para ".reveal table" (ver nota em
+   "Estrutura da seleção" no deck 03-proposta-processo-seletivo). Sem a
+   guerra de especificidade, o flex + justify-content:space-evenly abaixo
+   funciona e os itens se distribuem por toda a altura do slide. */
+.indice-lista {
+  margin: 0.3em 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.2em;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.indice-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7em;
+}
+
+/* Número em azul (mesma cor do fundo dos slides de divisor de seção) —
+   reforça visualmente que cada item do índice corresponde a uma seção
+   (slide azul) mais adiante no deck. */
+.indice-numero {
+  flex: 0 0 auto;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cor-primaria-900);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.52em;
+}
+
+.indice-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+
+.indice-titulo {
+  font-size: 0.6em;
+  font-weight: 700;
+  color: var(--cor-primaria-900);
+  line-height: 1.35;
+}
+
+.indice-resumo {
+  font-size: 0.5em;
+  color: var(--cor-texto-suave);
+  line-height: 1.35;
+}
+
+/* ---------------------------------------------------------------------- */
 /* Lista de adições (sem equivalente na ficha antiga)                     */
 /* ---------------------------------------------------------------------- */
 

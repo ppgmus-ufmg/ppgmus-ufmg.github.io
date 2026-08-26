@@ -16,6 +16,7 @@ const DECK = {
       {
         "id": "sec1-mecanica",
         "title": "Como funciona a Avaliação de Permanência",
+        "resumo": "O ciclo avaliativo e como a nota final é formada.",
         "slides": [
           {
             "id": "1.1",
@@ -78,6 +79,7 @@ const DECK = {
       {
         "id": "sec2-ficha-21-24",
         "title": "Ficha 2021-2024 — pesos por quesito (Programas Acadêmicos)",
+        "resumo": "Os três quesitos da ficha anterior e seus pesos internos.",
         "slides": [
           {
             "id": "2.1",
@@ -124,6 +126,7 @@ const DECK = {
       {
         "id": "sec3-avaliacao-recebida",
         "title": "Como fomos avaliados — PPGMUS-UFMG, quadriênio 2021-2024",
+        "resumo": "O resultado real do PPGMUS-UFMG no quadriênio: nota 6.",
         "slides": [
           {
             "id": "3.1",
@@ -225,6 +228,7 @@ const DECK = {
       {
         "id": "sec-producao-21-24",
         "title": "Nossa produção - 2021-24",
+        "resumo": "Um retrato da produção do programa: livros, artigos, produções artísticas e técnicas.",
         "slides": [
           {
             "id": "3b.1",
@@ -303,6 +307,7 @@ const DECK = {
       {
         "id": "sec4-comparacao",
         "title": "A nova ficha de avaliação e o que mudou",
+        "resumo": "Quesito a quesito, o que subiu, caiu, se fundiu ou migrou entre as fichas.",
         "slides": [
           {
             "id": "4.1",
@@ -422,6 +427,7 @@ const DECK = {
       {
         "id": "sec5-caminho-2028",
         "title": "O caminho até 2028",
+        "resumo": "Sucupira, desafios de pesquisa e gestão: o que se impõe ao programa.",
         "slides": [
           {
             "id": "5.1",
@@ -484,6 +490,7 @@ const DECK = {
       {
         "id": "sec6-plano-autoavaliacao",
         "title": "Plano de Autoavaliação e Planejamento Estratégico",
+        "resumo": "Como vamos construir, coletivamente, o Plano — a partir de hoje.",
         "slides": [
           {
             "id": "6.1",

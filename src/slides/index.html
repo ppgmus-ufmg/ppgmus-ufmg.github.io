@@ -212,6 +212,33 @@
         </section>`;
     }
 
+    // Índice/percurso da apresentação, logo após a capa: lista as seções
+    // na mesma ordem em que aparecem no deck (cada uma delas é, mais
+    // adiante, um slide azul de divisor — ver buildSectionDividerSlide).
+    // Número gerado a partir da posição no array (não de um campo próprio
+    // em dados.js), então nunca desalinha se uma seção for reordenada.
+    function buildIndiceSlide(secoes) {
+      return `
+        <section class="slide-indice-layout">
+          ${elHeader("Sumário")}
+          <h2>Percurso da apresentação</h2>
+          <div class="indice-lista">
+            ${secoes
+          .map(
+            (secao, i) => `
+            <div class="indice-item">
+              <span class="indice-numero">${i + 1}</span>
+              <span class="indice-conteudo">
+                <span class="indice-titulo">${secao.title}</span>
+                ${secao.resumo ? `<span class="indice-resumo">${secao.resumo}</span>` : ""}
+              </span>
+            </div>`
+          )
+          .join("")}
+          </div>
+        </section>`;
+    }
+
     // Slide de encerramento: mesma tela azul do divisor de seção, com
     // "Obrigado" centralizado e o QR code do formulário ancorado no canto
     // inferior direito. Fica fora de qualquer seção (é o último do deck),
@@ -470,6 +497,7 @@
     function montarDeck() {
       const secoes = DECK.deck.sections;
       let html = buildTitleSlide();
+      html += buildIndiceSlide(secoes);
 
       secoes.forEach((secao, i) => {
         html += buildSectionDividerSlide(secao, i, secoes.length);
