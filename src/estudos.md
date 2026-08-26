@@ -34,9 +34,11 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
     <h3>Quarta-feira, 26/08</h3>
     <br/>
     <h5>- Abertura institucional e Mesa "PPGMUS ontem, hoje, amanhã":</h5>
+    <h5>- A avaliação do PPGMUS no contexto da CAPES:</h5>
     <ul class="lista-documentos-compacta">
-      {{ linhaDocumento("IV Seminário de Autoavaliação e Planejamento Estratégico — Helena Lopes", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-helena-lopes.pptx", "Apresentação de Helena Lopes para a Mesa de Abertura.") }}
-      {{ linhaDocumento("A avaliação do PPGMUS no contexto da CAPES — José Henrique Padovani", "Slides", "/slides/", "Apresentação da coordenação sobre as conquistas do PPGMUS na avaliação de 2021-2024 e os desafios que se apresentam no quadriênio 2025-2028.") }}
+      {{ linhaDocumento("A avaliação do PPGMUS no contexto da CAPES — Helena Lopes", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-helena-lopes.pptx", "(slide 1).") }}
+      {{ linhaDocumento("A avaliação do PPGMUS no contexto da CAPES — José Henrique Padovani", "Slides", "/slides/", "(slide 2)") }}
+      {{ linhaDocumento("A avaliação do PPGMUS no contexto da CAPES — José Henrique Padovani (PDF)", "Slides", "/assets/documentos/4o-forum-2026/avaliacao-ppgmus-contexto-capes-jose-henrique-padovani.pdf", "Versão em PDF para download (slide 2).") }}
     </ul>
     <h5>- Diálogo e Construção Coletiva I (GTs):</h5>
 
