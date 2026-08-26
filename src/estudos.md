@@ -23,7 +23,9 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
   
   <br/>
 <h2>Template - Documento GTs</h2>
-    <p>Página em construção.</p>
+    <ul class="lista-documentos-compacta">
+      {{ linhaDocumento("Modelo de Relatório do Grupo de Trabalho (GT)", "Modelo", "/assets/documentos/template-gts/modelo-relatorio-gt.docx", "Modelo em Word para o registro de cada GT: tema, relator(a), participantes, análise/discussão e propostas de encaminhamentos.") }}
+    </ul>
 
 
     <br/>

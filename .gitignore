@@ -19,6 +19,9 @@ Thumbs.db
 # Nunca commitar documentos internos/rascunhos (docx, etc.)
 *.docx
 *.doc
+# Exceção: modelo de relatório de GT, publicado em src/assets/documentos/
+# justamente para ser baixado/editado em Word por quem participa dos GTs.
+!/src/assets/documentos/template-gts/modelo-relatorio-gt.docx
 /privado/
 /rascunhos/
 /convites/
