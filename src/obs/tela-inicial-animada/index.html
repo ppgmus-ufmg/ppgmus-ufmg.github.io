@@ -1,0 +1,253 @@
+<!doctype html>
+<!--
+  Tela inicial de gravação (OBS) — versão animada: a MESMA animação do logo
+  da página inicial do site (símbolo em p5.js abrindo + texto "4º Fórum..."
+  revelado em wipe, ver src/_includes/partials/logo-forum.njk e
+  src/assets/logo-forum/sketch-forum.js) e a MESMA foto de fundo do hero
+  (src/assets/img/hero-ufmg-pb.jpg, com um degradê duotone nos tons da
+  marca por cima — mesma ideia do ::after de .hero__media em style.css,
+  só que colorido em vez de preto), isolada — sem barra PPGMUS/UFMG, texto
+  de chamada ou seta —, com logo + título centralizados sozinhos por cima.
+
+  Uso no OBS: Fonte de Navegador (Browser Source) apontando pra URL desta
+  página (local via `npm start` — http://localhost:8080/obs/tela-inicial-
+  animada/ — ou, uma vez publicado o site, https://<site>/obs/tela-inicial-
+  animada/). Roda uma vez (o sketch para de desenhar sozinho ao terminar,
+  ver noLoop() em sketch-forum.js) e fica parada nesse estado — pode deixar
+  a fonte na cena de espera à vontade, sem gastar CPU à toa.
+-->
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OBS · Tela inicial animada</title>
+  <style>
+    @font-face {
+      font-family: "Poppins";
+      src: url("../../assets/fonts/poppins/Poppins-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: "Poppins";
+      src: url("../../assets/fonts/poppins/Poppins-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+    }
+
+    :root {
+      --cor-primaria-900: #12477a;
+      --fonte-base: "Poppins", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      /* Fica visível um instante enquanto a foto carrega (mesmo tom do
+         degradê por cima dela, pra não haver um "flash" de cor diferente). */
+      background: var(--cor-primaria-900);
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Foto do hero (mesma da home) + degradê duotone azul por cima — dá
+       profundidade/textura em vez do azul chapado, mantendo a marca. */
+    .fundo {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .fundo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.08) brightness(0.95);
+    }
+
+    .fundo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      /* Vinheta (escurece os cantos) por cima de um degradê diagonal nos
+         tons da marca — a camada listada primeiro fica por cima. Cor do
+         meio em --cor-primaria-500 (mais vívido que o 700 original) +
+         saturate() no filter abaixo pra ficar mais saturado. */
+      background:
+        radial-gradient(140% 120% at 50% 50%, rgba(4, 16, 28, 0) 42%, rgba(4, 16, 28, 0.6) 100%),
+        linear-gradient(160deg, rgba(15, 41, 66, 0.85) 0%, rgba(6, 16, 26, 0.68) 45%, rgba(13, 48, 84, 0.88) 100%);
+      filter: saturate(1.35);
+    }
+
+    .cena {
+      position: relative;
+      z-index: 1;
+      width: min(88vw, 1280px);
+    }
+
+    /* --------------------------------------------------------------------
+       Réplica mínima de .logo-forum-escala/.logo-forum/#wrapper/#logo-text
+       (src/css/style.css) — mesma coreografia da home, texto em branco (é
+       a variante já usada lá para quando o fundo não é branco, ver
+       .hero--media.foto-visivel .logo-forum #logo-text no style.css).
+       -------------------------------------------------------------------- */
+    .logo-forum-escala {
+      width: 100%;
+    }
+
+    .logo-forum {
+      position: relative;
+      width: 100%;
+      max-width: 1120px;
+      aspect-ratio: 800 / 160;
+      margin: 0 auto;
+      overflow: hidden;
+      /* Desloca à direita pra o símbolo (à esquerda da caixa) ficar
+         centralizado na tela enquanto o texto ainda está invisível. */
+      transform: translateX(26%);
+      transition: transform 1s cubic-bezier(.65, 0, .35, 1);
+    }
+
+    .logo-forum.mover-esquerda {
+      transform: translateX(0);
+    }
+
+    .logo-forum #wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 800px;
+      height: 160px;
+      transform-origin: top left;
+      opacity: 0;
+      animation: entradaLogoSimbolo .3s ease forwards;
+    }
+
+    @keyframes entradaLogoSimbolo {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .logo-forum canvas {
+      display: block;
+    }
+
+    .logo-forum #logo-text {
+      position: absolute;
+      left: 190px;
+      top: 60px;
+      transform: translateY(-50%);
+      font-family: var(--fonte-base);
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 1.3;
+      color: #ffffff;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, .5), 0 1px 3px rgba(0, 0, 0, .6);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .logo-forum #logo-text p {
+      margin: 0;
+      padding: 0;
+      clip-path: inset(0 0 0 100%);
+    }
+
+    .logo-forum #logo-text.mostrar p {
+      animation: revelarTextoLogoWipe .7s cubic-bezier(.22, .61, .36, 1) forwards;
+    }
+
+    .logo-forum #logo-text.mostrar p:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .logo-forum #logo-text.mostrar p:nth-child(2) {
+      animation-delay: .2s;
+    }
+
+    @keyframes revelarTextoLogoWipe {
+      from {
+        clip-path: inset(0 0 0 100%);
+      }
+
+      to {
+        clip-path: inset(0 0 0 0%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="fundo">
+    <img src="../../assets/img/hero-ufmg-pb.jpg" alt="">
+  </div>
+  <div class="cena">
+    <div class="logo-forum-escala">
+      <div class="logo-forum" id="logo-forum-outer" aria-hidden="true">
+        <div id="wrapper">
+          <div id="logo-text">
+            <p>4º Fórum de Autoavaliação</p>
+            <p>e Planejamento Estratégico</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">
+      4º Fórum de Autoavaliação e Planejamento Estratégico — PPGMUS/UFMG
+    </p>
+  </div>
+
+  <script>
+    // Chamado pelo sketch (sketch-forum.js) quando a abertura das janelas
+    // termina — mesmo gatilho da home (ver mostrarTextoForum em
+    // partials/logo-forum.njk), sem a fase 3 (foto/barra/data/seta), que
+    // não existe nesta página.
+    function mostrarTextoForum() {
+      const outer = document.getElementById("logo-forum-outer");
+      const texto = document.getElementById("logo-text");
+      if (outer) outer.classList.add("mover-esquerda");
+      if (texto) texto.classList.add("mostrar");
+    }
+
+    function scaleLogoForum() {
+      const outer = document.getElementById("logo-forum-outer");
+      const inner = document.getElementById("wrapper");
+      if (!outer || !inner) return;
+      const scale = outer.clientWidth / 800;
+      const DESLOCAMENTO_CENTRALIZACAO = 85;
+      inner.style.transform = "scale(" + scale + ") translateX(" + DESLOCAMENTO_CENTRALIZACAO + "px)";
+    }
+    window.addEventListener("resize", scaleLogoForum);
+    document.addEventListener("DOMContentLoaded", scaleLogoForum);
+    scaleLogoForum();
+  </script>
+  <script src="../../assets/logo-forum/p5.min.js"></script>
+  <script src="../../assets/logo-forum/logo-classes.js"></script>
+  <script src="../../assets/logo-forum/sketch-forum.js"></script>
+</body>
+
+</html>

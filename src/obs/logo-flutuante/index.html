@@ -1,0 +1,215 @@
+<!doctype html>
+<!--
+  Logotipo flutuante animado (OBS) — selo de marca pra deixar fixo num
+  canto da tela durante toda a gravação. Reaproveita a mesma animação do
+  símbolo da home (sketch-forum.js: janelas abrindo) numa escala pequena,
+  revelando o título "4º Fórum de Autoavaliação e Planejamento Estratégico"
+  (mesmo texto de tela-inicial-animada/) quando termina.
+
+  Fundo transparente — pensado pra Fonte de Navegador (Browser Source) do
+  OBS, tamanho pequeno (sugestão: ~560x120 no Transform da fonte, canto que
+  preferir — mais largo que antes porque o título é mais comprido que
+  "COMAPE"). Roda uma vez e fica parada (noLoop() em sketch-forum.js), sem
+  gastar CPU à toa durante o resto da gravação.
+
+  Duas variantes de cor do texto via query string — ?cor=branco (padrão,
+  pra ficar sobre fundo escuro/foto) ou ?cor=preto (pra ficar sobre fundo
+  claro) — cada uma com sombra/contorno na cor oposta pra continuar legível
+  mesmo se o fundo por baixo mudar.
+
+  Uso: http://localhost:8080/obs/logo-flutuante/ (local, `npm start`) ou
+  https://<site>/obs/logo-flutuante/ uma vez publicado.
+-->
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OBS · Logo flutuante animado</title>
+  <style>
+    @font-face {
+      font-family: "Poppins";
+      src: url("../../assets/fonts/poppins/Poppins-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: "Poppins";
+      src: url("../../assets/fonts/poppins/Poppins-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+    }
+
+    :root {
+      --fonte-base: "Poppins", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cena {
+      width: 100%;
+    }
+
+    /* Mesma réplica de .logo-forum-escala/.logo-forum/#wrapper/#logo-text
+       de tela-inicial-animada/index.html, sem tela cheia — aqui o próprio
+       tamanho da fonte de navegador no OBS define a escala. */
+    .logo-forum {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 800 / 160;
+      margin: 0 auto;
+      overflow: hidden;
+      transform: translateX(26%);
+      transition: transform 1s cubic-bezier(.65, 0, .35, 1);
+    }
+
+    .logo-forum.mover-esquerda {
+      transform: translateX(0);
+    }
+
+    .logo-forum #wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 800px;
+      height: 160px;
+      transform-origin: top left;
+      opacity: 0;
+      animation: entradaLogoSimbolo .3s ease forwards;
+    }
+
+    @keyframes entradaLogoSimbolo {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .logo-forum canvas {
+      display: block;
+    }
+
+    .logo-forum #logo-text {
+      position: absolute;
+      left: 190px;
+      top: 60px;
+      transform: translateY(-50%);
+      font-family: var(--fonte-base);
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 1.3;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    /* Duas variantes de cor, escolhidas via classe no <body> (ver
+       ?cor=preto|branco no script) — cada uma com sombra na cor oposta,
+       pra continuar legível independente do que estiver por baixo. */
+    body.cor-branco .logo-forum #logo-text {
+      color: #ffffff;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, .55), 0 1px 3px rgba(0, 0, 0, .65);
+    }
+
+    body.cor-preto .logo-forum #logo-text {
+      color: #1a1a1a;
+      text-shadow: 0 2px 12px rgba(255, 255, 255, .6), 0 1px 3px rgba(255, 255, 255, .7);
+    }
+
+    .logo-forum #logo-text p {
+      margin: 0;
+      padding: 0;
+      clip-path: inset(0 0 0 100%);
+    }
+
+    .logo-forum #logo-text.mostrar p {
+      animation: revelarTextoLogoWipe .7s cubic-bezier(.22, .61, .36, 1) forwards;
+    }
+
+    .logo-forum #logo-text.mostrar p:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .logo-forum #logo-text.mostrar p:nth-child(2) {
+      animation-delay: .2s;
+    }
+
+    @keyframes revelarTextoLogoWipe {
+      from {
+        clip-path: inset(0 0 0 100%);
+      }
+
+      to {
+        clip-path: inset(0 0 0 0%);
+      }
+    }
+  </style>
+</head>
+
+<body class="cor-branco">
+  <div class="cena">
+    <div class="logo-forum" id="logo-forum-outer" aria-hidden="true">
+      <div id="wrapper">
+        <div id="logo-text">
+          <p>4º Fórum de Autoavaliação</p>
+          <p>e Planejamento Estratégico</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    if (params.get("cor") === "preto") {
+      document.body.classList.remove("cor-branco");
+      document.body.classList.add("cor-preto");
+    }
+
+    function mostrarTextoForum() {
+      const outer = document.getElementById("logo-forum-outer");
+      const texto = document.getElementById("logo-text");
+      if (outer) outer.classList.add("mover-esquerda");
+      if (texto) texto.classList.add("mostrar");
+    }
+
+    function scaleLogoForum() {
+      const outer = document.getElementById("logo-forum-outer");
+      const inner = document.getElementById("wrapper");
+      if (!outer || !inner) return;
+      const scale = outer.clientWidth / 800;
+      const DESLOCAMENTO_CENTRALIZACAO = 85;
+      inner.style.transform = "scale(" + scale + ") translateX(" + DESLOCAMENTO_CENTRALIZACAO + "px)";
+    }
+    window.addEventListener("resize", scaleLogoForum);
+    document.addEventListener("DOMContentLoaded", scaleLogoForum);
+    scaleLogoForum();
+  </script>
+  <script src="../../assets/logo-forum/p5.min.js"></script>
+  <script src="../../assets/logo-forum/logo-classes.js"></script>
+  <script src="../../assets/logo-forum/sketch-forum.js"></script>
+</body>
+
+</html>

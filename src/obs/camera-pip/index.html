@@ -1,0 +1,163 @@
+<!doctype html>
+<!--
+  Moldura de apresentação + câmera PIP (OBS) — overlay 1920x1080
+  transparente: uma moldura sólida (fundo azul da marca) em volta de uma
+  janela de apresentação MENOR que a tela toda, com a câmera cobrindo uma
+  fatia pequena da própria apresentação (canto inferior esquerdo ou
+  direito, ?lado=esquerda|direita — padrão esquerda). Sem selo/etiqueta
+  "COMAPE" desta vez, só a moldura.
+
+  Área de conteúdo (onde a apresentação/tela compartilhada deve ficar por
+  baixo, mesma pra ambas as variantes): x=160, y=90, largura=1600, altura=900
+
+  Área da câmera (por cima da apresentação, perto do canto inferior):
+    esquerda: x=184,  y=696, largura=420, altura=270
+    direita:  x=1316, y=696, largura=420, altura=270
+-->
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <title>OBS · Moldura de apresentação + câmera PIP</title>
+  <style>
+    :root {
+      --cor-primaria-900: #12477a;
+      --cor-primaria-700: #1a5f9e;
+      --cor-destaque-500: #df7f19;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    body {
+      position: relative;
+    }
+
+    /* Moldura sólida: preenche a tela inteira; a "janela" da apresentação
+       (menor que a tela) é o único recorte transparente, feito com 4
+       tiras opacas em vez de um furo de verdade — mais simples e robusto
+       que clip-path/mask pra um retângulo reto.
+
+       O degradê é UM SÓ, definido no tamanho da tela inteira (1920x1080)
+       e "janelado" em cada tira via background-position deslocado pela
+       posição da própria tira — assim as 4 tiras formam um fundo contínuo,
+       como se fosse uma moldura única com um vão recortado no meio, em vez
+       de 4 pedaços de cor lisa desalinhados entre si. */
+    .tira {
+      position: absolute;
+      background-image:
+        radial-gradient(1400px 1000px at 960px 540px, rgba(123, 175, 221, 0.32) 0%, rgba(0, 0, 0, 0) 60%),
+        linear-gradient(135deg, #0c3358 0%, #12477a 40%, #1a5f9e 70%, #103a63 100%);
+      background-size: 1920px 1080px;
+      background-repeat: no-repeat;
+    }
+
+    .tira.topo {
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 90px;
+      background-position: 0 0;
+    }
+
+    .tira.base {
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 90px;
+      background-position: 0 -990px;
+      /* 1080 - 90 (topo) - 900 (conteúdo) = 90: cobre a partir de onde a
+         apresentação termina (y=990) até o fim da tela. A câmera fica
+         POR CIMA da apresentação (dentro dos 900px de altura dela, ver
+         .quadro abaixo), não precisa de mais espaço aqui embaixo. */
+    }
+
+    .tira.esquerda {
+      top: 90px;
+      left: 0;
+      width: 160px;
+      height: 900px;
+      background-position: 0 -90px;
+    }
+
+    .tira.direita {
+      top: 90px;
+      right: 0;
+      width: 160px;
+      height: 900px;
+      background-position: -1760px -90px;
+    }
+
+    /* Contorno fino de destaque em volta da janela de apresentação, com um
+       leve brilho laranja pra dar profundidade (em vez de só uma linha
+       fina chapada). */
+    .moldura-conteudo {
+      position: absolute;
+      left: 160px;
+      top: 90px;
+      width: 1600px;
+      height: 900px;
+      border: 3px solid var(--cor-destaque-500);
+      box-shadow: 0 0 26px rgba(223, 127, 25, 0.28);
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+
+    /* Câmera — mesma técnica de content-box + borda pra fora usada na
+       moldura de câmera estática (ver preparacao/obs/_gerar): width/height
+       aqui já SÃO a área de conteúdo (câmera), a borda cresce por fora.
+       "top"/"left" (posição do box, borda incluída) = coordenada de
+       conteúdo documentada no cabeçalho do arquivo MENOS a borda (6px). */
+    .quadro {
+      position: absolute;
+      box-sizing: content-box;
+      width: 420px;
+      height: 270px;
+      top: 690px;
+      /* 696 - 6 */
+      border: 6px solid var(--cor-primaria-700);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    }
+
+    body.esquerda .quadro {
+      left: 178px;
+      /* 184 - 6 */
+    }
+
+    body.direita .quadro {
+      left: 1310px;
+      /* 1316 - 6 */
+    }
+  </style>
+</head>
+
+<body class="esquerda">
+  <div class="tira topo"></div>
+  <div class="tira base"></div>
+  <div class="tira esquerda"></div>
+  <div class="tira direita"></div>
+  <div class="moldura-conteudo"></div>
+  <div class="quadro"></div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    if (params.get("lado") === "direita") {
+      document.body.classList.remove("esquerda");
+      document.body.classList.add("direita");
+    }
+  </script>
+</body>
+
+</html>

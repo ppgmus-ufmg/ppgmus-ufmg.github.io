@@ -3,3 +3,7 @@
 # motor de template do Eleventy (Nunjucks). A cópia para _site/slides/ é
 # feita via addPassthroughCopy em .eleventy.js.
 src/slides
+
+# src/obs/ (materiais de cena/overlay pro OBS): mesmo motivo acima —
+# HTML/CSS/JS autocontidos, cópia via addPassthroughCopy.
+src/obs

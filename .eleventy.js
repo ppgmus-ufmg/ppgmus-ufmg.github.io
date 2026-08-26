@@ -25,6 +25,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
   // Decks reveal.js autocontidos (HTML/CSS/JS próprios) — ver .eleventyignore.
   eleventyConfig.addPassthroughCopy({ "src/slides": "slides" });
+  // Materiais de cena para OBS (telas/overlays HTML autocontidos, não
+  // linkados na navegação) — mesmo motivo do src/slides acima, ver
+  // .eleventyignore. Publicados em /obs/<material>/ para poder apontar o
+  // Browser Source do OBS direto pra URL do site (sem depender de arquivo
+  // local).
+  eleventyConfig.addPassthroughCopy({ "src/obs": "obs" });
 
   eleventyConfig.addCollection("documentos", (api) =>
     api.getFilteredByGlob("src/documentos/*.md").sort((a, b) => {
