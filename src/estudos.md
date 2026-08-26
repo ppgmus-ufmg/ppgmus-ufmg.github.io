@@ -38,7 +38,10 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
     <h5>- Abertura institucional e Mesa "PPGMUS ontem, hoje, amanhã":</h5>
     <ul class="lista-documentos-compacta">
       {{ linhaDocumento("PPGMUS ontem, hoje, amanhã — Maurício Loureiro", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-mauricio-loureiro.pdf", "Histórico do Programa de Pós-Graduação em Música da UFMG, 1999-2009 (compilação).") }}
-      {{ linhaDocumento("PPGMUS ontem, hoje, amanhã — Sérgio Freire", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-sergio-freire.pdf", "Histórico, avaliação e panorama nacional da Pós-Graduação em Artes/Música (compilação de seminários 2012-2019).") }}
+      {{ linhaDocumento("PPGMUS ontem, hoje, amanhã — Sérgio Freire (compilação)", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-sergio-freire.pdf", "Histórico, avaliação e panorama nacional da Pós-Graduação em Artes/Música — compilação com trechos dos 3 seminários abaixo.") }}
+      {{ linhaDocumento("Seminário de Acompanhamento dos PPGs de Artes/Música — Sérgio Freire", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-sergio-freire-2012.pdf", "Brasília, 14 a 16/02/2012.") }}
+      {{ linhaDocumento("Seminário de Produção Intelectual e Avaliação da Pós-Graduação em Música — Sérgio Freire", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-sergio-freire-2014.pdf", "02/06/2014.") }}
+      {{ linhaDocumento("Comemoração dos 20 Anos do PPG em Música da UFMG — Sérgio Freire", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-sergio-freire-20anos-2019.pdf", "Série VivaMúsica, 23/10/2019.") }}
       {{ linhaDocumento("PPGMUS ontem, hoje, amanhã — Luciana Monteiro", "Slides", "/assets/documentos/4o-forum-2026/mesa-abertura-ppgmus-ontem-hoje-amanha-luciana-monteiro.pdf", "Balanço da coordenação do PPGMUS, jan/2018 a dez/2019.") }}
     </ul>
     <h5>- A avaliação do PPGMUS no contexto da CAPES:</h5>
