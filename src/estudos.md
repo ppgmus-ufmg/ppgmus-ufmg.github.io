@@ -19,6 +19,7 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
     <ul class="lista-documentos-compacta">
       {{ linhaDocumento("Estudo comparativo de modelos de Processo Seletivo em PPGs de Música (2025-26)", "Site", "https://pdvn.cc/2026_modelos_selecao_pos/", "Estudo comparativo de modelos de Processo Seletivo de PPGs da área de Música entre os anos de 2025 e 2026 (estudo realizado em mar/2026; alguns editais podem ter mudado depois disso).") }}
       {{ linhaDocumento("Relatório Analítico para Oferta de Vagas 2027", "Texto", "/assets/documentos/estudos/relatorio-oferta-vagas-2027.pdf", "Relatório elaborado pela Coordenação do PPGMUS para informar o Colegiado e a COMAPE na decisão quanto à projeção de vagas para 2027. Inclui identificação de demandas, alocação de orientandos e planejamento estratégico (vagas, credenciamento, colaboração em orientações).") }}
+      {{ linhaDocumento("Mapa de Grupos de Pesquisa / PPGMUS", "Site", "https://pdvn.cc/2026_ppgmus_gppq_teste/", "Visualização dos Grupos de Pesquisa de Docentes, Discentes, Pós-Docs e Egressos do PPGMUS. Observação: os dados ainda não incluem ingressantes de 2026/2 nem conclusões ocorridas depois de abril de 2026.") }}
     </ul>
   
   <br/>
@@ -42,6 +43,10 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
       {{ linhaDocumento("A avaliação do PPGMUS no contexto da CAPES — José Henrique Padovani (PDF)", "Slides", "/assets/documentos/4o-forum-2026/avaliacao-ppgmus-contexto-capes-jose-henrique-padovani.pdf", "Versão em PDF para download (slide 2).") }}
     </ul>
     <h5>- Diálogo e Construção Coletiva I (GTs):</h5>
+    <ul class="lista-documentos-compacta">
+      {{ linhaDocumento("Apresentação de desafios e estudos/propostas preliminares — COMAPE", "Slides", "/slides/02-questoes-gts/", "Questões do PPGMUS que merecem atenção e trabalho conjunto dos GTs: pesquisa e grupos de pesquisa, processo seletivo, gestão de processos, visibilidade e divulgação científica, identidade/objetivos, integração com a graduação e a extensão.") }}
+      {{ linhaDocumento("Proposta preliminar da Coordenação do PPGMUS de novo modelo de Processo Seletivo", "Slides", "/slides/03-proposta-processo-seletivo/", "Diretrizes gerais e síntese da proposta da Coordenação do PPGMUS.") }}
+    </ul>
 
     <h3>Quinta-feira, 27/08</h3>
     <h5>- Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS</h5>

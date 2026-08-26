@@ -709,7 +709,7 @@ table.tabela-pesos {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.58em;
-  margin-bottom: 0.3em;
+  margin: 0 0 0.3em;
 }
 
 /* Tabelas de avaliação (3.1-3.3): item+peso+conceito+destaques, tudo no
@@ -750,6 +750,19 @@ table.tabela-pesos th.peso {
 
 table.tabela-pesos td.conceito {
   text-align: center;
+}
+
+/* Linha de cabeçalho de grupo dentro de uma tabela.tabela-pesos (ex.: uma
+   fase de um processo seletivo, separando provas por fase na mesma
+   tabela) — usada via "phase-table" (03-proposta-processo-seletivo). */
+table.tabela-pesos td.tabela-pesos-grupo {
+  background: var(--cor-fundo-alt);
+  color: var(--cor-primaria-900);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 0.85em;
+  border-bottom: 1px solid var(--cor-borda);
 }
 
 /* Tabela genérica de dados (kind "data-table" em dados.js): cabeçalho e

@@ -1,0 +1,243 @@
+<!doctype html>
+<!--
+  Proposta — Processo Seletivo 2027 (José Henrique Padovani, 4º Fórum
+  COMAPE) — mesmo formato/layout dos decks em ../01-quadrienal-25-28/ e
+  ../02-questoes-gts/ (reveal.js + tema-comape.css compartilhado).
+
+  Como apresentar: abra este arquivo no Chrome e use as setas/espaço para
+  navegar (ESC = visão geral, 's' = modo apresentador).
+
+  Como exportar em PDF: abra com "?print-pdf" no final da URL
+  (index.html?print-pdf) e use Cmd/Ctrl+P → "Salvar como PDF", com
+  "Gráficos de plano de fundo" ativado e margens "Nenhuma".
+-->
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proposta — Processo Seletivo 2027</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="../tema-comape.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides" id="slides-root"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="dados.js"></script>
+  <script>
+    // Mesma técnica de variantes estáticas do ícone usada nos outros
+    // decks — reaproveita os PNGs já gerados em ../assets/logo-variantes/
+    // (pasta compartilhada entre decks).
+    const LOGO_VARIANTES_N = 30;
+    const LOGO_VARIANTES = Array.from(
+      { length: LOGO_VARIANTES_N },
+      (_, v) => `../assets/logo-variantes/logo-variante-${v}.png`
+    );
+    function logoAleatorio() {
+      return LOGO_VARIANTES[Math.floor(Math.random() * LOGO_VARIANTES.length)];
+    }
+    const EVENTO_LABEL =
+      "4º Fórum de Autoavaliação e Planejamento Estratégico - PPGMUS/UFMG";
+
+    // Cabeçalho de cada slide de conteúdo — mesma estrutura dos outros
+    // decks, sem a lógica de "Fonte"/"Elaboração" (proposta autoral, não
+    // dado de terceiro).
+    function elHeader(secaoTitulo) {
+      return `
+        <div class="slide-header">
+          <div class="slide-header-evento">
+            <img class="slide-header-logo" src="${logoAleatorio()}" alt="">
+            <span class="evento-titulo">${EVENTO_LABEL}</span>
+          </div>
+          <div class="slide-header-meta">
+            <div class="slide-secao-marca">${secaoTitulo}</div>
+          </div>
+        </div>`;
+    }
+
+    function fragUl(itens, classe) {
+      const itemHtml = (it) =>
+        typeof it === "string"
+          ? `<li>${it}</li>`
+          : `<li>${it.text}<ul>${it.sub.map(itemHtml).join("")}</ul></li>`;
+      return `<ul${classe ? ` class="${classe}"` : ""}>${itens
+        .map(itemHtml)
+        .join("")}</ul>`;
+    }
+
+    // ---------------------------------------------------------------------
+    // Slide de título / divisor de seção
+    // ---------------------------------------------------------------------
+
+    function buildTitleSlide() {
+      return `
+        <section class="slide-titulo">
+          <img class="logo-forum-canto" src="${logoAleatorio()}" alt="">
+          <h1>${DECK.deck.title}</h1>
+          <p class="subtitulo">${DECK.deck.subtitle}</p>
+          <p class="autoria">${DECK.deck.autores}</p>
+          <p class="autoria-meta">${DECK.deck.local} · ${DECK.deck.data}</p>
+        </section>`;
+    }
+
+    function buildSectionDividerSlide(secao) {
+      return `
+        <section class="slide-secao">
+          <h1>${secao.title}</h1>
+        </section>`;
+    }
+
+    // ---------------------------------------------------------------------
+    // Um <section> por "kind" de slide
+    // ---------------------------------------------------------------------
+
+    function buildConceptSlide(slide, secaoTitulo) {
+      return `
+        <section>
+          ${elHeader(secaoTitulo)}
+          <h2>${slide.title}</h2>
+          ${fragUl(slide.body)}
+        </section>`;
+    }
+
+    // Tabela de fases do processo seletivo: uma linha de cabeçalho de
+    // grupo (.tabela-pesos-grupo) por fase, seguida das provas daquela
+    // fase — mesma classe .tabela-pesos do "weight-table" original, com
+    // pesos em faixa (string) em vez de número fixo.
+    function buildPhaseTableSlide(slide, secaoTitulo) {
+      const linhas = slide.fases
+        .map(
+          (fase) => `
+          <tr><td colspan="2" class="tabela-pesos-grupo">${fase.nome}</td></tr>
+          ${fase.provas
+            .map(
+              (p) => `
+          <tr><td><strong>${p.cod}</strong> — ${p.label}<br/><span class="item-descricao">${p.descricao}</span></td><td class="peso">${p.peso}</td></tr>`
+            )
+            .join("")}`
+        )
+        .join("");
+      return `
+        <section>
+          ${elHeader(secaoTitulo)}
+          <h2>${slide.title}</h2>
+          <table class="tabela-pesos">
+            <thead><tr><th>Prova</th><th class="peso">Peso</th></tr></thead>
+            <tbody>${linhas}</tbody>
+          </table>
+        </section>`;
+    }
+
+    // Tabela de cronograma: mesma classe .tabela-pesos, 2 colunas
+    // (período / etapa), sem coluna de peso.
+    function buildCronogramaTableSlide(slide, secaoTitulo) {
+      return `
+        <section>
+          ${elHeader(secaoTitulo)}
+          <h2>${slide.title}</h2>
+          <table class="tabela-pesos">
+            <thead><tr><th>Período</th><th>Etapa</th></tr></thead>
+            <tbody>
+              ${slide.etapas
+          .map((e) => `<tr><td><strong>${e.periodo}</strong></td><td>${e.etapa}</td></tr>`)
+          .join("")}
+            </tbody>
+          </table>
+        </section>`;
+    }
+
+    // Lista numerada de considerações — mesmo renderer de
+    // ../01-quadrienal-25-28/index.html (slides 4.4b/4.4c).
+    function buildChangesSlide(slide, secaoTitulo) {
+      return `
+        <section class="slide-mudancas-layout">
+          ${elHeader(secaoTitulo)}
+          <h2>${slide.title}</h2>
+          <div class="consideracoes-lista">
+            ${slide.consideracoes
+          .map(
+            (c, i) => `
+              <div class="consideracao-item">
+                <div class="consideracao-numero">${i + 1}</div>
+                <div class="consideracao-texto">${c}</div>
+              </div>`
+          )
+          .join("")}
+          </div>
+        </section>`;
+    }
+
+    function buildSlide(slide, secaoTitulo) {
+      switch (slide.kind) {
+        case "concept":
+          return buildConceptSlide(slide, secaoTitulo);
+        case "phase-table":
+          return buildPhaseTableSlide(slide, secaoTitulo);
+        case "cronograma-table":
+          return buildCronogramaTableSlide(slide, secaoTitulo);
+        case "changes":
+          return buildChangesSlide(slide, secaoTitulo);
+        default:
+          console.warn("kind desconhecido:", slide.kind);
+          return "";
+      }
+    }
+
+    // ---------------------------------------------------------------------
+    // Monta o deck inteiro e inicializa o reveal.js
+    // ---------------------------------------------------------------------
+
+    function montarDeck() {
+      const secoes = DECK.deck.sections;
+      let html = buildTitleSlide();
+
+      secoes.forEach((secao) => {
+        html += buildSectionDividerSlide(secao);
+        secao.slides.forEach((slide) => {
+          html += buildSlide(slide, secao.title);
+        });
+      });
+
+      document.getElementById("slides-root").innerHTML = html;
+    }
+
+    function definirMetadadosDocumento() {
+      document.title = `${DECK.deck.title} — ${DECK.deck.autores}, ${DECK.deck.ano}`;
+      const metaAutor = document.createElement("meta");
+      metaAutor.name = "author";
+      metaAutor.content = DECK.deck.autores;
+      document.head.appendChild(metaAutor);
+    }
+
+    definirMetadadosDocumento();
+    montarDeck();
+
+    // Sinal pra automação externa (ex.: exportação de PDF via CDP) saber
+    // que o deck já terminou de montar — mesma técnica de polling
+    // determinístico usada nos outros decks.
+    window.DECK_PRONTO = true;
+
+    Reveal.initialize({
+      hash: true,
+      width: 1280,
+      height: 720,
+      margin: 0.06,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: "slide",
+    });
+  </script>
+</body>
+
+</html>
