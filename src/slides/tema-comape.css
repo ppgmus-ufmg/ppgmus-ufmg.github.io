@@ -1284,6 +1284,103 @@ table.tabela-dados td:last-child {
 }
 
 /* ---------------------------------------------------------------------- */
+/* Rough Notation — destaques "feitos à mão" (04-planoestrategico-esboco) */
+/* ---------------------------------------------------------------------- */
+
+/* A biblioteca insere o <svg> da anotação como IRMÃO do elemento anotado
+   (<span class="rn">), posicionado position:absolute relativo ao
+   ancestral mais próximo que não seja position:static. Sem isso aqui, o
+   <svg> "sobe" até achar a <section> (que o reveal.js já deixa
+   posicionada) e desenha no canto do slide, longe do texto de verdade —
+   bug real, visto na prática com o grifo do objetivo geral bem deslocado
+   do texto. `<li>`/`<i>` cobrem onde `.rn` aparece em dados.js (bullets
+   via fragUl() e a citação em itálico do objetivo geral).
+   Referência: README do rough-notation, seção sobre position:relative. */
+.reveal li,
+.reveal i,
+.reveal h2 {
+  position: relative;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Eixos × quesitos da nova ficha (04-planoestrategico-esboco)            */
+/* ---------------------------------------------------------------------- */
+
+.slide-eixos-quesitos-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.eixos-quesitos-descricao {
+  font-size: 0.52em;
+  color: var(--cor-texto-suave);
+  line-height: 1.4;
+  margin: 0.1em 0 0.6em;
+}
+
+.eixos-quesitos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  flex: 1 1 auto;
+  justify-content: center;
+  margin-top: 0.4em;
+}
+
+.eixo-linha {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.eixo-linha-numero {
+  flex: 0 0 auto;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.5em;
+}
+
+.eixo-linha-nome {
+  flex: 1 1 auto;
+  position: relative;
+  font-size: 0.64em;
+  font-weight: 600;
+  color: var(--cor-primaria-900);
+  line-height: 1.3;
+}
+
+.eixo-linha-tag {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.32em 0.75em;
+  border-radius: 999px;
+  background: var(--cor-primaria-100);
+  color: var(--cor-primaria-900);
+  font-size: 0.42em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.eixo-linha-tag-quesito {
+  font-weight: 700;
+}
+
+.eixo-linha-tag-cap {
+  font-weight: 400;
+  color: var(--cor-primaria-700);
+  opacity: 0.9;
+}
+
+/* ---------------------------------------------------------------------- */
 /* Lista de adições (sem equivalente na ficha antiga)                     */
 /* ---------------------------------------------------------------------- */
 
@@ -1295,6 +1392,64 @@ table.tabela-dados td:last-child {
   content: "+ ";
   color: var(--cor-destaque-700);
   font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Ações do Plano Estratégico (04-planoestrategico-esboco)                */
+/* ---------------------------------------------------------------------- */
+
+.slide-acao-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.acao-cod {
+  font-weight: 700;
+}
+
+/* Envolve os .acao-bloco (Meta/Estratégias/Aferimento, ou Pendentes) e os
+   distribui por toda a altura livre do slide — sem isso, os blocos só
+   empilhavam no topo com margem fixa, deixando a metade de baixo do
+   slide em branco (fonte pequena "perdida" num espaço grande demais). */
+.acao-blocos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.3em;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.acao-bloco {
+  margin-top: 0.2em;
+}
+
+.acao-rotulo {
+  font-size: 0.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25em;
+}
+
+.acao-meta-texto {
+  font-size: 0.64em;
+  line-height: 1.45;
+  color: var(--cor-texto);
+  border-left: 4px solid var(--cor-primaria-500);
+  padding-left: 0.7em;
+}
+
+.acao-lista {
+  font-size: 0.58em;
+  line-height: 1.45;
+  color: var(--cor-texto);
+  margin-left: 1.3em;
+}
+
+.acao-lista li {
+  margin-bottom: 0.3em;
 }
 
 /* ---------------------------------------------------------------------- */

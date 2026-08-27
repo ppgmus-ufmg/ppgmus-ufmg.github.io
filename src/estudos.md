@@ -58,6 +58,9 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
 
     <h3>Quinta-feira, 27/08</h3>
     <h5>- Projeto de Autoavaliação e Planejamento Estratégico do PPGMUS</h5>
+    <ul class="lista-documentos-compacta">
+      {{ linhaDocumento("Plano Estratégico PPGMUS 2025-2028 — esboço", "Slides", "/slides/04-planoestrategico-esboco/", "Esboço da COMAPE para discussão coletiva: objetivos do Programa, eixos estratégicos e ações prioritárias de cada um.") }}
+    </ul>
     <h5>- Diálogo e Construção Coletiva II</h5>
     <h5>- Recepção de ingressantes</h5>
     <h5>- Mesa com egressos — "Após a pós"</h5>

@@ -7,7 +7,7 @@ const DECK = {
   "deck": {
     "title": "A avaliação do PPGMUS no contexto da CAPES",
     "subtitle": "",
-    "autores": "José Henrique Padovani e Helena Lopes",
+    "autores": "José Henrique Padovani",
     "ano": "2026",
     "linkPublicacao": "[inserir link após publicação]",
     "data": "26 de agosto de 2026",
