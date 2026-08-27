@@ -3,12 +3,17 @@
 // (const DECK = {...}), consumido por index.html nesta mesma pasta.
 //
 // Fonte: preparacao/ingressantes/Informativo  PPGMUS - novatos 2025.pdf
-// (documento da Coordenação/Secretaria do PPGMUS, 14/08/2025) — os 14
-// itens do documento aparecem aqui na MESMA ORDEM do original (1 a 14,
-// sem reagrupar por tema), só combinando itens adjacentes num mesmo
-// slide quando cabem bem juntos. O item 15 (Plataforma Sucupira/Censo da
-// CAPES) foi acrescentado depois, a pedido da Coordenação — não está no
-// PDF original.
+// (documento da Coordenação/Secretaria do PPGMUS, 14/08/2025) — 1 slide
+// por item do Informativo (itens 1 a 14), sem combinar itens adjacentes
+// num mesmo slide. O item 15 (Plataforma Sucupira/Censo da CAPES) foi
+// acrescentado depois, a pedido da Coordenação — não está no PDF
+// original.
+//
+// Ordem de apresentação: a seção "Antes de Tudo" (itens 14-15, Lattes e
+// Censo da CAPES) vem PRIMEIRO, antes da trajetória acadêmica (item 1) —
+// pedido explícito da Coordenação, quebrando a ordem numérica do PDF só
+// nessa exceção. Os títulos dos slides mantêm o número original do
+// Informativo, mesmo fora de ordem, para preservar a referência à fonte.
 //
 // Cores do Rough Notation seguem uma convenção própria deste deck (por
 // tipo de informação, não por eixo como no 04) — 4 famílias, cada uma com
@@ -37,6 +42,35 @@ const DECK = {
     "local": "Belo Horizonte/MG",
     "sections": [
       {
+        "id": "sec0-lattes",
+        "title": "Antes de Tudo",
+        "resumo": "Os hábitos mais importantes para toda a sua trajetória no Programa (itens 14-15).",
+        "slides": [
+          {
+            "id": "0a",
+            "kind": "concept",
+            "title": "14 · Mantenha o Lattes sempre atualizado",
+            "body": [
+              "É <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#d9d2e9\">absolutamente fundamental</span> que discentes mantenham o currículo Lattes <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#6a1b9a\">atualizado e corretamente preenchido</span>.",
+              "Além de ser uma prática incontornável da vida acadêmica, isso ajuda a manter elevado o conceito do Programa na avaliação da CAPES — a mesma avaliação que já vimos nas seções anteriores do Fórum.",
+              "Dúvidas? Procure sempre se orientar primeiro pelo site <strong>musica.ufmg.br/ppgmus</strong>, para não sobrecarregar a equipe técnico-administrativa.",
+              "<strong>Coordenação do Programa</strong>: Profa. Dra. Helena Lopes da Silva (Coordenadora) e Prof. Dr. José Henrique Padovani Velloso (Subcoordenador).",
+              "<strong>Equipe da Secretaria</strong>: Ariálisson de Freitas Fonseca, Geralda Martins Moreira, Luciana Aparecida Criste e Thaiz Lazarini Roque Magalhães."
+            ]
+          },
+          {
+            "id": "0b",
+            "kind": "concept",
+            "title": "15 · Plataforma Sucupira e Censo da Pós-Graduação",
+            "body": [
+              "Cadastre-se também na <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#d9d2e9\">Plataforma Sucupira</span>, sistema da CAPES de coleta de dados de todos os Programas de Pós-Graduação do Brasil.",
+              "É <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#c0392b\">obrigatório</span> responder às solicitações da Coordenação para preenchimento do <strong>Censo da Pós-Graduação da CAPES</strong>, dentro do prazo indicado.",
+              "A não resposta pode acarretar <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#f4cccc\">sanções ao PPGMUS</span> junto à CAPES — comprometendo, por exemplo, bolsas e auxílios de todo o Programa."
+            ]
+          }
+        ]
+      },
+      {
         "id": "sec1-trajetoria",
         "title": "Trajetória Acadêmica",
         "resumo": "Duração, matrícula, estrutura curricular e aproveitamento de créditos (itens 1-4).",
@@ -44,17 +78,31 @@ const DECK = {
           {
             "id": "1a",
             "kind": "concept",
-            "title": "1-3 · Duração, matrícula e estrutura curricular",
+            "title": "1 · Duração do curso (mestrado e doutorado)",
             "body": [
               "<strong>Mestrado</strong>: integralização em, no mínimo, 1 ano e, no máximo, <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#c9daf8\">24 meses</span> a partir da primeira matrícula.",
-              "<strong>Doutorado</strong>: integralização em, no mínimo, 2 anos e, no máximo, <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#c9daf8\">48 meses</span> a partir da primeira matrícula.",
-              "<strong>Matrícula</strong>: renovação <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#0f6e8c\">semestral obrigatória</span> em minha.ufmg.br, com anuência do orientador — fique de olho no calendário!",
-              "Pelas Normas Gerais da UFMG: <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#f4cccc\">\"será excluído do curso o aluno que deixar de renovar a matrícula\"</span> em cada período letivo.",
-              "<strong>Créditos</strong>: Mestrado — 240h, <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#0f6e8c\">16 créditos</span> (8 obrigatórias + 8 optativas). Doutorado — 360h, <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#0f6e8c\">24 créditos</span> (16 obrigatórias + 8 optativas)."
+              "<strong>Doutorado</strong>: integralização em, no mínimo, 2 anos e, no máximo, <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#c9daf8\">48 meses</span> a partir da primeira matrícula."
             ]
           },
           {
             "id": "1b",
+            "kind": "concept",
+            "title": "2 · Matrícula semestral obrigatória",
+            "body": [
+              "<strong>Matrícula</strong>: renovação <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#0f6e8c\">semestral obrigatória</span> em minha.ufmg.br, com anuência do orientador — fique de olho no calendário!",
+              "Pelas Normas Gerais da UFMG: <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#f4cccc\">\"será excluído do curso o aluno que deixar de renovar a matrícula\"</span> em cada período letivo."
+            ]
+          },
+          {
+            "id": "1c",
+            "kind": "concept",
+            "title": "3 · Estrutura curricular e créditos",
+            "body": [
+              "<strong>Créditos</strong>: Mestrado — 240h, <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#0f6e8c\">16 créditos</span> (8 obrigatórias + 8 optativas). Doutorado — 360h, <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#0f6e8c\">24 créditos</span> (16 obrigatórias + 8 optativas)."
+            ]
+          },
+          {
+            "id": "1d",
             "kind": "concept",
             "title": "4 · Aproveitamento de disciplina/crédito",
             "body": [
@@ -102,30 +150,51 @@ const DECK = {
           {
             "id": "3a",
             "kind": "concept",
-            "title": "7-8 · Estágio-docência e 2ª língua estrangeira",
+            "title": "7 · Estágio-docência",
             "body": [
               "<strong>Estágio-docência</strong> (obrigatório para todos os bolsistas): <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#c9daf8\">1 semestre</span> para mestrandos, <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#c9daf8\">2 semestres</span> para doutorandos.",
-              "Professores de ensino superior, ou de ensino médio público em articulação com a UFMG, podem solicitar dispensa.",
-              "<strong>2ª língua estrangeira</strong>: comprovante de proficiência no prazo estipulado pelo edital de seleção, se ainda não enviado na inscrição.",
-              "Estrangeiros selecionados: comprovar <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#c0392b\">proficiência em português</span> (Celpe-Bras ou equivalente) em até 12 meses (mestrado) ou 24 meses (doutorado)."
+              "Professores de ensino superior, ou de ensino médio público em articulação com a UFMG, podem solicitar dispensa."
             ]
           },
           {
             "id": "3b",
             "kind": "concept",
-            "title": "9-10 · Recital de Prática Instrumental Avançada II e Exame de Qualificação",
+            "title": "8 · Proficiência em 2ª língua estrangeira",
             "body": [
-              "<strong>Recital de Prática Instrumental Avançada II</strong> (só doutorandos da linha Performance Musical): banca com o orientador e mais dois doutores, um deles externo ao Programa.",
-              "<strong>Exame de Qualificação</strong> — Mestrado: agendar até o <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#c0392b\">final do 3º semestre</span> de curso.",
-              "<strong>Exame de Qualificação</strong> — Doutorado: agendar até o <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#c0392b\">final do 3º ano</span>, com 30 dias de antecedência; banca de 3 membros titulares, um deles externo à UFMG."
+              "<strong>2ª língua estrangeira</strong>: comprovante de proficiência no prazo estipulado pelo edital de seleção, se ainda não enviado na inscrição.",
+              "Estrangeiros selecionados: comprovar <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#c0392b\">proficiência em português</span> (Celpe-Bras ou equivalente) em até 12 meses (mestrado) ou 24 meses (doutorado)."
             ]
           },
           {
             "id": "3c",
             "kind": "concept",
-            "title": "11-12 · Portfólio de produção intelectual e defesa",
+            "title": "9 · Recital de Prática Instrumental Avançada II",
             "body": [
-              "<strong>Portfólio de produção intelectual</strong> (só doutorado): equivalente a <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#c9daf8\">4 créditos</span>, avaliado pela mesma banca do exame de qualificação.",
+              "<strong>Recital de Prática Instrumental Avançada II</strong> (só doutorandos da linha Performance Musical): banca com o orientador e mais dois doutores, um deles externo ao Programa."
+            ]
+          },
+          {
+            "id": "3d",
+            "kind": "concept",
+            "title": "10 · Exame de Qualificação",
+            "body": [
+              "<strong>Exame de Qualificação</strong> — Mestrado: agendar até o <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#c0392b\">final do 3º semestre</span> de curso.",
+              "<strong>Exame de Qualificação</strong> — Doutorado: agendar até o <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#c0392b\">final do 3º ano</span>, com 30 dias de antecedência; banca de 3 membros titulares, um deles externo à UFMG."
+            ]
+          },
+          {
+            "id": "3e",
+            "kind": "concept",
+            "title": "11 · Portfólio de produção intelectual",
+            "body": [
+              "<strong>Portfólio de produção intelectual</strong> (só doutorado): equivalente a <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#c9daf8\">4 créditos</span>, avaliado pela mesma banca do exame de qualificação."
+            ]
+          },
+          {
+            "id": "3f",
+            "kind": "concept",
+            "title": "12 · Defesa de Dissertação/Tese",
+            "body": [
               "<strong>Defesa de Dissertação</strong> (Mestrado): agendar na Secretaria com <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#f4cccc\">30 dias</span> de antecedência e anuência do orientador.",
               "<strong>Defesa de Tese</strong> (Doutorado): agendar na Secretaria com <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#f4cccc\">45 dias</span> de antecedência e anuência do orientador."
             ]
@@ -145,35 +214,6 @@ const DECK = {
               "Doutorandos interessados em estágio no exterior com <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#d9ead3\">Bolsa CAPES/PDSE</span> devem acompanhar as Chamadas Internas da PRPG (CAPES-PRINT).",
               "O <strong>certificado de proficiência em língua estrangeira</strong> é documento obrigatório para formalizar a candidatura — não deixe para última hora.",
               "Alternativa: <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#1b5e20\">Bolsa CNPq/SWE</span>, que pode ser solicitada em fluxo contínuo diretamente na agência."
-            ]
-          }
-        ]
-      },
-      {
-        "id": "sec5-lattes",
-        "title": "Antes de Tudo",
-        "resumo": "Os hábitos mais importantes para toda a sua trajetória no Programa (itens 14-15).",
-        "slides": [
-          {
-            "id": "5a",
-            "kind": "concept",
-            "title": "14 · Mantenha o Lattes sempre atualizado",
-            "body": [
-              "É <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#d9d2e9\">absolutamente fundamental</span> que discentes mantenham o currículo Lattes <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#6a1b9a\">atualizado e corretamente preenchido</span>.",
-              "Além de ser uma prática incontornável da vida acadêmica, isso ajuda a manter elevado o conceito do Programa na avaliação da CAPES — a mesma avaliação que já vimos nas seções anteriores do Fórum.",
-              "Dúvidas? Procure sempre se orientar primeiro pelo site <strong>musica.ufmg.br/ppgmus</strong>, para não sobrecarregar a equipe técnico-administrativa.",
-              "<strong>Coordenação do Programa</strong>: Profa. Dra. Helena Lopes da Silva (Coordenadora) e Prof. Dr. José Henrique Padovani Velloso (Subcoordenador).",
-              "<strong>Equipe da Secretaria</strong>: Ariálisson de Freitas Fonseca, Geralda Martins Moreira, Luciana Aparecida Criste e Thaiz Lazarini Roque Magalhães."
-            ]
-          },
-          {
-            "id": "5b",
-            "kind": "concept",
-            "title": "15 · Plataforma Sucupira e Censo da Pós-Graduação",
-            "body": [
-              "Cadastre-se também na <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#d9d2e9\">Plataforma Sucupira</span>, sistema da CAPES de coleta de dados de todos os Programas de Pós-Graduação do Brasil.",
-              "É <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#c0392b\">obrigatório</span> responder às solicitações da Coordenação para preenchimento do <strong>Censo da Pós-Graduação da CAPES</strong>, dentro do prazo indicado.",
-              "A não resposta pode acarretar <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#f4cccc\">sanções ao PPGMUS</span> junto à CAPES — comprometendo, por exemplo, bolsas e auxílios de todo o Programa."
             ]
           }
         ]
