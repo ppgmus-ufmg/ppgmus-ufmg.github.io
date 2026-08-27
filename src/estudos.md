@@ -63,6 +63,9 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
     </ul>
     <h5>- Diálogo e Construção Coletiva II</h5>
     <h5>- Recepção de ingressantes</h5>
+    <ul class="lista-documentos-compacta">
+      {{ linhaDocumento("Informações para Ingressantes", "Slides", "/slides/05-ingressantes/", "Trajetória acadêmica, financiamento (auxílios e bolsas), marcos da formação, doutorado sanduíche e a importância de manter o Lattes atualizado.") }}
+    </ul>
     <h5>- Mesa com egressos — "Após a pós"</h5>
 
     <h3>Sexta-feira, 28/08</h3>

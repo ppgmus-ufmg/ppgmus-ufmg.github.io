@@ -1,0 +1,258 @@
+<!doctype html>
+<!--
+  Informações para Ingressantes (4º Fórum COMAPE) — mesmo formato/layout e
+  mesma técnica de destaque dos decks em ../02-questoes-gts/ e
+  ../04-planoestrategico-esboco/ (reveal.js + tema-comape.css
+  compartilhado + Rough Notation para grifo/sublinhado "feitos à mão").
+
+  Como apresentar: abra este arquivo no Chrome e use as setas/espaço para
+  navegar (ESC = visão geral, 's' = modo apresentador).
+
+  Como exportar em PDF: abra com "?print-pdf" no final da URL
+  (index.html?print-pdf) e use Cmd/Ctrl+P → "Salvar como PDF", com
+  "Gráficos de plano de fundo" ativado e margens "Nenhuma".
+-->
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informações para Ingressantes — 4º Fórum COMAPE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="../tema-comape.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides" id="slides-root"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
+  <script src="dados.js"></script>
+  <script>
+    // Mesma técnica de variantes estáticas do ícone usada nos outros
+    // decks — reaproveita os PNGs já gerados em ../assets/logo-variantes/
+    // (pasta compartilhada entre decks).
+    const LOGO_VARIANTES_N = 30;
+    const LOGO_VARIANTES = Array.from(
+      { length: LOGO_VARIANTES_N },
+      (_, v) => `../assets/logo-variantes/logo-variante-${v}.png`
+    );
+    function logoAleatorio() {
+      return LOGO_VARIANTES[Math.floor(Math.random() * LOGO_VARIANTES.length)];
+    }
+    const EVENTO_LABEL =
+      "4º Fórum de Autoavaliação e Planejamento Estratégico - PPGMUS/UFMG";
+
+    // Cabeçalho de cada slide de conteúdo — mesma estrutura dos outros
+    // decks, sem a lógica de "Fonte"/"Elaboração" (informativo interno da
+    // Coordenação/Secretaria, não dado de terceiro externo).
+    function elHeader(secaoTitulo) {
+      return `
+        <div class="slide-header">
+          <div class="slide-header-evento">
+            <img class="slide-header-logo" src="${logoAleatorio()}" alt="">
+            <span class="evento-titulo">${EVENTO_LABEL}</span>
+          </div>
+          <div class="slide-header-meta">
+            <div class="slide-secao-marca">${secaoTitulo}</div>
+          </div>
+        </div>`;
+    }
+
+    function fragUl(itens, classe) {
+      const itemHtml = (it) =>
+        typeof it === "string"
+          ? `<li>${it}</li>`
+          : `<li>${it.text}<ul>${it.sub.map(itemHtml).join("")}</ul></li>`;
+      return `<ul${classe ? ` class="${classe}"` : ""}>${itens
+        .map(itemHtml)
+        .join("")}</ul>`;
+    }
+
+    // ---------------------------------------------------------------------
+    // Slide de título / índice / divisor de seção
+    // ---------------------------------------------------------------------
+
+    function buildTitleSlide() {
+      return `
+        <section class="slide-titulo">
+          <img class="logo-forum-canto" src="${logoAleatorio()}" alt="">
+          <h1>${DECK.deck.title}</h1>
+          <p class="subtitulo">${DECK.deck.subtitle}</p>
+          <p class="autoria">${DECK.deck.autores}</p>
+          <p class="autoria-meta">${DECK.deck.local} · ${DECK.deck.data}</p>
+        </section>`;
+    }
+
+    // Índice/percurso da apresentação, logo após a capa — mesma função dos
+    // outros decks. Usa <div>, não <ol>/<li> (um <ol> real perde a guerra
+    // de especificidade contra as regras de lista do tema padrão do
+    // reveal.js, que fixam display:block).
+    function buildIndiceSlide(secoes) {
+      return `
+        <section class="slide-indice-layout">
+          ${elHeader("Sumário")}
+          <h2>Percurso da apresentação</h2>
+          <div class="indice-lista">
+            ${secoes
+          .map(
+            (secao, i) => `
+            <div class="indice-item">
+              <span class="indice-numero">${i + 1}</span>
+              <span class="indice-conteudo">
+                <span class="indice-titulo">${secao.title}</span>
+                ${secao.resumo ? `<span class="indice-resumo">${secao.resumo}</span>` : ""}
+              </span>
+            </div>`
+          )
+          .join("")}
+          </div>
+        </section>`;
+    }
+
+    function buildSectionDividerSlide(secao) {
+      return `
+        <section class="slide-secao">
+          <h1>${secao.title}</h1>
+        </section>`;
+    }
+
+    // ---------------------------------------------------------------------
+    // Um <section> por "kind" de slide — só "concept" é usado neste deck.
+    // ---------------------------------------------------------------------
+
+    function buildConceptSlide(slide, secaoTitulo) {
+      return `
+        <section>
+          ${elHeader(secaoTitulo)}
+          <h2>${slide.title}</h2>
+          ${fragUl(slide.body)}
+        </section>`;
+    }
+
+    function buildSlide(slide, secaoTitulo) {
+      switch (slide.kind) {
+        case "concept":
+          return buildConceptSlide(slide, secaoTitulo);
+        default:
+          console.warn("kind desconhecido:", slide.kind);
+          return "";
+      }
+    }
+
+    // ---------------------------------------------------------------------
+    // Monta o deck inteiro e inicializa o reveal.js
+    // ---------------------------------------------------------------------
+
+    function montarDeck() {
+      const secoes = DECK.deck.sections;
+      let html = buildTitleSlide();
+      html += buildIndiceSlide(secoes);
+
+      secoes.forEach((secao) => {
+        html += buildSectionDividerSlide(secao);
+        secao.slides.forEach((slide) => {
+          html += buildSlide(slide, secao.title);
+        });
+      });
+
+      document.getElementById("slides-root").innerHTML = html;
+    }
+
+    // ---------------------------------------------------------------------
+    // Rough Notation — anota <span class="rn" data-tipo="..."
+    // data-cor="..."> do slide corrente, de forma preguiçosa (só na
+    // primeira vez que o slide vira "present"). Mesma implementação de
+    // ../04-planoestrategico-esboco/index.html — ver comentários lá para
+    // o histórico dos dois bugs já resolvidos (posição herdada da guerra
+    // de especificidade de position:relative, e desalinhamento por causa
+    // da escala do reveal.js).
+    const rnAnotados = new WeakSet();
+    function anotarSlideAtual() {
+      const slideAtual = document.querySelector(".reveal .slides section.present");
+      if (!slideAtual) return;
+      slideAtual.querySelectorAll(".rn").forEach((el) => {
+        if (rnAnotados.has(el)) return;
+        const tipo = el.dataset.tipo || "highlight";
+        const cor = el.dataset.cor || "#f17807";
+        const anotacao = RoughNotation.annotate(el, {
+          type: tipo,
+          color: cor,
+          strokeWidth: tipo === "highlight" ? 1.5 : 2.5,
+          padding: tipo === "highlight" ? [1, 3] : 4,
+          multiline: true,
+          animationDuration: 700,
+        });
+        anotacao.show();
+        compensarEscalaReveal(el);
+        rnAnotados.add(el);
+      });
+    }
+
+    // Rough Notation mede as posições com getBoundingClientRect() (já na
+    // escala visual aplicada pelo reveal.js via transform), mas desenha o
+    // <svg> dentro da própria <section> escalada. Com o deck reduzido
+    // (escala != 1), o desenho sai deslocado/encolhido em direção ao canto
+    // superior esquerdo do bloco. Aplica scale(1/escala) no <svg> (origem
+    // 0,0) para anular a escala e fazer o traço cair sobre o texto.
+    function compensarEscalaReveal(el) {
+      const escala = Reveal.getScale();
+      if (!escala || Math.abs(escala - 1) < 0.001) return;
+      const prev = el.previousElementSibling;
+      const next = el.nextElementSibling;
+      const svg =
+        (prev && prev.classList && prev.classList.contains("rough-annotation") && prev) ||
+        (next && next.classList && next.classList.contains("rough-annotation") && next);
+      if (!svg) return;
+      svg.style.transformOrigin = "0 0";
+      svg.style.transform = `scale(${1 / escala})`;
+    }
+
+    function definirMetadadosDocumento() {
+      document.title = `${DECK.deck.title} — ${DECK.deck.autores}, ${DECK.deck.ano}`;
+      const metaAutor = document.createElement("meta");
+      metaAutor.name = "author";
+      metaAutor.content = DECK.deck.autores;
+      document.head.appendChild(metaAutor);
+    }
+
+    definirMetadadosDocumento();
+    montarDeck();
+
+    // Sinal pra automação externa (ex.: exportação de PDF via CDP) saber
+    // que o deck já terminou de montar — mesma técnica de polling
+    // determinístico usada nos outros decks.
+    window.DECK_PRONTO = true;
+
+    Reveal.initialize({
+      hash: true,
+      width: 1280,
+      height: 720,
+      margin: 0.06,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: "slide",
+    }).then(() => {
+      // Espera a fonte Poppins carregar antes de anotar: se o texto ainda
+      // está no fallback do sistema quando o Rough Notation mede a
+      // posição do <span>, a troca de fonte (FOUT) reflui o texto depois
+      // e desalinha o grifo/sublinhado.
+      const fontesProntas = document.fonts ? document.fonts.ready : Promise.resolve();
+      fontesProntas.then(() => {
+        anotarSlideAtual();
+        Reveal.on("slidechanged", anotarSlideAtual);
+      });
+    });
+  </script>
+</body>
+
+</html>
