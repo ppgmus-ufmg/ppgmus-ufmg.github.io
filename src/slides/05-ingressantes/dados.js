@@ -6,7 +6,9 @@
 // (documento da Coordenação/Secretaria do PPGMUS, 14/08/2025) — os 14
 // itens do documento aparecem aqui na MESMA ORDEM do original (1 a 14,
 // sem reagrupar por tema), só combinando itens adjacentes num mesmo
-// slide quando cabem bem juntos.
+// slide quando cabem bem juntos. O item 15 (Plataforma Sucupira/Censo da
+// CAPES) foi acrescentado depois, a pedido da Coordenação — não está no
+// PDF original.
 //
 // Cores do Rough Notation seguem uma convenção própria deste deck (por
 // tipo de informação, não por eixo como no 04) — 4 famílias, cada uma com
@@ -150,7 +152,7 @@ const DECK = {
       {
         "id": "sec5-lattes",
         "title": "Antes de Tudo",
-        "resumo": "O hábito mais importante para toda a sua trajetória no Programa (item 14).",
+        "resumo": "Os hábitos mais importantes para toda a sua trajetória no Programa (itens 14-15).",
         "slides": [
           {
             "id": "5a",
@@ -162,6 +164,16 @@ const DECK = {
               "Dúvidas? Procure sempre se orientar primeiro pelo site <strong>musica.ufmg.br/ppgmus</strong>, para não sobrecarregar a equipe técnico-administrativa.",
               "<strong>Coordenação do Programa</strong>: Profa. Dra. Helena Lopes da Silva (Coordenadora) e Prof. Dr. José Henrique Padovani Velloso (Subcoordenador).",
               "<strong>Equipe da Secretaria</strong>: Ariálisson de Freitas Fonseca, Geralda Martins Moreira, Luciana Aparecida Criste e Thaiz Lazarini Roque Magalhães."
+            ]
+          },
+          {
+            "id": "5b",
+            "kind": "concept",
+            "title": "15 · Plataforma Sucupira e Censo da Pós-Graduação",
+            "body": [
+              "Cadastre-se também na <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#d9d2e9\">Plataforma Sucupira</span>, sistema da CAPES de coleta de dados de todos os Programas de Pós-Graduação do Brasil.",
+              "É <span class=\"rn\" data-tipo=\"underline\" data-cor=\"#c0392b\">obrigatório</span> responder às solicitações da Coordenação para preenchimento do <strong>Censo da Pós-Graduação da CAPES</strong>, dentro do prazo indicado.",
+              "A não resposta pode acarretar <span class=\"rn\" data-tipo=\"highlight\" data-cor=\"#f4cccc\">sanções ao PPGMUS</span> junto à CAPES — comprometendo, por exemplo, bolsas e auxílios de todo o Programa."
             ]
           }
         ]
