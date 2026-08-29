@@ -55,6 +55,23 @@ eleventyExcludeFromCollections: true
   </section>
 
   <section class="cartao-material">
+    <h2>Banner do site (2000×743px)</h2>
+    <p>
+      Abre numa janela nova; espere a animação terminar (~4s) e, no
+      DevTools (F12) → aba <strong>Elements</strong>, clique com o botão
+      direito na <code>&lt;div class="tela-banner"&gt;</code> →
+      <strong>Capture node screenshot</strong>. Sai um PNG 2000×743px
+      exato.
+    </p>
+    <div class="cartao-material__botoes">
+      <button type="button" class="botao-material"
+        onclick="abrirMaterial('{{ '/materiais/banner/' | rel }}', 2000, 743)">
+        Abrir banner
+      </button>
+    </div>
+  </section>
+
+  <section class="cartao-material">
     <h2>Pôster A3 retrato (297×420mm)</h2>
     <p>
       Abre numa janela nova; espere a animação terminar (~4s) e use

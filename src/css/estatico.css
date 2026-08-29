@@ -254,6 +254,77 @@
   margin: 0;
 }
 
+/* ── Banner do site — 2000×743px ────────────────────────────────────────
+   Formato bem mais largo e baixo que o post/pôster: a caixa do logo usa
+   uma largura fixa (não 100% do container) para não ficar gigante — o
+   scaleLogoForum() (partials/logo-forum.njk) ajusta o canvas com base na
+   largura de .logo-forum-escala, não na largura do banner inteiro. */
+
+.tela-banner {
+  width: 2000px;
+  height: 743px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.tela-banner__hero.hero {
+  min-height: 743px;
+  height: 743px;
+  padding: 0;
+  border-bottom: none;
+}
+
+.tela-banner__conteudo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 0 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tela-banner .logo-forum-escala {
+  width: 820px;
+  max-width: 100%;
+  margin: 0 auto 1.1rem;
+}
+
+.tela-banner .logo-forum {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}
+
+.tela-banner .subtitulo-forum {
+  font-size: 2.3rem;
+  gap: 1.6rem;
+  margin: 0 0 1.1rem;
+}
+
+.tela-banner .data-forum {
+  font-size: 3rem;
+  margin: 0 0 1.1rem;
+}
+
+.tela-banner .hero__lead {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 1050px;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Tonalidade azulada sobre a foto, em vez do véu preto puro do hero padrão
+   do site (pedido explicitamente para este banner) — mantém a foto em P&B,
+   só troca a cor/intensidade do degradê por cima, usando o azul da marca
+   (--cor-primaria-900). */
+.tela-banner .hero__media::after {
+  background: linear-gradient(180deg, rgba(18, 71, 122, 0.22), rgba(8, 28, 50, 0.62));
+}
+
 @page {
   size: A3 portrait;
   margin: 0;
