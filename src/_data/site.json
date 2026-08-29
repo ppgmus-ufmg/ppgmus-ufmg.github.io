@@ -6,7 +6,7 @@
   "instituicao": "UFMG",
   "instituicaoCompleta": "Universidade Federal de Minas Gerais",
   "email": "ppgmus@musica.ufmg.br",
-  "url": "https://ppgmus-ufmg.github.io/",
+  "url": "https://comape.musica.ufmg.br/",
   "nav": [
     { "titulo": "Início", "href": "/" },
     { "titulo": "Programação (4º Fórum)", "href": "/#programacao" },

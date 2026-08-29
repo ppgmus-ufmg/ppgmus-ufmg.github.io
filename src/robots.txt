@@ -6,6 +6,8 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://comape.musica.ufmg.br/sitemap.xml
+
 User-agent: GPTBot
 Disallow: /
 

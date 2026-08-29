@@ -1,0 +1,20 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+paginas:
+  - /
+  - /historico/
+  - /documentos/
+  - /estudos/
+  - /formularios/
+  - /pessoas/
+  - /contato/
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for pagina in paginas %}
+  <url>
+    <loc>{{ site.url }}{{ pagina | replace("/", "", 1) }}</loc>
+  </url>
+{%- endfor %}
+</urlset>

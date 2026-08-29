@@ -69,7 +69,11 @@ descricao: Slides do 4º Fórum, template de trabalho dos GTs e estudos/dados da
     <h5>- Mesa com egressos — "Após a pós"</h5>
 
     <h3>Sexta-feira, 28/08</h3>
-    <h5>- Palestra — "Construção democrática do planejamento estratégico"</h5>
+    <h5>- Palestra, Luís Ricardo Queiroz — "Construção democrática do planejamento estratégico"</h5>
+    <ul class="lista-documentos-compacta">
+      {{ linhaDocumento("Construção democrática do planejamento estratégico — Luís Ricardo Queiroz", "Slides", "/assets/documentos/4o-forum-2026/LR_Queiroz-UFMG_Planejamento_Democrático_2025–2028.pptx", "Palestra sobre a construção democrática do planejamento estratégico, PPGMUS/UFMG.") }}
+      {{ linhaDocumento("Construção democrática do planejamento estratégico — Luís Ricardo Queiroz (PDF)", "Slides", "/assets/documentos/4o-forum-2026/LR_Queiroz-PPGMUS_UFMG_Planejamento_Democrático_2025–2028.pdf", "Versão em PDF para download.") }}
+    </ul>
     <h5>- Diálogo e Construção Coletiva III (com o consultor externo)</h5>
     <h5>- Reunião interna com Consultor Externo</h5>
 
