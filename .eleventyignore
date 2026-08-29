@@ -7,3 +7,9 @@ src/slides
 # src/obs/ (materiais de cena/overlay pro OBS): mesmo motivo acima —
 # HTML/CSS/JS autocontidos, cópia via addPassthroughCopy.
 src/obs
+
+# Arquivo de verificação de propriedade do Google Search Console: precisa
+# ficar acessível em /googlec2cb9e2eb04892c0.html exatamente (não
+# /googlec2cb9e2eb04892c0/, que é o que o Eleventy geraria se processasse
+# como template) — cópia via addPassthroughCopy em .eleventy.js.
+src/googlec2cb9e2eb04892c0.html

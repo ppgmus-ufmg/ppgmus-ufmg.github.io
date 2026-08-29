@@ -23,6 +23,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
+  eleventyConfig.addPassthroughCopy({ "src/googlec2cb9e2eb04892c0.html": "googlec2cb9e2eb04892c0.html" });
   // Decks reveal.js autocontidos (HTML/CSS/JS próprios) — ver .eleventyignore.
   eleventyConfig.addPassthroughCopy({ "src/slides": "slides" });
   // Materiais de cena para OBS (telas/overlays HTML autocontidos, não
