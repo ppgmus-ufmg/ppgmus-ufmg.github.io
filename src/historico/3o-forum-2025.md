@@ -34,6 +34,19 @@ arquivos:
     descricao: >-
       Recorte específico das respostas dos egressos ao questionário de
       autoavaliação de 2025.
+  - titulo: "Reflexões sobre produção intelectual no ciclo avaliativo 2025-2028 — José Henrique Padovani"
+    tipo: "Slides"
+    arquivo: "/assets/documentos/historico/3o-forum-2025/reflexoes-producao-intelectual-slides.pdf"
+    descricao: >-
+      Novos critérios e estratégias diante da nova ficha de avaliação da
+      CAPES para a Área de Artes.
+  - titulo: "Reflexões sobre produção intelectual no ciclo avaliativo 2025-2028 (texto) — José Henrique Padovani"
+    tipo: "Texto"
+    arquivo: "/assets/documentos/historico/3o-forum-2025/reflexoes-producao-intelectual-texto.pdf"
+    descricao: >-
+      Versão em texto corrido dos critérios-chave (aderência, qualidade,
+      impacto e coautoria) para orientar a seleção estratégica de produções
+      no novo ciclo avaliativo.
 ---
 
 Terceira edição do Fórum de Autoavaliação e Planejamento Estratégico do PPGMUS/UFMG, realizada em 4 e 5 de dezembro de 2025, para examinar criticamente os resultados da avaliação do PPGMUS na quadrienal 2021–2024 e elaborar as proposições do Programa para o novo ciclo (2025–2028): apresentação das novas diretrizes de avaliação da CAPES,

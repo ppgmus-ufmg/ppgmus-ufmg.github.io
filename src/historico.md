@@ -36,12 +36,21 @@ descricao: Histórico dos Fóruns de Autoavaliação e Planejamento Estratégico
     <p>{{ edicao.data.participantes }}</p>
     {%- endif %}
 
+    {%- if edicao.data.arquivos and edicao.data.arquivos.length %}
     <h3>Documentos</h3>
-    <ul class="lista-documentos-compacta">
-      {%- for doc in edicao.data.arquivos %}
-      {{ linhaDocumento(doc.titulo, doc.tipo, doc.arquivo, doc.descricao) }}
-      {%- endfor %}
-    </ul>
+    {%- set arquivosArr = edicao.data.arquivos %}
+    {%- for doc in arquivosArr %}
+    {%- set anterior = arquivosArr[loop.index0 - 1] %}
+    {%- set novoGrupo = doc.grupo and doc.grupo != anterior.grupo %}
+    {%- set novoSubgrupo = doc.subgrupo and doc.subgrupo != anterior.subgrupo %}
+    {%- if not loop.first and (novoGrupo or novoSubgrupo) %}</ul>{% endif %}
+    {%- if novoGrupo %}<h4>{{ doc.grupo }}</h4>{% endif %}
+    {%- if doc.subgrupo and novoSubgrupo %}<h5>{{ doc.subgrupo }}</h5>{% endif %}
+    {%- if loop.first or novoGrupo or novoSubgrupo %}<ul class="lista-documentos-compacta">{% endif %}
+    {{ linhaDocumento(doc.titulo, doc.tipo, doc.arquivo, doc.descricao) }}
+    {%- if loop.last %}</ul>{% endif %}
+    {%- endfor %}
+    {%- endif %}
     {%- endfor %}
   </div>
 </section>
